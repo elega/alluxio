@@ -86,6 +86,7 @@ import software.amazon.awssdk.services.s3.S3AsyncClientBuilder;
 import software.amazon.awssdk.services.s3.S3Configuration;
 import software.amazon.awssdk.services.s3.endpoints.S3EndpointParams;
 import software.amazon.awssdk.services.s3.model.GetObjectAttributesRequest;
+import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 import software.amazon.awssdk.services.s3.model.ObjectAttributes;
@@ -698,7 +699,6 @@ public class S3AUnderFileSystem extends ObjectUnderFileSystem implements UfsClie
   public void performGetStatusAsync(
       String path, Consumer<UfsLoadResult> onComplete,
       Consumer<Throwable> onError) {
-
     String folderSuffix = getFolderSuffix();
     path = stripPrefixIfPresent(path);
     path = path.equals(folderSuffix) ? "" : path;
@@ -706,12 +706,12 @@ public class S3AUnderFileSystem extends ObjectUnderFileSystem implements UfsClie
       onComplete.accept(new UfsLoadResult(Stream.empty(), 0, null, null, false, false));
       return;
     }
-    GetObjectAttributesRequest request =
-        GetObjectAttributesRequest.builder()
-            .objectAttributes(ObjectAttributes.E_TAG, ObjectAttributes.OBJECT_SIZE)
-            .bucket(mBucketName).key(path).build();
+    HeadObjectRequest.Builder requestBuilder =
+        HeadObjectRequest.builder()
+            .bucket(mBucketName).key(path);
+    HeadObjectRequest request = requestBuilder.build();
     String finalPath = path;
-    mAsyncClient.getObjectAttributes(request).whenCompleteAsync((result, err) -> {
+    mAsyncClient.headObject(request).whenCompleteAsync((result, err) -> {
       if (err != null) {
         if (err.getCause() instanceof NoSuchKeyException) {
           onComplete.accept(new UfsLoadResult(Stream.empty(), 0, null, null, false, false));
@@ -729,7 +729,7 @@ public class S3AUnderFileSystem extends ObjectUnderFileSystem implements UfsClie
           status = new UfsDirectoryStatus(finalPath, permissions.getOwner(),
               permissions.getGroup(), permissions.getMode());
         } else {
-          status = new UfsFileStatus(finalPath, result.eTag(), result.objectSize(),
+          status = new UfsFileStatus(finalPath, result.eTag(), result.contentLength(),
               lastModifiedTime, permissions.getOwner(), permissions.getGroup(),
               permissions.getMode(), bytes);
         }
@@ -775,9 +775,10 @@ public class S3AUnderFileSystem extends ObjectUnderFileSystem implements UfsClie
               lastItem = new AlluxioURI(lastPrefix.compareTo(lastResult) > 0
                   ? lastPrefix : lastResult);
             }
+            // KeyCount seemed to be content().size() + commonPrefixes().size()
             onComplete.accept(
                 new UfsLoadResult(resultToStream(result),
-                    result.keyCount() + result.commonPrefixes().size(),
+                    result.contents().size() + result.commonPrefixes().size(),
                     result.nextContinuationToken(), lastItem, result.isTruncated(), false));
           }
         });
