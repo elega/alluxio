@@ -913,18 +913,21 @@ public class InodeTree implements DelegatingJournaled {
     // NOTE, we set the mode of missing ancestor directories to be the default value, rather
     // than inheriting the option of the final file to create, because it may not have
     // "execute" permission.
-    CreateDirectoryContext missingDirContext = CreateDirectoryContext.defaults();
-    missingDirContext.getOptions().setCommonOptions(FileSystemMasterCommonPOptions.newBuilder()
-        .setTtl(context.getTtl()).setTtlAction(context.getTtlAction()));
-    missingDirContext.setWriteType(context.getWriteType());
-    missingDirContext.setOperationTimeMs(context.getOperationTimeMs());
-    missingDirContext.setMountPoint(false);
-    missingDirContext.setOwner(context.getOwner());
-    missingDirContext.setGroup(context.getGroup());
-    if (context.getXAttr() != null
-        && context.getXAttrPropStrat() != null
-        && context.getXAttrPropStrat() == XAttrPropagationStrategy.NEW_PATHS) {
-      missingDirContext.setXAttr(context.getXAttr());
+    CreateDirectoryContext missingDirContext = null;
+    if (pathIndex < pathComponents.length - 1) {
+      missingDirContext = CreateDirectoryContext.defaults();
+      missingDirContext.getOptions().setCommonOptions(FileSystemMasterCommonPOptions.newBuilder()
+          .setTtl(context.getTtl()).setTtlAction(context.getTtlAction()));
+      missingDirContext.setWriteType(context.getWriteType());
+      missingDirContext.setOperationTimeMs(context.getOperationTimeMs());
+      missingDirContext.setMountPoint(false);
+      missingDirContext.setOwner(context.getOwner());
+      missingDirContext.setGroup(context.getGroup());
+      if (context.getXAttr() != null
+          && context.getXAttrPropStrat() != null
+          && context.getXAttrPropStrat() == XAttrPropagationStrategy.NEW_PATHS) {
+        missingDirContext.setXAttr(context.getXAttr());
+      }
     }
     StringBuilder pathBuilder = new StringBuilder().append(
         String.join(AlluxioURI.SEPARATOR, Arrays.asList(pathComponents).subList(0, pathIndex))

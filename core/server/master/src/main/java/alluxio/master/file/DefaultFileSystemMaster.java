@@ -1739,7 +1739,6 @@ public class DefaultFileSystemMaster extends CoreMaster
     createFileInternal(rpcContext, inodePath, createFileContext);
 
     commitBlockInfosForFile(blockIds, ufsLength, blockSize, rpcContext.getJournalContext());
-    mUfsAbsentPathCache.processExisting(inodePath.getUri());
   }
 
   /**
@@ -4146,16 +4145,23 @@ public class DefaultFileSystemMaster extends CoreMaster
   @Override
   public SyncMetadataPResponse syncMetadata(AlluxioURI path, SyncMetadataContext context)
       throws InvalidPathException, IOException {
-    // The followings are test code to test UFS partial listing
     /*
+    // The followings are test code to test UFS partial listing
     int count = 0;
     long start = CommonUtils.getCurrentMs();
     MountTable.Resolution reso = mMountTable.resolve(path);
     UnderFileSystem ufs = reso.acquireUfsResource().get();
     ListOptions options = ListOptions.defaults();
     options.setRecursive(true);
-    UfsStatus[] status = ufs.listStatus(reso.getUri().toString(), options);
-    System.out.println(status.length);
+    Iterator<UfsStatus> status = ufs.listStatusIterable(reso.getUri().toString(), options, null, 0);
+    int a = 0;
+    while (status.hasNext()) {
+      status.next();
+      a++;
+      if (a % 10000 == 0) {
+        System.out.println(a);
+      }
+    }
     System.out.println(CommonUtils.getCurrentMs() - start);
     return SyncMetadataPResponse.getDefaultInstance();
     */

@@ -92,6 +92,8 @@ public class MetadataSyncer {
   private final boolean mIgnoreTTL =
       Configuration.getBoolean(PropertyKey.MASTER_METADATA_SYNC_IGNORE_TTL);
 
+  private final CreateFileContext mDefaultCreateFileContext = CreateFileContext.defaults();
+
   /**
    * Constructs a metadata syncer.
    *
@@ -365,7 +367,7 @@ public class MetadataSyncer {
     // Check if the inode is the mount point, if yes, just skip this one
     // Skip this check for the sync root where the name of the current inode is ""
     if (currentInode != null && !currentInode.getName().equals("")) {
-      boolean isMountPoint = mMountTable.isMountPoint(syncRootPath.join(currentInode.getName()));
+      boolean isMountPoint = mMountTable.isMountPoint(syncRootPath.joinUnsafe(currentInode.getName()));
       if (isMountPoint) {
         // Skip the ufs if it is shadowed by the mount point
         boolean skipUfs = currentUfsStatus != null
@@ -385,7 +387,7 @@ public class MetadataSyncer {
       // comparisonResult is present implies that currentUfsStatus is not null
       assert currentUfsStatus != null;
       try (LockedInodePath lockedInodePath = mInodeTree.lockInodePath(
-          syncRootPath.join(currentUfsStatus.getName()), InodeTree.LockPattern.WRITE_EDGE,
+          syncRootPath.joinUnsafe(currentUfsStatus.getName()), InodeTree.LockPattern.WRITE_EDGE,
           NoopJournalContext.INSTANCE)) {
         if (currentUfsStatus.isDirectory()) {
           createInodeDirectoryMetadata(context, lockedInodePath, currentUfsStatus);
@@ -393,6 +395,7 @@ public class MetadataSyncer {
           createInodeFileMetadata(context, lockedInodePath, currentUfsStatus, null);
         }
         context.reportSyncOperationSuccess(SyncOperation.CREATE);
+        updateAndMaybeFlushJournal(context);
       } catch (FileAlreadyExistsException e) {
         handleConcurrentModification(
             context, syncRootPath.join(currentUfsStatus.getName()).getPath(), isSyncRoot, e);
@@ -400,31 +403,31 @@ public class MetadataSyncer {
       return new SingleInodeSyncResult(true, false, false, false);
     } else if (currentUfsStatus == null || comparisonResult.get() < 0) {
       try (LockedInodePath lockedInodePath = mInodeTree.lockFullInodePath(
-          syncRootPath.join(currentInode.getName()), InodeTree.LockPattern.WRITE_EDGE,
+          syncRootPath.joinUnsafe(currentInode.getName()), InodeTree.LockPattern.WRITE_EDGE,
           NoopJournalContext.INSTANCE)) {
         deleteFile(context, lockedInodePath);
         context.reportSyncOperationSuccess(SyncOperation.DELETE);
+        updateAndMaybeFlushJournal(context);
       } catch (FileDoesNotExistException e) {
         handleConcurrentModification(
             context, syncRootPath.join(currentInode.getName()).getPath(), isSyncRoot, e);
       }
       return new SingleInodeSyncResult(false, true, true, false);
     }
+    AlluxioURI uriOfCurrentInode = syncRootPath.joinUnsafe(currentInode.getName());
     // HDFS also fetches ACL list, which is ignored for now
-    MountTable.Resolution resolution =
-        mMountTable.resolve(syncRootPath.join(currentInode.getName()));
+    MountTable.Resolution resolution = mMountTable.resolve(uriOfCurrentInode);
     final String ufsType;
     try (CloseableResource<UnderFileSystem> ufs = resolution.acquireUfsResource()) {
       ufsType = ufs.get().getUnderFSType();
     }
     Fingerprint ufsFingerprint = Fingerprint.create(ufsType, currentUfsStatus);
-    boolean containsMountPoint = mMountTable.containsMountPoint(
-        syncRootPath.join(currentInode.getName()), true);
+    boolean containsMountPoint = mMountTable.containsMountPoint(uriOfCurrentInode, true);
     UfsSyncUtils.SyncPlan syncPlan =
         UfsSyncUtils.computeSyncPlan(currentInode.getInode(), ufsFingerprint, containsMountPoint);
     if (syncPlan.toUpdateMetaData() || syncPlan.toDelete() || syncPlan.toLoadMetadata()) {
       try (LockedInodePath lockedInodePath = mInodeTree.lockFullInodePath(
-          syncRootPath.join(currentInode.getName()), InodeTree.LockPattern.WRITE_EDGE,
+          uriOfCurrentInode, InodeTree.LockPattern.WRITE_EDGE,
           NoopJournalContext.INSTANCE)) {
         if (syncPlan.toUpdateMetaData()) {
           /*
@@ -455,6 +458,7 @@ public class MetadataSyncer {
           } else {
             updateInodeMetadata(context, lockedInodePath, currentUfsStatus, ufsFingerprint);
             context.reportSyncOperationSuccess(SyncOperation.UPDATE);
+            updateAndMaybeFlushJournal(context);
           }
         } else if (syncPlan.toDelete() && syncPlan.toLoadMetadata()) {
           deleteFile(context, lockedInodePath);
@@ -465,6 +469,7 @@ public class MetadataSyncer {
             createInodeFileMetadata(context, lockedInodePath, currentUfsStatus, resolution);
           }
           context.reportSyncOperationSuccess(SyncOperation.RECREATE);
+          updateAndMaybeFlushJournal(context);
         } else {
           throw new IllegalStateException("We should never reach here.");
         }
@@ -560,7 +565,10 @@ public class MetadataSyncer {
     }
 
     // Metadata loaded from UFS has no TTL set.
-    CreateFileContext createFileContext = CreateFileContext.defaults();
+    // Create a CreateFileContext.default() instance is expensive.
+    // We use a pre-created one as a template and create a new one based on the template.
+    CreateFileContext createFileContext =
+        CreateFileContext.mergeFrom(mDefaultCreateFileContext.getOptions());
     createFileContext.getOptions().setBlockSizeBytes(blockSize);
     // Ancestor should be created before unless it is the sync root
     createFileContext.getOptions().setRecursive(true);
@@ -637,6 +645,14 @@ public class MetadataSyncer {
         createDirectoryContext
     );
     //System.out.println("Created directory " + lockedInodePath.getUri());
+  }
+
+  private synchronized void updateAndMaybeFlushJournal(MetadataSyncContext context)
+      throws UnavailableException {
+    if (context.getUpdateCounter().incrementAndGet() > 100) {
+      context.getRpcContext().getJournalContext().flush();
+      context.getUpdateCounter().set(0);
+    }
   }
 
   protected static class SingleInodeSyncResult {

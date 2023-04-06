@@ -17,6 +17,7 @@ import com.google.common.base.Preconditions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 
 /**
@@ -39,6 +40,8 @@ public class MetadataSyncContext {
   private int mBatchSize = 1000;
   @Nullable
   private SyncFailReason mFailReason = null;
+
+  private final AtomicInteger mUpdateCounter = new AtomicInteger(0);
 
   /**
    * Creates a metadata sync context.
@@ -222,6 +225,13 @@ public class MetadataSyncContext {
     mSyncFinishTime = CommonUtils.getCurrentMs();
     return new SyncResult(false, mSyncFinishTime - mSyncStartTime, mSuccessMap, mFailedMap,
         mFailReason, mNumUfsFilesScanned);
+  }
+
+  /**
+   * @return the update counter
+   */
+  public AtomicInteger getUpdateCounter() {
+    return mUpdateCounter;
   }
 
   /**
