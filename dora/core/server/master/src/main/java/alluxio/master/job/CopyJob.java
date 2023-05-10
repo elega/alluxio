@@ -304,7 +304,9 @@ public class CopyJob extends AbstractJob<CopyJob.CopyTask> {
    * @param task
    */
   public void onTaskSubmitFailure(Task<?> task) {
-    Preconditions.checkState(task instanceof CopyTask);
+    if (!(task instanceof CopyTask)) {
+      throw new IllegalArgumentException("Task is not a CopyTask: " + task);
+    }
     ((CopyTask)task).mRoutes.forEach(this::addToRetry);
   }
 
@@ -395,6 +397,7 @@ public class CopyJob extends AbstractJob<CopyJob.CopyTask> {
   @Override
   public String toString() {
     return MoreObjects.toStringHelper(this)
+        .add("JobId", mJobId)
         .add("Src", mSrc)
         .add("Dst", mDst)
         .add("User", mUser)
