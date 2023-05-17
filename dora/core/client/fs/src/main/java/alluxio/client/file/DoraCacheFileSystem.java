@@ -31,10 +31,13 @@ import alluxio.grpc.CreateDirectoryPOptions;
 import alluxio.grpc.CreateFilePOptions;
 import alluxio.grpc.ExistsPOptions;
 import alluxio.grpc.GetStatusPOptions;
+import alluxio.grpc.JobProgressReportFormat;
 import alluxio.grpc.ListStatusPOptions;
 import alluxio.grpc.OpenFilePOptions;
 import alluxio.grpc.RenamePOptions;
 import alluxio.grpc.SetAttributePOptions;
+import alluxio.job.JobDescription;
+import alluxio.job.JobRequest;
 import alluxio.metrics.MetricKey;
 import alluxio.metrics.MetricsSystem;
 import alluxio.proto.dataserver.Protocol;
@@ -57,6 +60,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
@@ -71,6 +75,7 @@ public class DoraCacheFileSystem extends DelegatingFileSystem {
   private final FileSystemContext mFsContext;
   private final boolean mMetadataCacheEnabled;
   private final long mDefaultVirtualBlockSize;
+  private final BaseFileSystem mBaseFileSystem;
 
   /**
    * Wraps a file system instance to forward messages.
@@ -80,6 +85,11 @@ public class DoraCacheFileSystem extends DelegatingFileSystem {
    */
   public DoraCacheFileSystem(FileSystem fs, FileSystemContext context) {
     super(fs);
+    if (fs instanceof BaseFileSystem) {
+      mBaseFileSystem = (BaseFileSystem) fs;
+    } else {
+      mBaseFileSystem = new BaseFileSystem(context);
+    }
     mDoraClient = new DoraCacheClient(context, new WorkerLocationPolicy(2000));
     mFsContext = context;
     mMetadataCacheEnabled = context.getClusterConf()
@@ -338,5 +348,17 @@ public class DoraCacheFileSystem extends DelegatingFileSystem {
       listBuilder.add(blockLocationInfo);
     }
     return listBuilder.build();
+  }
+
+  @Override
+  public Optional<String> submitJob(JobRequest jobRequest) {
+    System.out.println(convertAlluxioPathToUFSPath(new AlluxioURI("/")));
+    return mBaseFileSystem.submitJob(jobRequest);
+  }
+
+  @Override
+  public String getJobProgress(
+      JobDescription jobDescription, JobProgressReportFormat format, boolean verbose) {
+    return mBaseFileSystem.getJobProgress(jobDescription, format, verbose);
   }
 }

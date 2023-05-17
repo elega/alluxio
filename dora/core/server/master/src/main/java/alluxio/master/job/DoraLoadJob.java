@@ -21,7 +21,6 @@ import alluxio.client.block.stream.BlockWorkerClient;
 import alluxio.client.file.FileSystem;
 import alluxio.client.file.URIStatus;
 import alluxio.client.file.dora.WorkerLocationPolicy;
-import alluxio.collections.UnmodifiableArrayList;
 import alluxio.conf.Configuration;
 import alluxio.conf.PropertyKey;
 import alluxio.exception.AlluxioException;

@@ -295,6 +295,11 @@ public class DefaultBlockWorkerClient implements BlockWorkerClient {
   }
 
   @Override
+  public ListenableFuture<SyncResponse> sync(SyncRequest request) {
+    return mRpcFutureStub.sync(request);
+  }
+
+  @Override
   public GetStatusPResponse getStatus(GetStatusPRequest request) {
     return mRpcBlockingStub.withDeadlineAfter(mRpcTimeoutMs, TimeUnit.MILLISECONDS)
         .getStatus(request);

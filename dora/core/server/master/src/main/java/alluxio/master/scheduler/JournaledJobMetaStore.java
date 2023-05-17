@@ -65,6 +65,7 @@ public class JournaledJobMetaStore implements JobMetaStore, Journaled {
     if (!entry.hasLoadJob() && !entry.hasCopyJob()) {
       return false;
     }
+    // Skip creating sync. currently not well supported
     if (entry.hasLoadJob()) {
       Job<?> job = JobFactoryProducer.create(entry, mFileSystemMaster).create();
       mExistingJobs.add(job);

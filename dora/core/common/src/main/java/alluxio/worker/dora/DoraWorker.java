@@ -104,4 +104,12 @@ public interface DoraWorker extends DataWorker, SessionCleanable {
    */
   ListenableFuture<List<RouteFailure>> copy(List<Route> routes, UfsReadOptions readOptions,
       WriteOptions writeOptions);
+
+  /**
+   * Sync metadata of given files.
+   *
+   * @param ufsStatuses the status of the file
+   * @param loadData if the data should be loaded
+   */
+  void sync(List<UfsStatus> ufsStatuses, boolean loadData);
 }

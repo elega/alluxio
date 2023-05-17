@@ -612,6 +612,12 @@ message LoadJobPOptions {
   optional bool partialListing = 3;
 }
 
+message SyncJobPOptions {
+  optional bool isRecursive = 1;
+  optional bool loadData = 2;
+  optional string startFrom = 3;
+}
+
 message CopyJobPOptions {
   optional int64 bandwidth = 1;
   optional bool verify = 2;

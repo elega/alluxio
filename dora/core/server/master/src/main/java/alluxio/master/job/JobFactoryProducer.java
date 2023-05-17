@@ -15,12 +15,15 @@ import alluxio.conf.Configuration;
 import alluxio.job.CopyJobRequest;
 import alluxio.job.JobRequest;
 import alluxio.job.LoadJobRequest;
+import alluxio.job.SyncJobRequest;
 import alluxio.master.file.DefaultFileSystemMaster;
 import alluxio.master.file.FileSystemMaster;
 import alluxio.proto.journal.Journal;
 import alluxio.scheduler.job.JobFactory;
 import alluxio.underfs.UnderFileSystem;
 import alluxio.underfs.UnderFileSystemConfiguration;
+
+import com.sun.tools.javac.util.List;
 
 /**
  * Producer for {@link JobFactory}.
@@ -43,6 +46,9 @@ public class JobFactoryProducer {
       UnderFileSystem ufs = UnderFileSystem.Factory.create(copyRequest.getSrc(),
           UnderFileSystemConfiguration.defaults(Configuration.global()));
       return new CopyJobFactory((CopyJobRequest) request, ufs);
+    }
+    if (request instanceof SyncJobRequest) {
+      return new SyncJobFactory((SyncJobRequest) request, fsMaster);
     }
     throw new IllegalArgumentException("Unknown job type: " + request.getType());
   }
@@ -69,6 +75,8 @@ public class JobFactoryProducer {
   public static JobFactory create(Journal.JournalEntry entry, FileSystemMaster fsMaster) {
     if (entry.hasLoadJob()) {
       return new JournalLoadJobFactory(entry.getLoadJob(), fsMaster);
+    } else if (entry.hasSyncJob()) {
+      return new JournalSyncJobFactory(entry.getSyncJob(), fsMaster);
     }
     else {
       throw new IllegalArgumentException("Unknown job type: " + entry);

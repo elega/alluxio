@@ -34,6 +34,8 @@ import alluxio.grpc.ReadRequest;
 import alluxio.grpc.ReadResponse;
 import alluxio.grpc.ReadResponseMarshaller;
 import alluxio.grpc.RouteFailure;
+import alluxio.grpc.SyncRequest;
+import alluxio.grpc.SyncResponse;
 import alluxio.grpc.TaskStatus;
 import alluxio.underfs.UfsStatus;
 import alluxio.util.io.PathUtils;
@@ -54,6 +56,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Server side implementation of the gRPC dora worker interface.
@@ -127,6 +130,16 @@ public class DoraWorkerClientServiceHandler extends BlockWorkerGrpc.BlockWorkerI
       LOG.debug(String.format("Failed to load file %s: ", request.getFilesList()), e);
       responseObserver.onError(AlluxioRuntimeException.from(e).toGrpcStatusRuntimeException());
     }
+  }
+
+  @Override
+  public void sync(SyncRequest request, StreamObserver<SyncResponse> responseObserver) {
+    RpcUtils.call(LOG, () -> {
+      List<UfsStatus> ufsStatuses =
+          request.getUfsStatusesList().stream().map(UfsStatus::fromProto).collect(Collectors.toList());
+      mWorker.sync(ufsStatuses, request.getLoadData());
+      return null;
+    }, "sync", "request=%s", responseObserver, request);
   }
 
   @Override

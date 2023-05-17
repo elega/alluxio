@@ -37,3 +37,12 @@ message CopyJobEntry {
   optional int64 end_time = 9;
   optional bool overwrite = 10;
 }
+
+message SyncJobEntry {
+  required string sync_path = 1;
+  required string job_id = 2;
+  optional PJobState state = 3;
+  optional string last_processed_key = 4;
+  optional bool is_recursive = 5;
+  optional bool load_data = 6;
+}

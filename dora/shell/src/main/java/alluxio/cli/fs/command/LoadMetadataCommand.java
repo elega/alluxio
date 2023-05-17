@@ -17,9 +17,14 @@ import alluxio.cli.CommandUtils;
 import alluxio.client.file.FileSystemContext;
 import alluxio.exception.AlluxioException;
 import alluxio.exception.status.InvalidArgumentException;
-import alluxio.grpc.FileSystemMasterCommonPOptions;
-import alluxio.grpc.ListStatusPOptions;
+import alluxio.grpc.JobProgressReportFormat;
+import alluxio.grpc.SyncJobPOptions;
+import alluxio.job.JobDescription;
+import alluxio.job.SyncJobRequest;
+import alluxio.util.CommonUtils;
 
+import io.grpc.Status;
+import io.grpc.StatusRuntimeException;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -35,6 +40,8 @@ import javax.annotation.concurrent.ThreadSafe;
 @ThreadSafe
 @PublicApi
 public class LoadMetadataCommand extends AbstractFileSystemCommand {
+  private static final String JOB_TYPE = "sync";
+
   private static final Option RECURSIVE_OPTION =
       Option.builder("R")
           .required(false)
@@ -47,6 +54,13 @@ public class LoadMetadataCommand extends AbstractFileSystemCommand {
           .required(false)
           .hasArg(false)
           .desc("update the metadata of the existing sub file forcibly")
+          .build();
+
+  private static final Option LOAD_DATA_OPTION =
+      Option.builder("l")
+          .required(false)
+          .hasArg(false)
+          .desc("load data alongside the sync")
           .build();
 
   /**
@@ -67,14 +81,14 @@ public class LoadMetadataCommand extends AbstractFileSystemCommand {
   public Options getOptions() {
     return new Options()
         .addOption(RECURSIVE_OPTION)
-        .addOption(FORCE_OPTION);
+        .addOption(LOAD_DATA_OPTION);
   }
 
   @Override
   protected void runPlainPath(AlluxioURI plainPath, CommandLine cl)
       throws AlluxioException, IOException {
     loadMetadata(plainPath, cl.hasOption(RECURSIVE_OPTION.getOpt()),
-        cl.hasOption(FORCE_OPTION.getOpt()));
+        cl.hasOption(LOAD_DATA_OPTION.getOpt()));
   }
 
   @Override
@@ -86,27 +100,51 @@ public class LoadMetadataCommand extends AbstractFileSystemCommand {
     return 0;
   }
 
-  private void loadMetadata(AlluxioURI path, boolean recursive, boolean force) throws IOException {
+  private void loadMetadata(AlluxioURI path, boolean recursive, boolean loadData)
+      throws IOException {
     try {
-      ListStatusPOptions options;
-      if (force) {
-        options = ListStatusPOptions.newBuilder()
-            .setRecursive(recursive)
-            .setCommonOptions(FileSystemMasterCommonPOptions.newBuilder()
-                .setSyncIntervalMs(0).build())
-            .build();
-      } else {
-        options = ListStatusPOptions.newBuilder().setRecursive(recursive).build();
+      SyncJobPOptions options =
+          SyncJobPOptions.newBuilder().setIsRecursive(recursive).setLoadData(loadData).build();
+      SyncJobRequest job = new SyncJobRequest(path.toString(), options);
+      mFileSystem.submitJob(job);
+      while (true) {
+        int v = getProgress(path, JobProgressReportFormat.TEXT, true);
+        if (v < 0) {
+          break;
+        }
+        CommonUtils.sleepMs(1000);
       }
-      mFileSystem.loadMetadata(path, options);
-    } catch (AlluxioException e) {
-      throw new IOException(e.getMessage());
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  private int getProgress(
+      AlluxioURI path, JobProgressReportFormat format, boolean verbose) {
+    try {
+      String progress = mFileSystem.getJobProgress(JobDescription
+          .newBuilder()
+          .setPath(path.getPath())
+          .setType(JOB_TYPE)
+          .build(), format, verbose);
+      System.out.println(progress);
+      if (progress.contains("Succeeded") || progress.contains("Failed")) {
+        return -3;
+      }
+      return 0;
+    } catch (StatusRuntimeException e) {
+      if (e.getStatus().getCode() == Status.Code.NOT_FOUND) {
+        System.out.println("Load for path '" + path + "' cannot be found.");
+        return -2;
+      }
+      System.out.println("Failed to get progress for load job " + path + ": " + e.getMessage());
+      return -1;
     }
   }
 
   @Override
   public String getUsage() {
-    return "loadMetadata [-R] [-F] <path>";
+    return "loadMetadata [-R] [-l] <path>";
   }
 
   @Override

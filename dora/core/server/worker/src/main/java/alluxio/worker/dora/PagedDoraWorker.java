@@ -94,6 +94,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -101,6 +102,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicReference;
+import javax.annotation.Nullable;
 
 /**
  * Page store based dora worker.
@@ -565,6 +567,30 @@ public class PagedDoraWorker extends AbstractWorker implements DoraWorker {
     finally {
       buf.release();
     }
+  }
+
+  @Override
+  public void sync(List<UfsStatus> ufsStatuses, boolean loadData) {
+    System.out.println("Processing " + Arrays.toString(ufsStatuses.toArray()));
+    for (UfsStatus ufsStatus: ufsStatuses) {
+      Preconditions.checkNotNull(ufsStatus.getUfsFullPath());
+      String ufsFullPath = ufsStatus.getUfsFullPath().toString();
+      DoraMeta.FileStatus fs = buildFileStatusFromUfsStatus(ufsStatus, ufsFullPath);
+      mUfsStatusCache.put(ufsFullPath, fs);
+      if (mMetaStore != null) {
+        mMetaStore.putDoraMeta(ufsFullPath, fs);
+      }
+      // TODO: compare the cached file status and fetched status
+      // if the status was not changed, do not clean up the file data cache
+      invalidateCachedFile(GrpcUtils.fromProto(fs.getFileInfo()));
+      // TODO: use multiple threads to load data
+      if (loadData && ufsStatus instanceof UfsFileStatus) {
+        load(ufsFullPath, 0, ((UfsFileStatus) ufsStatus).getContentLength());
+      }
+    }
+    // Update metadata is fast and there's no need for parallelization
+    // Revise this part to see if threads (future) needs to be used.
+
   }
 
   @Override
