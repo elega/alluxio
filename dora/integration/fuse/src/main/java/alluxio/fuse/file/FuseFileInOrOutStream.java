@@ -59,7 +59,7 @@ public class FuseFileInOrOutStream implements FuseFileStream {
    * @return a {@link FuseFileInOrOutStream}
    */
   public static FuseFileInOrOutStream create(FileSystem fileSystem, AuthPolicy authPolicy,
-      FuseReadWriteLockManager lockManager, AlluxioURI uri, int flags, long mode) {
+        FuseReadWriteLockManager lockManager, AlluxioURI uri, int flags, long mode) {
     Preconditions.checkNotNull(fileSystem);
     Preconditions.checkNotNull(lockManager);
     Preconditions.checkNotNull(uri);
