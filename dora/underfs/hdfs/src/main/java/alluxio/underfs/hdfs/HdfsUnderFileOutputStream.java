@@ -12,6 +12,7 @@
 package alluxio.underfs.hdfs;
 
 import alluxio.underfs.ContentHashable;
+import alluxio.util.CommonUtils;
 import alluxio.util.UnderFileSystemUtils;
 
 import org.apache.hadoop.fs.FSDataOutputStream;
@@ -45,6 +46,7 @@ public class HdfsUnderFileOutputStream extends OutputStream implements ContentHa
    * @param out underlying stream to wrap
    */
   public HdfsUnderFileOutputStream(FileSystem fs, String path, FSDataOutputStream out) {
+    System.out.println(CommonUtils.getCurrentMs() + " stream created");
     mFs = fs;
     mPath = path;
     mOut = out;
@@ -52,6 +54,7 @@ public class HdfsUnderFileOutputStream extends OutputStream implements ContentHa
 
   @Override
   public void close() throws IOException {
+    System.out.println(CommonUtils.getCurrentMs() + " stream closed");
     mOut.close();
   }
 

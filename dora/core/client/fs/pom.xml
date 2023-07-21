@@ -106,6 +106,12 @@
       <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.alluxio</groupId>
+          <artifactId>alluxio-underfs-hdfs</artifactId>
+          <version>301-SNAPSHOT</version>
+          <scope>compile</scope>
+      </dependency>
   </dependencies>
 
   <build>

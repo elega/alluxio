@@ -1209,6 +1209,48 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
           .setScope(Scope.SERVER)
           .build();
+  public static final PropertyKey UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_POOL_CAPACITY =
+      intBuilder(Name.UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_POOL_CAPACITY)
+          .setDefaultValue(10)
+          .setDescription("The number of concurrent upload tasks the multipart uploader "
+              + "can conduct. Each upload task needs a buffer resource from the pool, to store "
+              + "temporary data before the data is written into HDFS. "
+              + "Increasing the parallelism improves the performance but "
+              + "also consumes more memory.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
+          .setScope(Scope.CLIENT)
+          .build();
+  public static final PropertyKey
+      UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_POOL_CAPACITY_PER_STREAM =
+      intBuilder(Name.UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_POOL_CAPACITY_PER_STREAM)
+          .setDefaultValue(5)
+          .setDescription("The number of concurrent upload tasks the multipart uploader "
+              + "can conduct for a single file/output stream. This is used to avoid the "
+              + "resource pool being used up by a single file so that other files/streams "
+              + "are not able to acquire the memory buffer.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
+          .setScope(Scope.CLIENT)
+          .build();
+  public static final PropertyKey UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_BYTE_SIZE =
+      intBuilder(Name.UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_BYTE_SIZE)
+          .setDefaultValue(1024 * 1024 * 128)
+          .setDescription("The byte buffer size used by multipart upload. Once the buffer is full, "
+              + "the uploader will write the content of the buffer as a new file. Recommend setting "
+              + "this value to be the HDFS block size to achieve the best efficiency.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
+          .setScope(Scope.CLIENT)
+          .build();
+  public static final PropertyKey
+      UNDERFS_HDFS_MULTIPART_UPLOAD_STREAM_CREATION_BUFFER_ACQUIRE_TIMEOUT_MS =
+      durationBuilder(Name.UNDERFS_HDFS_MULTIPART_UPLOAD_STREAM_CREATION_BUFFER_ACQUIRE_TIMEOUT_MS)
+          .setDefaultValue(-1)
+          .setDescription("To avoid too many ongoing multipart upload tasks blocking the new"
+              + "file creation, when an output stream is created, it can try acquiring a buffer "
+              + "with a timeout. If it fails to acquire a buffer, it falls back to regular single "
+              + "stream file upload.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
+          .setScope(Scope.CLIENT)
+          .build();
   public static final PropertyKey UNDERFS_HDFS_PREFIXES =
       listBuilder(Name.UNDERFS_HDFS_PREFIXES)
           .setDefaultValue("hdfs://,glusterfs:///")
@@ -7206,6 +7248,17 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.ALL)
           .build();
+  public static final PropertyKey FUSE_MULTIPART_UPLOAD_ENABLED =
+      booleanBuilder(Name.FUSE_MULTIPART_UPLOAD_ENABLED)
+          .setDefaultValue(false)
+          .setDescription("If enabled, when writing a file to UFS by fuse, "
+              + "data will be partitioned into multiple parts and uploaded in parallel. "
+              + "This improves the write performance for large files if the network bandwidth "
+              + "is sufficient. This property tries to do multipart upload on a best effort. "
+              + "If the UFS doesn't support so, the upload will fall back to regualr mode.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
+          .setScope(Scope.CLIENT)
+          .build();
   public static final PropertyKey FUSE_POSITION_READ_ENABLED =
       booleanBuilder(Name.FUSE_POSITION_READ_ENABLED)
           .setDefaultValue(false)
@@ -8130,6 +8183,16 @@ public final class PropertyKey implements Comparable<PropertyKey> {
         "alluxio.underfs.gcs.retry.max";
     public static final String UNDERFS_GCS_VERSION = "alluxio.underfs.gcs.version";
     public static final String UNDERFS_HDFS_CONFIGURATION = "alluxio.underfs.hdfs.configuration";
+    public static final String UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_POOL_CAPACITY =
+        "alluxio.underfs.hdfs.multipart.upload.memory.buffer.pool.capacity";
+    public static final String
+        UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_POOL_CAPACITY_PER_STREAM =
+        "alluxio.underfs.hdfs.multipart.upload.memory.buffer.pool.capacity.per.stream";
+    public static final String UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_BYTE_SIZE =
+        "alluxio.underfs.hdfs.multipart.upload.memory.buffer.byte.size";
+    public static final String
+        UNDERFS_HDFS_MULTIPART_UPLOAD_STREAM_CREATION_BUFFER_ACQUIRE_TIMEOUT_MS =
+        "alluxio.underfs.hdfs.multipart.upload.stream.creation.buffer.acquire.timeout.ms";
     public static final String UNDERFS_HDFS_IMPL = "alluxio.underfs.hdfs.impl";
     public static final String UNDERFS_HDFS_PREFIXES = "alluxio.underfs.hdfs.prefixes";
     public static final String UNDERFS_OZONE_PREFIXES = "alluxio.underfs.ozone.prefixes";
@@ -9439,6 +9502,8 @@ public final class PropertyKey implements Comparable<PropertyKey> {
         "alluxio.fuse.mount.options";
     public static final String FUSE_MOUNT_POINT =
         "alluxio.fuse.mount.point";
+    public static final String FUSE_MULTIPART_UPLOAD_ENABLED =
+        "alluxio.user.hdfs.multipart.upload.enabled";
     public static final String FUSE_POSITION_READ_ENABLED =
         "alluxio.fuse.position.read.enabled";
     public static final String FUSE_STAT_CACHE_REFRESH_INTERVAL =

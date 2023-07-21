@@ -95,6 +95,9 @@ public final class AlluxioFuseUtils {
 
   public static final long MODE_NOT_SET_VALUE = -1;
   public static final String MACFUSE_SUPPORT_MINIMUM_OS_VERSION = "10.9";
+  public static final boolean FUSE_MULTIPART_UPLOAD_ENABLED = Configuration.getBoolean(
+      PropertyKey.FUSE_MULTIPART_UPLOAD_ENABLED
+  );
 
   private AlluxioFuseUtils() {}
 
@@ -125,6 +128,11 @@ public final class AlluxioFuseUtils {
   public static FileOutStream createFile(FileSystem fileSystem, AuthPolicy authPolicy,
       AlluxioURI uri, CreateFileStatus fileStatus) {
     CreateFilePOptions.Builder optionsBuilder = CreateFilePOptions.newBuilder();
+    // This option only applies to HDFS for the time being.
+    // Object storage will also be supported in the near future.
+    if (FUSE_MULTIPART_UPLOAD_ENABLED) {
+      optionsBuilder.setUseMultipartUpload(true);
+    }
     if (fileStatus.getMode() != MODE_NOT_SET_VALUE) {
       optionsBuilder.setMode(new Mode((short) fileStatus.getMode()).toProto());
     }

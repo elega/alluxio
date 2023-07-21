@@ -40,6 +40,7 @@ public class CreateOptions {
   private String mGroup;
   private Mode mMode;
   private AccessControlList mAcl;
+  private boolean mMultipartUploadEnabled;
 
   /**
    * @param conf Alluxio configuration
@@ -95,6 +96,15 @@ public class CreateOptions {
    */
   public Mode getMode() {
     return mMode;
+  }
+
+  public CreateOptions setMultipartUploadEnabled(boolean value) {
+    mMultipartUploadEnabled = value;
+    return this;
+  }
+
+  public boolean isMultipartUploadEnabled() {
+    return mMultipartUploadEnabled;
   }
 
   /**

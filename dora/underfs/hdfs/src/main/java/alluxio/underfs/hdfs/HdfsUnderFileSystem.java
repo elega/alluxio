@@ -24,6 +24,7 @@ import alluxio.security.authorization.AclEntry;
 import alluxio.security.authorization.DefaultAccessControlList;
 import alluxio.underfs.AtomicFileOutputStream;
 import alluxio.underfs.AtomicFileOutputStreamCallback;
+import alluxio.underfs.ByteBufferResourcePool;
 import alluxio.underfs.ChecksumType;
 import alluxio.underfs.ConsistentUnderFileSystem;
 import alluxio.underfs.UfsDirectoryStatus;
@@ -118,6 +119,13 @@ public class HdfsUnderFileSystem extends ConsistentUnderFileSystem
   private final HdfsAclProvider mHdfsAclProvider;
 
   private HdfsActiveSyncProvider mHdfsActiveSyncer;
+
+  private final ByteBufferResourcePool mByteBufferResourcePool =
+      new ByteBufferResourcePool(
+          alluxio.conf.Configuration.getInt(
+              PropertyKey.UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_POOL_CAPACITY),
+          alluxio.conf.Configuration.getInt(
+              PropertyKey.UNDERFS_HDFS_MULTIPART_UPLOAD_MEMORY_BUFFER_BYTE_SIZE));
 
   /**
    * Factory method to constructs a new HDFS {@link UnderFileSystem} instance.
@@ -335,6 +343,9 @@ public class HdfsUnderFileSystem extends ConsistentUnderFileSystem
 
   @Override
   public OutputStream create(String path, CreateOptions options) throws IOException {
+    // Q: I'm not sure what we are going to do with atomic output stream.
+    // By implementation, the multipart uploading can also be considered as atomic
+    // as it does not create the actual file until the stream closes.
     if (!options.isEnsureAtomic()) {
       return createDirect(path, options);
     }
@@ -348,10 +359,20 @@ public class HdfsUnderFileSystem extends ConsistentUnderFileSystem
     RetryPolicy retryPolicy = new CountingRetry(MAX_TRY);
     while (retryPolicy.attempt()) {
       try {
+        if (options.isMultipartUploadEnabled()) {
+          try {
+            OutputStream os = new HdfsUnderFileMultipartUploadOutputStream(hdfs, path, options,
+                mHdfsAclProvider, mByteBufferResourcePool);
+            return os;
+          } catch (HdfsUnderFileMultipartUploadOutputStream.MemoryBufferExhaustedException e) {
+            // No-op
+            // falling back to normal HDFS output stream
+          }
+        }
         // TODO(chaomin): support creating HDFS files with specified block size and replication.
         OutputStream outputStream = new HdfsUnderFileOutputStream(hdfs, path,
             FileSystem.create(hdfs, new Path(path),
-              new FsPermission(options.getMode().toShort())));
+                new FsPermission(options.getMode().toShort())));
         if (options.getAcl() != null) {
           setAclEntries(path, options.getAcl().getEntries());
         }
@@ -359,6 +380,9 @@ public class HdfsUnderFileSystem extends ConsistentUnderFileSystem
       } catch (IOException e) {
         LOG.warn("Attempt count {} : {} ", retryPolicy.getAttemptCount(), e.toString());
         te = e;
+      } catch (Throwable e) {
+        e.printStackTrace();
+        throw e;
       }
     }
     throw te;

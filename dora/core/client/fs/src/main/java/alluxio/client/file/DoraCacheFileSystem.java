@@ -260,7 +260,6 @@ public class DoraCacheFileSystem extends DelegatingFileSystem {
   public FileOutStream createFile(AlluxioURI alluxioPath, CreateFilePOptions options)
       throws FileAlreadyExistsException, InvalidPathException, IOException, AlluxioException {
     AlluxioURI ufsFullPath = convertAlluxioPathToUFSPath(alluxioPath);
-
     try {
       CreateFilePOptions mergedOptions = FileSystemOptionsUtils.createFileDefaults(
           mFsContext.getPathConf(alluxioPath)).toBuilder().mergeFrom(options).build();
@@ -285,10 +284,8 @@ public class DoraCacheFileSystem extends DelegatingFileSystem {
       } else {
         ufsOutStream = null;
       }
-
       FileOutStream doraOutStream = mDoraClient.getOutStream(ufsFullPath, mFsContext,
           outStreamOptions, ufsOutStream, uuid);
-
       return doraOutStream;
     } catch (Exception e) {
       // TODO(JiamingMai): delete the file
