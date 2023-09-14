@@ -18,9 +18,11 @@ import alluxio.client.block.BlockMasterClient;
 import alluxio.client.file.FileSystem;
 import alluxio.client.file.FileSystemContext;
 import alluxio.client.file.URIStatus;
+import alluxio.collections.ConcurrentHashSet;
 import alluxio.collections.IndexDefinition;
 import alluxio.collections.IndexedSet;
 import alluxio.conf.AlluxioConfiguration;
+import alluxio.conf.Configuration;
 import alluxio.conf.PropertyKey;
 import alluxio.exception.AlluxioException;
 import alluxio.exception.DirectoryNotEmptyException;
@@ -106,6 +108,9 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
 
   private final IndexedSet<FuseFileEntry<FuseFileStream>> mFileEntries
       = new IndexedSet<>(ID_INDEX, PATH_INDEX);
+
+  private final Set<String> mOpenedFiles = new ConcurrentHashSet<>();
+
   private final AuthPolicy mAuthPolicy;
   private final FuseFileStream.Factory mStreamFactory;
 
@@ -116,6 +121,9 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
   @VisibleForTesting
   public static final int UNKNOWN_INODES = -1;
 
+  private final RandomAccessFuseStreamFactory mRandomAccessFuseStreamFactory;
+  private final boolean mEnforceSyncClose =
+      Configuration.getBoolean(PropertyKey.FUSE_SYNC_CLOSE_ENABLED);
   /**
    * Creates a new instance of {@link AlluxioJniFuseFileSystem}.
    *
@@ -152,6 +160,7 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
     MetricsSystem.registerGaugeIfAbsent(
         MetricsSystem.getMetricName(MetricKey.FUSE_CACHED_PATH_COUNT.getName()),
         mPathResolverCache::size);
+    mRandomAccessFuseStreamFactory = new RandomAccessFuseStreamFactory(mFileSystem, mAuthPolicy);
   }
 
   @Override
@@ -178,7 +187,7 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
     try {
       FuseFileStream stream = mStreamFactory.create(uri, fi.flags.get(), mode);
       long fd = mNextOpenFileId.getAndIncrement();
-      mFileEntries.add(new FuseFileEntry<>(fd, path, stream));
+      mFileEntries.add(new FuseFileEntry<>(fd, path, stream, fi.flags.get()));
       fi.fh.set(fd);
     } catch (NotFoundRuntimeException e) {
       LOG.error("Failed to read {}: path does not exist or is invalid", path, e);
@@ -206,6 +215,7 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
   }
 
   private int getattrInternal(String path, FileStat stat) {
+    waitForFileRelease(path);
     final AlluxioURI uri = mPathResolverCache.getUnchecked(path);
     int res = AlluxioFuseUtils.checkNameLength(uri);
     if (res != 0) {
@@ -326,6 +336,10 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
 
   private int writeInternal(
       String path, ByteBuffer buf, long size, long offset, long fd) {
+    if (mEnforceSyncClose) {
+      return writeInternalSync(path, buf, size, offset, fd);
+    }
+
     FuseFileEntry<FuseFileStream> entry = mFileEntries.getFirstByField(ID_INDEX, fd);
     if (entry == null) {
       LOG.error("Failed to write {}: Cannot find fd {}", path, fd);
@@ -343,6 +357,59 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
     return (int) size;
   }
 
+  private int writeInternalSync(
+      String path, ByteBuffer buf, long size, long offset, long fd) {
+    FuseFileEntry<FuseFileStream> entry = mFileEntries.getFirstByField(ID_INDEX, fd);
+    if (entry == null) {
+      LOG.error("Failed to write {}: Cannot find fd {}", path, fd);
+      return -ErrorCodes.EBADFD();
+    }
+    try {
+      if (entry.getFileStream().isClosed()) {
+        synchronized (entry) {
+          if (entry.getFileStream().isClosed()) {
+            final FuseFileStream newStream;
+            // Mode does not need to set in this case, the mode value from getStatus() will be used,
+            // when the stream is created.
+            long mode = AlluxioFuseUtils.MODE_NOT_SET_VALUE;
+            int truncateFlag = 0B1000;
+            // Cancel the truncate flag.
+            // Even though the file is created in truncate mode, when we recreate the stream
+            // after the first flush, we actually create a stream for append write.
+            // Keeping the truncate flag will result in the previous data getting lost.
+            int flags = entry.getOpenOrCreateFlags() & ~(truncateFlag);
+            final AlluxioURI uri = mPathResolverCache.getUnchecked(path);
+            Optional<URIStatus> status = AlluxioFuseUtils.getPathStatus(mFileSystem, uri);
+            long fileLength = 0;
+            if (status.isPresent()) {
+              fileLength = status.get().getLength();
+            }
+            // As an optimization, if the target file is empty,
+            // a regular output stream is also allowed to create.
+            if (fileLength == 0) {
+              newStream =
+                  mStreamFactory.create(new AlluxioURI(entry.getPath()), flags, mode);
+            } else {
+              newStream = mRandomAccessFuseStreamFactory
+                  .create(new AlluxioURI(entry.getPath()), flags, mode);
+            }
+            entry.setFileStream(newStream);
+          }
+        }
+      }
+      entry.getFileStream().write(buf, size, offset);
+    } catch (AlreadyExistsRuntimeException e) {
+      LOG.error("Failed to write {}: cannot overwrite existing file", path);
+      return -ErrorCodes.EEXIST();
+    } catch (UnimplementedRuntimeException e) {
+      LOG.error("Failed to write {}: not supported", path, e);
+      return -ErrorCodes.EOPNOTSUPP();
+    }
+    return (int) size;
+  }
+
+
+
   @Override
   public int flush(String path, FuseFileInfo fi) {
     final long fd = fi.fh.get();
@@ -351,12 +418,38 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
   }
 
   private int flushInternal(String path, long fd) {
+    if (mEnforceSyncClose) {
+      return flushInternalSync(path, fd);
+    }
     FuseFileEntry<FuseFileStream> entry = mFileEntries.getFirstByField(ID_INDEX, fd);
     if (entry == null) {
       LOG.error("Failed to flush {}: Cannot find fd {}", path, fd);
       return -ErrorCodes.EBADFD();
     }
     entry.getFileStream().flush();
+    if (entry.getFileStream().allowWrite()) {
+      mOpenedFiles.add(path);
+    }
+    return 0;
+  }
+
+  protected int flushInternalSync(String path, long fd) {
+    FuseFileEntry<FuseFileStream> entry = mFileEntries.getFirstByField(ID_INDEX, fd);
+    if (entry == null) {
+      LOG.error("Failed to flush {}: Cannot find fd {}", path, fd);
+      entry = mFileEntries.getFirstByField(PATH_INDEX, path);
+      if (entry == null) {
+        LOG.error("Failed to flush {}: Cannot find path", path);
+        // Do not error out for flush since flush is a noop for now
+        return 0;
+      }
+    }
+    synchronized (entry) {
+      if (!entry.getFileStream().isClosed()) {
+        entry.getFileStream().flush();
+        entry.getFileStream().close();
+      }
+    }
     return 0;
   }
 
@@ -368,16 +461,31 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
   }
 
   private int releaseInternal(String path, long fd) {
+    if (mEnforceSyncClose) {
+      return releaseInternalSync(path, fd);
+    }
     FuseFileEntry<FuseFileStream> entry = mFileEntries.getFirstByField(ID_INDEX, fd);
     if (entry == null) {
       LOG.error("Failed to release {}: Cannot find fd {}", path, fd);
+      mOpenedFiles.remove(path);
       return -ErrorCodes.EBADFD();
     }
     try {
       entry.getFileStream().close();
     } finally {
       mFileEntries.remove(entry);
+      mOpenedFiles.remove(path);
     }
+    return 0;
+  }
+
+  protected int releaseInternalSync(String path, long fd) {
+    FuseFileEntry<FuseFileStream> entry = mFileEntries.getFirstByField(ID_INDEX, fd);
+    if (entry == null) {
+      LOG.error("Failed to release {}: Cannot find fd {}", path, fd);
+      return -ErrorCodes.EBADFD();
+    }
+    mFileEntries.remove(entry);
     return 0;
   }
 
@@ -453,6 +561,7 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
   }
 
   private int renameInternal(String sourcePath, String destPath, int flags) {
+    waitForFileRelease(sourcePath);
     AlluxioURI sourceUri = mPathResolverCache.getUnchecked(sourcePath);
     AlluxioURI destUri = mPathResolverCache.getUnchecked(destPath);
     int res = AlluxioFuseUtils.checkNameLength(destUri);
@@ -511,7 +620,29 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
         FuseConstants.FUSE_CHMOD, "path=%s,mode=%o", path, mode);
   }
 
+  private void waitForFileRelease(String path) {
+    int maxRetries = mFuseOptions.getOpMaxRetryNum();
+    int retryCount = 0;
+    long sleepTime = mFuseOptions.getOpInitRetryWaitTime();
+    while (mOpenedFiles.contains(path) && retryCount < maxRetries) {
+      try {
+        LOG.debug("The file {} hasn't been released yet. Wait for release and retry the {} time. ",
+            path, retryCount + 1);
+        Thread.sleep(sleepTime);
+      } catch (InterruptedException e) {
+        // ignore this exception
+      }
+      sleepTime = sleepTime * 2;
+      retryCount++;
+    }
+  }
+
   private int chmodInternal(String path, long mode) {
+    if (mFuseOptions.isFastCopyEnabled()) {
+      // just ignore the chown op when fast copy is enabled
+      return 0;
+    }
+    waitForFileRelease(path);
     final AlluxioURI uri = mPathResolverCache.getUnchecked(path);
     int res = AlluxioFuseUtils.checkNameLength(uri);
     if (res != 0) {
@@ -530,6 +661,11 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
   }
 
   private int chownInternal(String path, long uid, long gid) {
+    if (mFuseOptions.isFastCopyEnabled()) {
+      // just ignore the chown op when fast copy is enabled
+      return 0;
+    }
+    waitForFileRelease(path);
     final AlluxioURI uri = mPathResolverCache.getUnchecked(path);
     int res = AlluxioFuseUtils.checkNameLength(uri);
     if (res != 0) {
@@ -602,6 +738,10 @@ public final class AlluxioJniFuseFileSystem extends AbstractFuseFileSystem
 
   @Override
   public int utimens(String path, long aSec, long aNsec, long mSec, long mNsec) {
+    if (mFuseOptions.isFastCopyEnabled()) {
+      return 0;
+    }
+    waitForFileRelease(path);
     final AlluxioURI uri = mPathResolverCache.getUnchecked(path);
     int res = AlluxioFuseUtils.checkNameLength(uri);
     if (res != 0) {

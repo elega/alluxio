@@ -557,6 +557,29 @@ public final class PropertyKey implements Comparable<PropertyKey> {
     }
   }
 
+  // Hacked scheduler properties
+  public static final PropertyKey SCHEDULER_DORA_LOAD_JOB_TOTAL_FAILURE_COUNT_THRESHOLD =
+      intBuilder("alluxio.scheduler.dora.load.job.total.failure.count.threshold")
+          .setDefaultValue(-1)
+          .setDescription("-1 -> never fail, otherwise the fail threshold")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+          .setScope(Scope.SERVER)
+          .build();
+  public static final PropertyKey SCHEDULER_DORA_LOAD_JOB_TOTAL_FAILURE_RATIO_THRESHOLD =
+      doubleBuilder("alluxio.scheduler.dora.load.job.total.failure.ratio.threshold")
+          .setDefaultValue(1.00)
+          .setDescription("1.00 -> never fail, (0, 1) -> the percentage threshold")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+          .setScope(Scope.SERVER)
+          .build();
+  public static final PropertyKey SCHEDULER_DORA_LOAD_JOB_RETRIES =
+      intBuilder("alluxio.scheduler.dora.load.job.retries")
+          .setDefaultValue(3)
+          .setDescription("retry count before final failure")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+          .setScope(Scope.SERVER)
+          .build();
+
   public static final PropertyKey CONF_DIR =
       stringBuilder(Name.CONF_DIR)
           .setDefaultValue(format("${%s}/conf", Name.HOME))
@@ -1415,6 +1438,13 @@ public final class PropertyKey implements Comparable<PropertyKey> {
       stringBuilder(Name.UNDERFS_OSS_ECS_RAM_ROLE)
           .setAlias("alluxio.underfs.oss.ecs.ram.role")
           .setDescription("The RAM role of current owner of ECS.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+          .setScope(Scope.SERVER)
+          .build();
+  public static final PropertyKey UNDERFS_OSS_GET_OBJECT_STATUS_LOG_DISABLED =
+      booleanBuilder("alluxio.underfs.oss.get.object.status.log.disabled")
+          .setDefaultValue(false)
+          .setDescription("Whether to disable log")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.SERVER)
           .build();
@@ -2358,7 +2388,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_SCHEDULER_INITIAL_DELAY =
       durationBuilder(Name.MASTER_SCHEDULER_INITIAL_WAIT_TIME)
-          .setDefaultValue("10min")
+          .setDefaultValue("1s")
           .setDescription("The initial wait time before the scheduler starts. This grace period "
           + "is added to make sure workers have registered to master successfully.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3133,6 +3163,23 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setDescription("Master metrics file size buckets")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.MASTER)
+          .build();
+
+  public static final PropertyKey FUSE_SYNC_CLOSE_ENABLED =
+      booleanBuilder("alluxio.user.fuse.sync.close.enabled")
+          .setDefaultValue(false)
+          .setDescription("Hello")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
+          .setScope(Scope.CLIENT)
+          .build();
+
+  public static final PropertyKey FUSE_RANDOM_ACCESS_FILE_STREAM_BUFFER_SIZE =
+      intBuilder("alluxio.user.fuse.random.access.file.stream.buffer.size")
+          .setDefaultValue(1 * 1024 * 1024)
+          .setDescription("This buffer size is used in RandomAccessFuseFileStream when copying the "
+              + "UFS file to local and copying the local file to UFS.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
+          .setScope(Scope.CLIENT)
           .build();
 
   public static final PropertyKey MASTER_HOSTNAME =
@@ -7196,6 +7243,14 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setConsistencyCheckLevel(ConsistencyCheckLevel.IGNORE)
           .setScope(Scope.CLIENT)
           .build();
+  public static final PropertyKey FUSE_MAX_READER_CONCURRENCY =
+      intBuilder(Name.FUSE_MAX_READER_CONCURRENCY)
+          .setDefaultValue(128)
+          .setDescription("The max reader concurrency in FUSE. This controllers the max"
+                  + " number of locks that can be acquired.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+          .setScope(Scope.ALL)
+          .build();
   public static final PropertyKey FUSE_MOUNT_ALLUXIO_PATH =
       stringBuilder(Name.FUSE_MOUNT_ALLUXIO_PATH)
           .setAlias(Name.WORKER_FUSE_MOUNT_ALLUXIO_PATH)
@@ -7284,6 +7339,28 @@ public final class PropertyKey implements Comparable<PropertyKey> {
               + "will drop the metadata cache of path '/mnt/alluxio-fuse/path/to/be/cleaned/'")
           .setScope(Scope.CLIENT)
           .build();
+
+  public static final PropertyKey FUSE_FAST_COPY_ENABLED =
+      booleanBuilder(Name.FUSE_FAST_COPY_ENABLED)
+          .setDefaultValue(true)
+          .setDescription("If enabled, ignore chmod and chown for fast copying.")
+          .setScope(Scope.CLIENT)
+          .build();
+
+  public static final PropertyKey FUSE_OP_MAX_RETRY_NUM =
+      intBuilder(Name.FUSE_OP_MAX_RETRY_NUM)
+          .setDefaultValue(6)
+          .setDescription("Maximum number of retries for FUSE operations. ")
+          .setScope(Scope.CLIENT)
+          .build();
+
+  public static final PropertyKey FUSE_OP_RETRY_INIT_WAIT_TIME =
+      durationBuilder(Name.FUSE_OP_RETRY_INIT_WAIT_TIME)
+          .setDefaultValue("50ms")
+          .setDescription("Initial retry wait time for FUSE operations retry. ")
+          .setScope(Scope.CLIENT)
+          .build();
+
   //
   // Standalone FUSE process related properties
   //
@@ -9456,6 +9533,8 @@ public final class PropertyKey implements Comparable<PropertyKey> {
     public static final String FUSE_SHARED_CACHING_READER_ENABLED
         = "alluxio.fuse.shared.caching.reader.enabled";
     public static final String FUSE_LOGGING_THRESHOLD = "alluxio.fuse.logging.threshold";
+    public static final String FUSE_MAX_READER_CONCURRENCY =
+        "alluxio.fuse.reader.concurrency";
     public static final String FUSE_MOUNT_ALLUXIO_PATH =
         "alluxio.fuse.mount.alluxio.path";
     public static final String FUSE_MOUNT_OPTIONS =
@@ -9472,6 +9551,16 @@ public final class PropertyKey implements Comparable<PropertyKey> {
         "alluxio.fuse.user.group.translation.enabled";
     public static final String FUSE_SPECIAL_COMMAND_ENABLED =
         "alluxio.fuse.special.command.enabled";
+
+    public static final String FUSE_FAST_COPY_ENABLED =
+        "alluxio.fuse.fast.copy.enabled";
+
+    public static final String FUSE_OP_MAX_RETRY_NUM =
+        "alluxio.fuse.op.max.retry.num";
+
+    public static final String FUSE_OP_RETRY_INIT_WAIT_TIME =
+        "alluxio.fuse.op.retry.init.wait.time";
+
     //
     // Standalone FUSE process related properties
     //
