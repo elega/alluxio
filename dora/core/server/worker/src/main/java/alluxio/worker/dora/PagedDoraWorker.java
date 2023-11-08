@@ -557,10 +557,10 @@ public class PagedDoraWorker extends AbstractWorker implements DoraWorker {
           if (mCacheManager.hasPageUnsafe(pageId)) {
             return;
           }
-          LOG.debug("Preloading {} pos: {} length: {}", ufsPath, loadPos, loadLength);
-          loadData(ufsPath, 0, loadPos, loadLength, fi.getLength());
+          LOG.info("Preloading {} pos: {} length: {}", ufsPath, loadPos, loadLength);
+          loadDataV2(ufsPath, pageId, loadPos, loadLength, fi.getLength());
         } catch (Exception e) {
-          LOG.debug("Preloading failed for {} page: {}", ufsPath, pageId, e);
+          LOG.info("Preloading failed for {} page: {}", ufsPath, pageId, e);
         } finally {
           mLoadingPages.remove(pageId);
         }
@@ -660,6 +660,25 @@ public class PagedDoraWorker extends AbstractWorker implements DoraWorker {
     }
   }
 
+  protected void loadDataV2(String ufsPath, PageId pageId, long offset, long lengthToLoad,
+                          long fileLength) throws AccessControlException, IOException {
+    Optional<UnderFileSystem> ufs = mUfsManager.get(new AlluxioURI(ufsPath));
+    if (!ufs.isPresent()) {
+      throw new RuntimeException("Ufs not found for " + ufsPath);
+    }
+    ByteBuf buf = PooledByteBufAllocator.DEFAULT.directBuffer((int) lengthToLoad);
+    try (PositionReader reader = ufs.get().openPositionRead(ufsPath, fileLength)) {
+      int bytesRead = reader.read(offset, buf, (int) lengthToLoad);
+      if (lengthToLoad != bytesRead) {
+        throw new RuntimeException(
+            "Page load failed, expected: " + lengthToLoad + " actual " + bytesRead);
+      }
+      mCacheManager.put(pageId, buf.nioBuffer());
+    } finally {
+      buf.release();
+    }
+  }
+
   protected void loadData(String ufsPath, long mountId, long offset, long lengthToLoad,
       long fileLength) throws AccessControlException, IOException {
     Protocol.OpenUfsBlockOptions options =
@@ -670,6 +689,7 @@ public class PagedDoraWorker extends AbstractWorker implements DoraWorker {
     int bufferSize = (int) Math.min(4 * mPageSize, lengthToLoad);
     ByteBuf buf =
         PooledByteBufAllocator.DEFAULT.directBuffer(bufferSize);
+    // mUfsManager.get(new AlluxioURI()).get().openPositionRead("aaa", 1024).
     try (BlockReader fileReader = createFileReader(fileId, offset, false, options)) {
       //Transfers data from this reader to the buffer until we reach lengthToLoad.
       int bytesRead;
