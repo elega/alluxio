@@ -28,7 +28,7 @@
     <build.path>${project.parent.parent.basedir}/build</build.path>
     <failIfNoTests>false</failIfNoTests>
     <!-- The shading prefix should match the artifact ID, replacing '-' with '.' -->
-    <shading.prefix>alluxio.shaded.client</shading.prefix>
+    <shading.prefix>afs.shaded.client</shading.prefix>
   </properties>
 
   <dependencies>
@@ -288,6 +288,10 @@
                   <excludes>
                     <exclude>**/pom.xml</exclude>
                   </excludes>
+                </relocation>
+                <relocation>
+                  <pattern>alluxio/</pattern>
+                  <shadedPattern>legacy.alluxio.</shadedPattern>
                 </relocation>
                 <relocation>
                   <pattern>javassist</pattern>

@@ -207,7 +207,8 @@ public class GrpcChannelPool
       channelBuilder.useTransportSecurity();
     }
     // Build netty managed channel.
-    return channelBuilder.build();
+//    return channelBuilder.build();
+    return new ShadeFriendlyManagedChannel(channelBuilder.build());
   }
 
   /**

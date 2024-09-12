@@ -262,6 +262,10 @@
                   <shadedPattern>${shading.prefix}.javassist</shadedPattern>
                 </relocation>
                 <relocation>
+                  <pattern>alluxio</pattern>
+                  <shadedPattern>${shading.prefix}.alluxio</shadedPattern>
+                </relocation>
+                <relocation>
                   <pattern>javax/annotation/</pattern>
                   <shadedPattern>${shading.prefix}.javax.annotation.</shadedPattern>
                   <excludes>

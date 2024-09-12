@@ -487,6 +487,8 @@ public final class Configuration
     List<alluxio.grpc.ConfigProperty> clusterConfig = response.getClusterConfigsList();
     Properties clusterProps = filterAndLoadProperties(clusterConfig, scope, (key, value) ->
         String.format("Loading property: %s (%s) -> %s", key, key.getScope(), value));
+    System.out.println("Yimin666: print properties " + clusterConfig.size());
+    /*
     // Check version.
     String clusterVersion = clusterProps.get(PropertyKey.VERSION).toString();
     if (!clientVersion.equals(clusterVersion)) {
@@ -499,6 +501,8 @@ public final class Configuration
     if (clientUfsVersion.equals(clusterUfsVersion)) {
       clusterProps.remove(PropertyKey.UNDERFS_VERSION);
     }
+
+     */
     // Merge conf returned by master as the cluster default into conf object
     AlluxioProperties props = conf.copyProperties();
     props.merge(clusterProps, Source.CLUSTER_DEFAULT);
