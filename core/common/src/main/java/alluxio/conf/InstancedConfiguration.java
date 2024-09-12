@@ -382,7 +382,6 @@ public class InstancedConfiguration implements AlluxioConfiguration {
             PropertyKey.getDeprecationMessage(key));
       }
     }
-    /*
     checkTimeouts();
     checkWorkerPorts();
     checkUserFileBufferBytes();
@@ -391,8 +390,6 @@ public class InstancedConfiguration implements AlluxioConfiguration {
     checkTieredStorage();
     checkMasterThrottleThresholds();
     checkCheckpointZipConfig();
-
-     */
   }
 
   @Override

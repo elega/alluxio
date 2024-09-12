@@ -488,7 +488,6 @@ public final class Configuration
     Properties clusterProps = filterAndLoadProperties(clusterConfig, scope, (key, value) ->
         String.format("Loading property: %s (%s) -> %s", key, key.getScope(), value));
     System.out.println("Yimin666: print properties " + clusterConfig.size());
-    /*
     // Check version.
     String clusterVersion = clusterProps.get(PropertyKey.VERSION).toString();
     if (!clientVersion.equals(clusterVersion)) {
@@ -502,7 +501,6 @@ public final class Configuration
       clusterProps.remove(PropertyKey.UNDERFS_VERSION);
     }
 
-     */
     // Merge conf returned by master as the cluster default into conf object
     AlluxioProperties props = conf.copyProperties();
     props.merge(clusterProps, Source.CLUSTER_DEFAULT);
@@ -557,10 +555,12 @@ public final class Configuration
       // TODO(binfan): support propagating unsetting properties from master
       if (PropertyKey.isValid(name) && property.hasValue()) {
         PropertyKey key = PropertyKey.fromString(name);
+        /*
         if (!GrpcUtils.contains(key.getScope(), scope)) {
           // Only propagate properties contains the target scope
           continue;
         }
+         */
         String value = property.getValue();
         props.put(key, value);
         LOG.debug(logMessage.apply(key, value));

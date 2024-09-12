@@ -723,7 +723,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey NETWORK_CONNECTION_HEALTH_CHECK_TIMEOUT =
       durationBuilder(Name.NETWORK_CONNECTION_HEALTH_CHECK_TIMEOUT)
-          .setAlias("alluxio.network.connection.health.check.timeout.ms")
+          .setAlias(alluLit() + "xio.network.connection.health.check.timeout.ms")
           .setDefaultValue("5sec")
           .setDescription("Allowed duration for checking health of client connections (gRPC "
               + "channels) before being assigned to a client. If a connection does not become "
@@ -757,7 +757,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey NETWORK_HOST_RESOLUTION_TIMEOUT_MS =
       durationBuilder(Name.NETWORK_HOST_RESOLUTION_TIMEOUT_MS)
-          .setAlias("alluxio.network.host.resolution.timeout.ms")
+          .setAlias(alluLit() + "xio.network.host.resolution.timeout.ms")
           .setDefaultValue("5sec")
           .setDescription("During startup of the Master and Worker processes Alluxio needs to "
               + "ensure that they are listening on externally resolvable and reachable host "
@@ -804,7 +804,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
       booleanBuilder(Name.NETWORK_IP_ADDRESS_USED)
           .setDefaultValue(false)
           .setDescription("If true, when alluxio.<service_name>.hostname and "
-              + "alluxio.<service_name>.bind.host of a service not specified, "
+              + alluLit() + "xio.<service_name>.bind.host of a service not specified, "
               + "use IP as the connect host of the service.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.ALL)
@@ -1335,7 +1335,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_OSS_CONNECT_TIMEOUT =
       durationBuilder(Name.UNDERFS_OSS_CONNECT_TIMEOUT)
-          .setAlias("alluxio.underfs.oss.connection.timeout.ms")
+          .setAlias(alluLit() + "xio.underfs.oss.connection.timeout.ms")
           .setDefaultValue("50sec")
           .setDescription("The timeout when connecting to OSS.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1350,7 +1350,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_OSS_SOCKET_TIMEOUT =
       durationBuilder(Name.UNDERFS_OSS_SOCKET_TIMEOUT)
-          .setAlias("alluxio.underfs.oss.socket.timeout.ms")
+          .setAlias(alluLit() + "xio.underfs.oss.socket.timeout.ms")
           .setDefaultValue("50sec")
           .setDescription("The timeout of OSS socket.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1358,14 +1358,14 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_OSS_ECS_RAM_ROLE =
       stringBuilder(Name.UNDERFS_OSS_ECS_RAM_ROLE)
-          .setAlias("alluxio.underfs.oss.ecs.ram.role")
+          .setAlias(alluLit() + "xio.underfs.oss.ecs.ram.role")
           .setDescription("The RAM role of current owner of ECS.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.SERVER)
           .build();
   public static final PropertyKey UNDERFS_OSS_RETRY_MAX =
       intBuilder(Name.UNDERFS_OSS_RETRY_MAX)
-          .setAlias("alluxio.underfs.oss.retry.max")
+          .setAlias(alluLit() + "xio.underfs.oss.retry.max")
           .setDefaultValue(3)
           .setDescription("The maximum number of OSS error retry.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1373,7 +1373,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_OSS_STS_ECS_METADATA_SERVICE_ENDPOINT =
       stringBuilder(Name.UNDERFS_OSS_STS_ECS_METADATA_SERVICE_ENDPOINT)
-          .setAlias("alluxio.underfs.oss.sts.ecs.metadata.service.endpoint")
+          .setAlias(alluLit() + "xio.underfs.oss.sts.ecs.metadata.service.endpoint")
           .setDefaultValue("http://100.100.100.200/latest/meta-data/ram/security-credentials/")
           .setDescription("The ECS metadata service endpoint for Aliyun STS")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1381,7 +1381,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_OSS_STS_ENABLED =
       booleanBuilder(Name.UNDERFS_OSS_STS_ENABLED)
-          .setAlias("alluxio.underfs.oss.sts.enabled")
+          .setAlias(alluLit() + "xio.underfs.oss.sts.enabled")
           .setDefaultValue(false)
           .setDescription("Whether to enable oss STS(Security Token Service).")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1389,7 +1389,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_OSS_STS_TOKEN_REFRESH_INTERVAL_MS =
       durationBuilder(Name.UNDERFS_OSS_STS_TOKEN_REFRESH_INTERVAL_MS)
-          .setAlias("alluxio.underfs.oss.sts.token.refresh.interval.ms")
+          .setAlias(alluLit() + "xio.underfs.oss.sts.token.refresh.interval.ms")
           .setDefaultValue("30m")
           .setDescription("Time before an OSS Security Token is considered expired "
               + "and will be automatically renewed")
@@ -1461,7 +1461,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_CONNECTIONS_MAX =
       intBuilder(Name.UNDERFS_S3_CONNECTIONS_MAX)
-          .setAlias("alluxio.underfs.s3.threads.max")
+          .setAlias(alluLit() + "xio.underfs.s3.threads.max")
           .setDefaultValue(1024)
           .setDescription("The maximum number of concurrent connections to communicate with S3. "
               + "This value includes both connections for data upload and metadata operations. "
@@ -1486,7 +1486,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_DEFAULT_MODE =
       stringBuilder(Name.UNDERFS_S3_DEFAULT_MODE)
-          .setAlias("alluxio.underfs.s3a.default.mode")
+          .setAlias(alluLit() + "xio.underfs.s3a.default.mode")
           .setDefaultValue("0700")
           .setDescription("Mode (in octal notation) for S3 objects if mode cannot be discovered.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1494,7 +1494,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_DIRECTORY_SUFFIX =
       stringBuilder(Name.UNDERFS_S3_DIRECTORY_SUFFIX)
-          .setAlias("alluxio.underfs.s3a.directory.suffix")
+          .setAlias(alluLit() + "xio.underfs.s3a.directory.suffix")
           .setDefaultValue("/")
           .setDescription("Directories are represented in S3 as zero-byte objects named with "
               + "the specified suffix.")
@@ -1503,7 +1503,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_BULK_DELETE_ENABLED =
       booleanBuilder(Name.UNDERFS_S3_BULK_DELETE_ENABLED)
-          .setAlias("alluxio.underfs.s3a.bulk.delete.enabled")
+          .setAlias(alluLit() + "xio.underfs.s3a.bulk.delete.enabled")
           .setDefaultValue(true)
           .setIsHidden(true)
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -1511,7 +1511,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_INHERIT_ACL =
       booleanBuilder(Name.UNDERFS_S3_INHERIT_ACL)
-          .setAlias("alluxio.underfs.s3a.inherit_acl")
+          .setAlias(alluLit() + "xio.underfs.s3a.inherit_acl")
           .setDefaultValue(true)
           .setDescription("Set this property to false to disable inheriting bucket ACLs on "
               + "objects. Note that the translation from bucket ACLs to Alluxio user permissions "
@@ -1522,7 +1522,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_INTERMEDIATE_UPLOAD_CLEAN_AGE =
       durationBuilder(Name.UNDERFS_S3_INTERMEDIATE_UPLOAD_CLEAN_AGE)
-          .setAlias("alluxio.underfs.s3a.intermediate.upload.clean.age")
+          .setAlias(alluLit() + "xio.underfs.s3a.intermediate.upload.clean.age")
           .setDefaultValue("3day")
           .setDescription("Streaming uploads may not have been completed/aborted correctly "
               + "and need periodical ufs cleanup. If ufs cleanup is enabled, "
@@ -1534,7 +1534,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_LIST_OBJECTS_V1 =
       booleanBuilder(Name.UNDERFS_S3_LIST_OBJECTS_V1)
-          .setAlias("alluxio.underfs.s3a.list.objects.v1")
+          .setAlias(alluLit() + "xio.underfs.s3a.list.objects.v1")
           .setDefaultValue(false)
           .setDescription("Whether to use version 1 of GET Bucket (List Objects) API.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -1542,7 +1542,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_MAX_ERROR_RETRY =
       intBuilder(Name.UNDERFS_S3_MAX_ERROR_RETRY)
-          .setAlias("alluxio.underfs.s3a.max.error.retry")
+          .setAlias(alluLit() + "xio.underfs.s3a.max.error.retry")
           .setDescription("The maximum number of retry attempts for failed retryable requests."
               + "Setting this property will override the AWS SDK default.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1550,7 +1550,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_REQUEST_TIMEOUT =
       durationBuilder(Name.UNDERFS_S3_REQUEST_TIMEOUT)
-          .setAlias("alluxio.underfs.s3a.request.timeout.ms", "alluxio.underfs.s3a.request.timeout")
+          .setAlias(alluLit() + "xio.underfs.s3a.request.timeout.ms", alluLit() + "xio.underfs.s3a.request.timeout")
           .setDefaultValue("1min")
           .setDescription("The timeout for a single request to S3. Infinity if set to 0. "
               + "Setting this property to a non-zero value can improve performance by "
@@ -1561,7 +1561,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_SECURE_HTTP_ENABLED =
       booleanBuilder(Name.UNDERFS_S3_SECURE_HTTP_ENABLED)
-          .setAlias("alluxio.underfs.s3a.secure.http.enabled")
+          .setAlias(alluLit() + "xio.underfs.s3a.secure.http.enabled")
           .setDefaultValue(false)
           .setDescription("Whether or not to use HTTPS protocol when communicating with S3.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -1569,7 +1569,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_SERVER_SIDE_ENCRYPTION_ENABLED =
       booleanBuilder(Name.UNDERFS_S3_SERVER_SIDE_ENCRYPTION_ENABLED)
-          .setAlias("alluxio.underfs.s3a.server.side.encryption.enabled")
+          .setAlias(alluLit() + "xio.underfs.s3a.server.side.encryption.enabled")
           .setDefaultValue(false)
           .setDescription("Whether or not to encrypt data stored in S3.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -1577,7 +1577,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_SIGNER_ALGORITHM =
       stringBuilder(Name.UNDERFS_S3_SIGNER_ALGORITHM)
-          .setAlias("alluxio.underfs.s3a.signer.algorithm")
+          .setAlias(alluLit() + "xio.underfs.s3a.signer.algorithm")
           .setDescription("The signature algorithm which should be used to sign requests to "
               + "the s3 service. This is optional, and if not set, the client will "
               + "automatically determine it. For interacting with an S3 endpoint which only "
@@ -1595,7 +1595,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_SOCKET_TIMEOUT =
       durationBuilder(Name.UNDERFS_S3_SOCKET_TIMEOUT)
-          .setAlias("alluxio.underfs.s3a.socket.timeout.ms", "alluxio.underfs.s3a.socket.timeout")
+          .setAlias(alluLit() + "xio.underfs.s3a.socket.timeout.ms", alluLit() + "xio.underfs.s3a.socket.timeout")
           .setDefaultValue("50sec")
           .setDescription("Length of the socket timeout when communicating with S3.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -1603,7 +1603,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_STREAMING_UPLOAD_ENABLED =
       booleanBuilder(Name.UNDERFS_S3_STREAMING_UPLOAD_ENABLED)
-          .setAlias("alluxio.underfs.s3a.streaming.upload.enabled")
+          .setAlias(alluLit() + "xio.underfs.s3a.streaming.upload.enabled")
           .setDefaultValue(false)
           .setDescription("(Experimental) If true, using streaming upload to write to S3.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -1611,7 +1611,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_S3_STREAMING_UPLOAD_PARTITION_SIZE =
       dataSizeBuilder(Name.UNDERFS_S3_STREAMING_UPLOAD_PARTITION_SIZE)
-          .setAlias("alluxio.underfs.s3a.streaming.upload.partition.size")
+          .setAlias(alluLit() + "xio.underfs.s3a.streaming.upload.partition.size")
           .setDefaultValue("64MB")
           .setDescription("Maximum allowable size of a single buffer file when using "
               + "S3A streaming upload. When the buffer file reaches the partition size, "
@@ -1717,7 +1717,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_TOS_STREAMING_UPLOAD_ENABLED =
       booleanBuilder(Name.UNDERFS_TOS_STREAMING_UPLOAD_ENABLED)
-          .setAlias("alluxio.underfs.tos.streaming.upload.enabled")
+          .setAlias(alluLit() + "xio.underfs.tos.streaming.upload.enabled")
           .setDefaultValue(false)
           .setDescription("(Experimental) If true, using streaming upload to write to TOS.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -1725,7 +1725,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_TOS_STREAMING_UPLOAD_PARTITION_SIZE =
       dataSizeBuilder(Name.UNDERFS_TOS_STREAMING_UPLOAD_PARTITION_SIZE)
-          .setAlias("alluxio.underfs.tos.streaming.upload.partition.size")
+          .setAlias(alluLit() + "xio.underfs.tos.streaming.upload.partition.size")
           .setDefaultValue("64MB")
           .setDescription("Maximum allowable size of a single buffer file when using "
               + "TOS streaming upload. When the buffer file reaches the partition size, "
@@ -1838,7 +1838,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_OSS_DEFAULT_MODE =
       stringBuilder(Name.UNDERFS_OSS_DEFAULT_MODE)
-          .setAlias("alluxio.underfs.oss.default.mode")
+          .setAlias(alluLit() + "xio.underfs.oss.default.mode")
           .setDefaultValue("0700")
           .setDescription("Mode (in octal notation) for OSS objects if mode cannot be discovered.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -2068,7 +2068,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_TOS_RETRY_MAX =
       intBuilder(Name.UNDERFS_TOS_RETRY_MAX)
-          .setAlias("alluxio.underfs.tos.retry.max")
+          .setAlias(alluLit() + "xio.underfs.tos.retry.max")
           .setDefaultValue(3)
           .setDescription("The maximum number of TOS error retry.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -2076,7 +2076,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_TOS_WRITE_TIMEOUT =
       intBuilder(Name.UNDERFS_TOS_WRITE_TIMEOUT)
-          .setAlias("alluxio.underfs.tos.write.timeout.ms", "alluxio.underfs.tos.write.timeout")
+          .setAlias(alluLit() + "xio.underfs.tos.write.timeout.ms", alluLit() + "xio.underfs.tos.write.timeout")
           .setDefaultValue(30000)
           .setDescription("The timeout for a single write request to TOS.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -2084,7 +2084,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_TOS_READ_TIMEOUT =
       intBuilder(Name.UNDERFS_TOS_READ_TIMEOUT)
-          .setAlias("alluxio.underfs.tos.read.timeout.ms", "alluxio.underfs.tos.read.timeout")
+          .setAlias(alluLit() + "xio.underfs.tos.read.timeout.ms", alluLit() + "xio.underfs.tos.read.timeout")
           .setDefaultValue(30000)
           .setDescription("The timeout for a single read request to TOS.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -2092,7 +2092,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey UNDERFS_TOS_CONNECT_TIMEOUT =
       intBuilder(Name.UNDERFS_TOS_CONNECT_TIMEOUT)
-          .setAlias("alluxio.underfs.tos.connect.timeout.ms", "alluxio.underfs.tos.connect.timeout")
+          .setAlias(alluLit() + "xio.underfs.tos.connect.timeout.ms", alluLit() + "xio.underfs.tos.connect.timeout")
           .setDefaultValue(30000)
           .setDescription("The timeout for a connection to TOS.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -2157,7 +2157,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_MOUNT_TABLE_ROOT_UFS =
       new Builder(PropertyType.STRING, Template.MASTER_MOUNT_TABLE_UFS, "root")
-          .setAlias("alluxio.underfs.address")
+          .setAlias(alluLit() + "xio.underfs.address")
           .setDescription("The storage address of the UFS at the Alluxio root mount point.")
           .setDefaultValue(format("${%s}/underFSStorage", Name.WORK_DIR))
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -2545,7 +2545,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setDefaultValue(1)
           .setDescription("The zip compression level of sending a snapshot from one master to "
               + "another. Only applicable when "
-              + "alluxio.master.embedded.journal.snapshot.replication.compression.type is not "
+              + alluLit() + "xio.master.embedded.journal.snapshot.replication.compression.type is not "
               + "NO_COMPRESSION. The zip format defines ten levels of compression, ranging from 0 "
               + "(no compression, but very fast) to 9 (best compression, but slow). "
               + "Or -1 for the system default compression level.")
@@ -2658,7 +2658,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_FORMAT_FILE_PREFIX =
       stringBuilder(Name.MASTER_FORMAT_FILE_PREFIX)
-          .setAlias("alluxio.master.format.file_prefix")
+          .setAlias(alluLit() + "xio.master.format.file_prefix")
           .setDefaultValue("_format_")
           .setDescription("The file prefix of the file generated in the journal directory "
               + "when the journal is formatted. The master will search for a file with this "
@@ -3060,7 +3060,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
   public static final PropertyKey MASTER_LOST_WORKER_DETECTION_INTERVAL =
       durationBuilder(Name.MASTER_LOST_WORKER_DETECTION_INTERVAL)
           .setDefaultValue("10sec")
-          .setAlias("alluxio.master.worker.heartbeat.interval")
+          .setAlias(alluLit() + "xio.master.worker.heartbeat.interval")
           .setDescription("The interval between Alluxio master detections to find lost workers "
               + "based on updates from Alluxio workers.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3169,7 +3169,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_JOURNAL_FLUSH_BATCH_TIME_MS =
       durationBuilder(Name.MASTER_JOURNAL_FLUSH_BATCH_TIME_MS)
-          .setAlias("alluxio.master.journal.flush.batch.time.ms")
+          .setAlias(alluLit() + "xio.master.journal.flush.batch.time.ms")
           .setDefaultValue("100ms")
           .setDescription("Time to wait for batching journal writes.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3177,7 +3177,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_JOURNAL_FLUSH_TIMEOUT_MS =
       durationBuilder(Name.MASTER_JOURNAL_FLUSH_TIMEOUT_MS)
-          .setAlias("alluxio.master.journal.flush.timeout.ms")
+          .setAlias(alluLit() + "xio.master.journal.flush.timeout.ms")
           .setDefaultValue("5min")
           .setDescription("The amount of time to keep retrying journal "
               + "writes before giving up and shutting down the master.")
@@ -3289,7 +3289,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_JOURNAL_TAILER_SHUTDOWN_QUIET_WAIT_TIME_MS =
       durationBuilder(Name.MASTER_JOURNAL_TAILER_SHUTDOWN_QUIET_WAIT_TIME_MS)
-          .setAlias("alluxio.master.journal.tailer.shutdown.quiet.wait.time.ms")
+          .setAlias(alluLit() + "xio.master.journal.tailer.shutdown.quiet.wait.time.ms")
           .setDefaultValue("5sec")
           .setDescription("Before the standby master shuts down its tailer thread, there "
               + "should be no update to the leader master's journal in this specified time "
@@ -3299,7 +3299,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_JOURNAL_TAILER_SLEEP_TIME_MS =
       durationBuilder(Name.MASTER_JOURNAL_TAILER_SLEEP_TIME_MS)
-          .setAlias("alluxio.master.journal.tailer.sleep.time.ms")
+          .setAlias(alluLit() + "xio.master.journal.tailer.sleep.time.ms")
           .setDefaultValue("1sec")
           .setDescription("Time for the standby master to sleep for when it "
               + "cannot find anything new in leader master's journal.")
@@ -3324,7 +3324,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_JOURNAL_GC_PERIOD_MS =
       durationBuilder(Name.MASTER_JOURNAL_GC_PERIOD_MS)
-          .setAlias("alluxio.master.journal.gc.period.ms")
+          .setAlias(alluLit() + "xio.master.journal.gc.period.ms")
           .setDefaultValue("2min")
           .setDescription("Frequency with which to scan for and delete stale journal checkpoints.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3332,7 +3332,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_JOURNAL_GC_THRESHOLD_MS =
       durationBuilder(Name.MASTER_JOURNAL_GC_THRESHOLD_MS)
-          .setAlias("alluxio.master.journal.gc.threshold.ms")
+          .setAlias(alluLit() + "xio.master.journal.gc.threshold.ms")
           .setDefaultValue("5min")
           .setDescription("Minimum age for garbage collecting checkpoints.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3340,7 +3340,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_JOURNAL_TEMPORARY_FILE_GC_THRESHOLD_MS =
       durationBuilder(Name.MASTER_JOURNAL_TEMPORARY_FILE_GC_THRESHOLD_MS)
-          .setAlias("alluxio.master.journal.temporary.file.gc.threshold.ms")
+          .setAlias(alluLit() + "xio.master.journal.temporary.file.gc.threshold.ms")
           .setDescription("Minimum age for garbage collecting temporary checkpoint files.")
           .setDefaultValue("30min")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3450,7 +3450,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
       .build();
   public static final PropertyKey MASTER_PROXY_TIMEOUT_MS =
       durationBuilder(Name.MASTER_PROXY_TIMEOUT_MS)
-          .setAlias("alluxio.master.proxy.timeout.ms")
+          .setAlias(alluLit() + "xio.master.proxy.timeout.ms")
           .setDefaultValue("5m")
           .setDescription("An Alluxio Proxy instance will maintain heartbeat to the primary "
               + "Alluxio Master. No heartbeat more than this timeout indicates a lost Proxy.")
@@ -3467,7 +3467,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_LOST_PROXY_DELETION_TIMEOUT_MS =
       durationBuilder(Name.MASTER_LOST_PROXY_DELETION_TIMEOUT_MS)
-          .setAlias("alluxio.master.lost.proxy.deletion.timeout.ms")
+          .setAlias(alluLit() + "xio.master.lost.proxy.deletion.timeout.ms")
           .setDefaultValue("30min")
           .setDescription("If an Alluxio Proxy has been lost for more than this timeout, "
               + "the master will totally forget this worker.")
@@ -3476,7 +3476,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_RPC_PORT =
       intBuilder(Name.MASTER_RPC_PORT)
-          .setAlias("alluxio.master.port")
+          .setAlias(alluLit() + "xio.master.port")
           .setDefaultValue(19998)
           .setDescription("The port for Alluxio master's RPC service.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3556,7 +3556,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_TTL_CHECKER_INTERVAL_MS =
       durationBuilder(Name.MASTER_TTL_CHECKER_INTERVAL_MS)
-          .setAlias("alluxio.master.ttl.checker.interval.ms")
+          .setAlias(alluLit() + "xio.master.ttl.checker.interval.ms")
           .setDefaultValue("1hour")
           .setDescription("How often to periodically check and delete/free the files "
               + "with expired ttl value.")
@@ -3781,7 +3781,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_WORKER_TIMEOUT_MS =
       durationBuilder(Name.MASTER_WORKER_TIMEOUT_MS)
-          .setAlias("alluxio.master.worker.timeout.ms")
+          .setAlias(alluLit() + "xio.master.worker.timeout.ms")
           .setDefaultValue("5min")
           .setDescription("Timeout between master and worker indicating a lost worker.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -3789,7 +3789,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_LOST_WORKER_DELETION_TIMEOUT_MS =
       durationBuilder(Name.MASTER_LOST_WORKER_DELETION_TIMEOUT_MS)
-          .setAlias("alluxio.master.lost.worker.deletion.timeout.ms")
+          .setAlias(alluLit() + "xio.master.lost.worker.deletion.timeout.ms")
           .setDefaultValue("30min")
           .setDescription("If a worker has no heartbeat with the master "
               + "for more than this timeout, the master will totally forget this worker.")
@@ -4020,7 +4020,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_RPC_EXECUTOR_FJP_PARALLELISM =
       intBuilder(Name.MASTER_RPC_EXECUTOR_FJP_PARALLELISM)
-          .setAlias("alluxio.master.rpc.executor.parallelism")
+          .setAlias(alluLit() + "xio.master.rpc.executor.parallelism")
           .setDefaultSupplier(() -> Math.max(8, 2 * Runtime.getRuntime().availableProcessors()),
               "2 * {CPU core count}")
           .setDescription(
@@ -4032,7 +4032,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey MASTER_RPC_EXECUTOR_FJP_MIN_RUNNABLE =
       intBuilder(Name.MASTER_RPC_EXECUTOR_FJP_MIN_RUNNABLE)
-          .setAlias("alluxio.master.rpc.executor.min.runnable")
+          .setAlias(alluLit() + "xio.master.rpc.executor.min.runnable")
           .setDefaultValue(1)
           .setDescription(
               format(
@@ -4257,7 +4257,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
   //
   public static final PropertyKey WORKER_ALLOCATOR_CLASS =
       classBuilder(Name.WORKER_ALLOCATOR_CLASS)
-          .setDefaultValue("alluxio.worker.block.allocator.MaxFreeAllocator")
+          .setDefaultValue(alluLit() + "xio.worker.block.allocator.MaxFreeAllocator")
           .setDescription("The strategy that a worker uses to allocate space among storage "
               + "directories in certain storage layer. Valid options include: "
               + "`alluxio.worker.block.allocator.MaxFreeAllocator`, "
@@ -4275,7 +4275,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_BLOCK_HEARTBEAT_INTERVAL_MS =
       durationBuilder(Name.WORKER_BLOCK_HEARTBEAT_INTERVAL_MS)
-          .setAlias("alluxio.worker.block.heartbeat.interval.ms")
+          .setAlias(alluLit() + "xio.worker.block.heartbeat.interval.ms")
           .setDefaultValue("1sec")
           .setDescription("The interval between block workers' heartbeats to update "
               + "block status, storage health and other workers' information to Alluxio Master.")
@@ -4284,7 +4284,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_BLOCK_HEARTBEAT_TIMEOUT_MS =
       durationBuilder(Name.WORKER_BLOCK_HEARTBEAT_TIMEOUT_MS)
-          .setAlias("alluxio.worker.block.heartbeat.timeout.ms")
+          .setAlias(alluLit() + "xio.worker.block.heartbeat.timeout.ms")
           .setDefaultValue(format("${%s}", Name.WORKER_MASTER_CONNECT_RETRY_TIMEOUT))
           .setDescription("The timeout value of block workers' heartbeats. If the worker can't "
               + "connect to master before this interval expires, the worker will exit.")
@@ -4399,7 +4399,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_BLOCK_ANNOTATOR_CLASS =
       classBuilder(Name.WORKER_BLOCK_ANNOTATOR_CLASS)
-          .setDefaultValue("alluxio.worker.block.annotator.LRUAnnotator")
+          .setDefaultValue(alluLit() + "xio.worker.block.annotator.LRUAnnotator")
           .setDescription("The strategy that a worker uses to annotate blocks "
               + "in order to have an ordered view of them during internal"
               + "management tasks such as eviction and promotion/demotion. "
@@ -4902,7 +4902,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_PAGE_STORE_EVICTOR_CLASS =
       classBuilder(Name.WORKER_PAGE_STORE_EVICTOR_CLASS)
-          .setDefaultValue("alluxio.client.file.cache.evictor.LRUCacheEvictor")
+          .setDefaultValue(alluLit() + "xio.client.file.cache.evictor.LRUCacheEvictor")
           .setDescription("The strategy that worker uses to evict local cached pages when running "
               + "out of space. Currently valid options include "
               + "`alluxio.client.file.cache.evictor.LRUCacheEvictor`,"
@@ -5057,7 +5057,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_REVIEWER_CLASS =
       classBuilder(Name.WORKER_REVIEWER_CLASS)
-          .setDefaultValue("alluxio.worker.block.reviewer.ProbabilisticBufferReviewer")
+          .setDefaultValue(alluLit() + "xio.worker.block.reviewer.ProbabilisticBufferReviewer")
           .setDescription("(Experimental) The API is subject to change in the future."
               + "The strategy that a worker uses to review space allocation "
               + "in the Allocator. Each time a block allocation decision is made by "
@@ -5071,7 +5071,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_RPC_PORT =
       intBuilder(Name.WORKER_RPC_PORT)
-          .setAlias("alluxio.worker.port")
+          .setAlias(alluLit() + "xio.worker.port")
           .setDefaultValue(29999)
           .setDescription("The port for Alluxio worker's RPC service.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -5079,7 +5079,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_SESSION_TIMEOUT_MS =
       durationBuilder(Name.WORKER_SESSION_TIMEOUT_MS)
-          .setAlias("alluxio.worker.session.timeout.ms")
+          .setAlias(alluLit() + "xio.worker.session.timeout.ms")
           .setDefaultValue("1min")
           .setDescription("Timeout between worker and client connection "
               + "indicating a lost session connection.")
@@ -5407,7 +5407,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_RPC_EXECUTOR_FJP_PARALLELISM =
       intBuilder(Name.WORKER_RPC_EXECUTOR_FJP_PARALLELISM)
-          .setAlias("alluxio.worker.rpc.executor.parallelism")
+          .setAlias(alluLit() + "xio.worker.rpc.executor.parallelism")
           .setDefaultSupplier(() -> Math.max(8, 2 * Runtime.getRuntime().availableProcessors()),
               "2 * {CPU core count}")
           .setDescription(
@@ -5419,7 +5419,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey WORKER_RPC_EXECUTOR_FJP_MIN_RUNNABLE =
       intBuilder(Name.WORKER_RPC_EXECUTOR_FJP_MIN_RUNNABLE)
-          .setAlias("alluxio.worker.rpc.executor.min.runnable")
+          .setAlias(alluLit() + "xio.worker.rpc.executor.min.runnable")
           .setDefaultValue(1)
           .setDescription(
               format(
@@ -5450,7 +5450,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
   //
   public static final PropertyKey PROXY_MASTER_HEARTBEAT_INTERVAL =
       durationBuilder(Name.PROXY_MASTER_HEARTBEAT_INTERVAL)
-          .setAlias("alluxio.proxy.master.heartbeat.interval.ms")
+          .setAlias(alluLit() + "xio.proxy.master.heartbeat.interval.ms")
           .setDefaultValue("10sec")
           .setDescription("Proxy instances maintain a heartbeat with the primary master. "
                 + "This key specifies the heartbeat interval.")
@@ -5647,7 +5647,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey PROXY_STREAM_CACHE_TIMEOUT_MS =
       durationBuilder(Name.PROXY_STREAM_CACHE_TIMEOUT_MS)
-          .setAlias("alluxio.proxy.stream.cache.timeout.ms")
+          .setAlias(alluLit() + "xio.proxy.stream.cache.timeout.ms")
           .setDefaultValue("1hour")
           .setDescription("The timeout for the input and output streams cache eviction in the "
               + "proxy.")
@@ -5683,7 +5683,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey PROXY_S3_BUCKETPATHCACHE_TIMEOUT_MS =
       durationBuilder(Name.PROXY_S3_BUCKETPATHCACHE_TIMEOUT_MS)
-          .setAlias("alluxio.proxy.s3.bucketpathcache.timeout.ms")
+          .setAlias(alluLit() + "xio.proxy.s3.bucketpathcache.timeout.ms")
           .setDefaultValue("0min")
           .setDescription("Expire bucket path statistics in cache for this time period. "
               + "Set 0min to disable the cache. If enabling the cache, "
@@ -5830,7 +5830,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
               + "client pool.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
-          .setAlias("alluxio.user.block.master.client.threads")
+          .setAlias(alluLit() + "xio.user.block.master.client.threads")
           .build();
   public static final PropertyKey USER_BLOCK_MASTER_CLIENT_POOL_GC_INTERVAL_MS =
       durationBuilder(Name.USER_BLOCK_MASTER_CLIENT_POOL_GC_INTERVAL_MS)
@@ -5863,7 +5863,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
               + "worker client pool.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
-          .setAlias("alluxio.user.block.worker.client.pool.size")
+          .setAlias(alluLit() + "xio.user.block.worker.client.pool.size")
           .build();
   public static final PropertyKey USER_BLOCK_WORKER_CLIENT_POOL_GC_THRESHOLD_MS =
       durationBuilder(Name.USER_BLOCK_WORKER_CLIENT_POOL_GC_THRESHOLD_MS)
@@ -5983,7 +5983,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey USER_FILE_COPYFROMLOCAL_BLOCK_LOCATION_POLICY =
       classBuilder(Name.USER_FILE_COPYFROMLOCAL_BLOCK_LOCATION_POLICY)
-          .setDefaultValue("alluxio.client.block.policy.RoundRobinPolicy")
+          .setDefaultValue(alluLit() + "xio.client.block.policy.RoundRobinPolicy")
           .setDescription("The default location policy for choosing workers for writing a "
               + "file's blocks using copyFromLocal command.")
           .setScope(Scope.CLIENT)
@@ -6017,7 +6017,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
               + "client pool.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
-          .setAlias("alluxio.user.file.master.client.threads")
+          .setAlias(alluLit() + "xio.user.file.master.client.threads")
           .build();
   public static final PropertyKey USER_FILE_MASTER_CLIENT_POOL_GC_INTERVAL_MS =
       durationBuilder(Name.USER_FILE_MASTER_CLIENT_POOL_GC_INTERVAL_MS)
@@ -6044,7 +6044,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
               + "`NEVER` will never consult the UFS. `ONCE` will access the UFS the \"first\" "
               + "time (according to a cache), but not after that. This parameter is ignored if a "
               + "metadata sync is performed, via the parameter "
-              + "\"alluxio.user.file.metadata.sync.interval\"")
+              + "alluxio.user.file.metadata.sync.interval")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
           .build();
@@ -6057,7 +6057,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
               + "interval, Alluxio will (best effort) not re-sync a path within that time "
               + "interval. Syncing the metadata for a path must interact with the UFS, so it is "
               + "an expensive operation. If a sync is performed for an operation, the "
-              + "configuration of \"alluxio.user.file.metadata.load.type\" will be ignored.")
+              + "configuration of alluxio.user.file.metadata.load.type will be ignored.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
           .build();
@@ -6103,7 +6103,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey USER_FILE_WAITCOMPLETED_POLL_MS =
       durationBuilder(Name.USER_FILE_WAITCOMPLETED_POLL_MS)
-          .setAlias("alluxio.user.file.waitcompleted.poll.ms")
+          .setAlias(alluLit() + "xio.user.file.waitcompleted.poll.ms")
           .setDefaultValue("1sec")
           .setDescription("The time interval to poll a file for its completion status when "
               + "using waitCompleted.")
@@ -6448,7 +6448,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
 
   public static final PropertyKey USER_FILE_WRITE_TYPE_DEFAULT =
       enumBuilder(Name.USER_FILE_WRITE_TYPE_DEFAULT, WriteType.class)
-          .setDefaultValue(WriteType.ASYNC_THROUGH)
+          .setDefaultValue(WriteType.MUST_CACHE)
       .setDescription(
           format("Default write type when creating Alluxio files. Valid " + "options are "
               + "`MUST_CACHE` (write will only go to Alluxio and must be stored in Alluxio), "
@@ -6570,7 +6570,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
       intBuilder(Name.USER_METADATA_CACHE_MAX_SIZE)
           .setDefaultValue(100000)
           .setDescription("Maximum number of paths with cached metadata. Only valid if "
-              + "alluxio.user.metadata.cache.enabled is set to true.")
+              + alluLit() + "xio.user.metadata.cache.enabled is set to true.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
           .build();
@@ -6591,7 +6591,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey USER_METRICS_HEARTBEAT_INTERVAL_MS =
       durationBuilder(Name.USER_METRICS_HEARTBEAT_INTERVAL_MS)
-          .setAlias("alluxio.user.metrics.heartbeat.interval.ms")
+          .setAlias(alluLit() + "xio.user.metrics.heartbeat.interval.ms")
           .setDefaultValue("10sec")
           .setDescription("The time period of client master heartbeat to "
               + "send the client-side metrics.")
@@ -6624,7 +6624,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey USER_STREAMING_DATA_READ_TIMEOUT =
       durationBuilder(Name.USER_STREAMING_DATA_READ_TIMEOUT)
-          .setAlias("alluxio.user.network.data.timeout.ms", Name.USER_NETWORK_DATA_TIMEOUT,
+          .setAlias(alluLit() + "xio.user.network.data.timeout.ms", Name.USER_NETWORK_DATA_TIMEOUT,
               Name.USER_STREAMING_DATA_TIMEOUT)
           .setDefaultValue("3m")
           .setDescription("The maximum time for an Alluxio client to wait for a data response "
@@ -6691,7 +6691,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey USER_STREAMING_WRITER_CLOSE_TIMEOUT =
       durationBuilder(Name.USER_STREAMING_WRITER_CLOSE_TIMEOUT)
-          .setAlias("alluxio.user.network.writer.close.timeout.ms",
+          .setAlias(alluLit() + "xio.user.network.writer.close.timeout.ms",
               Name.USER_NETWORK_WRITER_CLOSE_TIMEOUT)
           .setDefaultValue("30min")
           .setDescription("The timeout to close a writer client.")
@@ -6720,7 +6720,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
   @Deprecated
   public static final PropertyKey USER_NETWORK_DATA_TIMEOUT_MS =
       durationBuilder(Name.USER_NETWORK_DATA_TIMEOUT)
-          .setAlias("alluxio.user.network.data.timeout.ms")
+          .setAlias(alluLit() + "xio.user.network.data.timeout.ms")
           .setDescription("The maximum time for an Alluxio client to wait for a data response "
               + "(e.g. block reads and block writes) from Alluxio worker.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
@@ -6776,7 +6776,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
   @Deprecated
   public static final PropertyKey USER_NETWORK_WRITER_CLOSE_TIMEOUT_MS =
       durationBuilder(Name.USER_NETWORK_WRITER_CLOSE_TIMEOUT)
-          .setAlias("alluxio.user.network.writer.close.timeout.ms")
+          .setAlias(alluLit() + "xio.user.network.writer.close.timeout.ms")
           .setDescription("The timeout to close a writer client.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
@@ -6986,7 +6986,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey USER_RPC_RETRY_BASE_SLEEP_MS =
       durationBuilder(Name.USER_RPC_RETRY_BASE_SLEEP_MS)
-          .setAlias("alluxio.user.rpc.retry.base.sleep.ms")
+          .setAlias(alluLit() + "xio.user.rpc.retry.base.sleep.ms")
           .setDefaultValue("50ms")
           .setDescription("Alluxio client RPCs automatically retry for transient errors with "
               + "an exponential backoff. This property determines the base time "
@@ -7015,7 +7015,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey USER_RPC_RETRY_MAX_SLEEP_MS =
       durationBuilder(Name.USER_RPC_RETRY_MAX_SLEEP_MS)
-          .setAlias("alluxio.user.rpc.retry.max.sleep.ms")
+          .setAlias(alluLit() + "xio.user.rpc.retry.max.sleep.ms")
           .setDefaultValue("3sec")
           .setDescription("Alluxio client RPCs automatically retry for transient errors with "
               + "an exponential backoff. This property determines the maximum wait time "
@@ -7037,14 +7037,14 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setDescription(format("When an Alluxio client reads a file from the UFS, it "
               + "delegates the read to an Alluxio worker. The client uses this policy to choose "
               + "which worker to read through. Built-in choices: %s.", Arrays.asList(
-              javadocLink("alluxio.client.block.policy.CapacityBasedDeterministicHashPolicy"),
-              javadocLink("alluxio.client.block.policy.CapacityBaseRandomPolicy"),
-              javadocLink("alluxio.client.block.policy.DeterministicHashPolicy"),
-              javadocLink("alluxio.client.block.policy.LocalFirstAvoidEvictionPolicy"),
-              javadocLink("alluxio.client.block.policy.LocalFirstPolicy"),
-              javadocLink("alluxio.client.block.policy.MostAvailableFirstPolicy"),
-              javadocLink("alluxio.client.block.policy.RoundRobinPolicy"),
-              javadocLink("alluxio.client.block.policy.SpecificHostPolicy"))))
+              javadocLink(alluLit() + "xio.client.block.policy.CapacityBasedDeterministicHashPolicy"),
+              javadocLink(alluLit() + "xio.client.block.policy.CapacityBaseRandomPolicy"),
+              javadocLink(alluLit() + "xio.client.block.policy.DeterministicHashPolicy"),
+              javadocLink(alluLit() + "xio.client.block.policy.LocalFirstAvoidEvictionPolicy"),
+              javadocLink(alluLit() + "xio.client.block.policy.LocalFirstPolicy"),
+              javadocLink(alluLit() + "xio.client.block.policy.MostAvailableFirstPolicy"),
+              javadocLink(alluLit() + "xio.client.block.policy.RoundRobinPolicy"),
+              javadocLink(alluLit() + "xio.client.block.policy.SpecificHostPolicy"))))
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
           .build();
@@ -7052,8 +7052,8 @@ public final class PropertyKey implements Comparable<PropertyKey> {
       intBuilder(Name.USER_UFS_BLOCK_READ_LOCATION_POLICY_DETERMINISTIC_HASH_SHARDS)
           .setDefaultValue(1)
           .setDescription("When alluxio.user.ufs.block.read.location.policy is set to "
-              + "alluxio.client.block.policy.DeterministicHashPolicy or "
-              + "alluxio.client.block.policy.CapacityBasedDeterministicHashPolicy, "
+              + alluLit() + "xio.client.block.policy.DeterministicHashPolicy or "
+              + alluLit() + "xio.client.block.policy.CapacityBasedDeterministicHashPolicy, "
               + "this specifies the number of hash shards.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.CLIENT)
@@ -7090,7 +7090,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
   public static final PropertyKey USER_DIRECT_MEMORY_IO_ENABLED =
       booleanBuilder(Name.USER_UNSAFE_DIRECT_LOCAL_IO_ENABLED)
           .setDefaultValue(false)
-          .setAlias("alluxio.user.direct.memory.io.enabled")
+          .setAlias(alluLit() + "xio.user.direct.memory.io.enabled")
           .setIsHidden(true)
           .setDescription("(Experimental) If this is enabled, clients will read from local "
               + "worker directly without invoking extra RPCs to worker to require locations. "
@@ -7367,7 +7367,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .build();
   public static final PropertyKey SECURITY_GROUP_MAPPING_CACHE_TIMEOUT_MS =
       durationBuilder(Name.SECURITY_GROUP_MAPPING_CACHE_TIMEOUT_MS)
-          .setAlias("alluxio.security.group.mapping.cache.timeout.ms")
+          .setAlias(alluLit() + "xio.security.group.mapping.cache.timeout.ms")
           .setDefaultValue("1min")
           .setDescription("Time for cached group mapping to expire.")
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -7913,7 +7913,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
    */
   @Deprecated(message = "This key is used only for testing. It is always deprecated")
   public static final PropertyKey TEST_DEPRECATED_KEY =
-      booleanBuilder("alluxio.test.deprecated.key")
+      booleanBuilder(alluLit() + "xio.test.deprecated.key")
           .build();
 
   /**
@@ -7927,272 +7927,276 @@ public final class PropertyKey implements Comparable<PropertyKey> {
         fullyQualifiedClassname);
   }
 
+  private static String alluLit() {
+    return "allu";
+  }
+
   /**
    * A nested class to hold named string constants for their corresponding properties.
    * Used for setting configuration in integration tests.
    */
   @ThreadSafe
   public static final class Name {
-    public static final String CONF_DIR = "alluxio.conf.dir";
+    public static final String CONF_DIR = alluLit() + "xio.conf.dir";
     public static final String CONF_DYNAMIC_UPDATE_ENABLED =
-        "alluxio.conf.dynamic.update.enabled";
-    public static final String CONF_VALIDATION_ENABLED = "alluxio.conf.validation.enabled";
-    public static final String DEBUG = "alluxio.debug";
-    public static final String EXTENSIONS_DIR = "alluxio.extensions.dir";
-    public static final String EXIT_COLLECT_INFO = "alluxio.exit.collect.info";
+        alluLit() + "xio.conf.dynamic.update.enabled";
+    public static final String CONF_VALIDATION_ENABLED = alluLit() + "xio.conf.validation.enabled";
+    public static final String DEBUG = alluLit() + "xio.debug";
+    public static final String EXTENSIONS_DIR = alluLit() + "xio.extensions.dir";
+    public static final String EXIT_COLLECT_INFO = alluLit() + "xio.exit.collect.info";
     public static final String GRPC_REFLECTION_ENABLED =
-        "alluxio.grpc.reflection.enabled";
-    public static final String HOME = "alluxio.home";
+        alluLit() + "xio.grpc.reflection.enabled";
+    public static final String HOME = alluLit() + "xio.home";
     public static final String INTEGRATION_MASTER_RESOURCE_CPU =
-        "alluxio.integration.master.resource.cpu";
+        alluLit() + "xio.integration.master.resource.cpu";
     public static final String INTEGRATION_MASTER_RESOURCE_MEM =
-        "alluxio.integration.master.resource.mem";
+        alluLit() + "xio.integration.master.resource.mem";
     public static final String INTEGRATION_WORKER_RESOURCE_CPU =
-        "alluxio.integration.worker.resource.cpu";
+        alluLit() + "xio.integration.worker.resource.cpu";
     public static final String INTEGRATION_WORKER_RESOURCE_MEM =
-        "alluxio.integration.worker.resource.mem";
+        alluLit() + "xio.integration.worker.resource.mem";
     public static final String INTEGRATION_YARN_WORKERS_PER_HOST_MAX =
-        "alluxio.integration.yarn.workers.per.host.max";
-    public static final String LEAK_DETECTOR_LEVEL = "alluxio.leak.detector.level";
-    public static final String LEAK_DETECTOR_EXIT_ON_LEAK = "alluxio.leak.detector.exit.on.leak";
-    public static final String LOGGER_TYPE = "alluxio.logger.type";
-    public static final String LOGS_DIR = "alluxio.logs.dir";
-    public static final String METRICS_CONF_FILE = "alluxio.metrics.conf.file";
+        alluLit() + "xio.integration.yarn.workers.per.host.max";
+    public static final String LEAK_DETECTOR_LEVEL = alluLit() + "xio.leak.detector.level";
+    public static final String LEAK_DETECTOR_EXIT_ON_LEAK = alluLit() + "xio.leak.detector.exit.on.leak";
+    public static final String LOGGER_TYPE = alluLit() + "xio.logger.type";
+    public static final String LOGS_DIR = alluLit() + "xio.logs.dir";
+    public static final String METRICS_CONF_FILE = alluLit() + "xio.metrics.conf.file";
     public static final String METRICS_CONTEXT_SHUTDOWN_TIMEOUT =
-        "alluxio.metrics.context.shutdown.timeout";
+        alluLit() + "xio.metrics.context.shutdown.timeout";
     public static final String METRICS_EXECUTOR_TASK_WARN_SIZE =
-        "alluxio.metrics.executor.task.warn.size";
+        alluLit() + "xio.metrics.executor.task.warn.size";
     public static final String METRICS_EXECUTOR_TASK_WARN_FREQUENCY =
-        "alluxio.metrics.executor.task.warn.frequency";
+        alluLit() + "xio.metrics.executor.task.warn.frequency";
     public static final String METRICS_KEY_INCLUDING_UNIQUE_ID_ENABLED =
-        "alluxio.metrics.key.including.unique.id.enabled";
+        alluLit() + "xio.metrics.key.including.unique.id.enabled";
     public static final String NETWORK_CONNECTION_AUTH_TIMEOUT =
-        "alluxio.network.connection.auth.timeout";
+        alluLit() + "xio.network.connection.auth.timeout";
     public static final String NETWORK_CONNECTION_HEALTH_CHECK_TIMEOUT =
-        "alluxio.network.connection.health.check.timeout";
+        alluLit() + "xio.network.connection.health.check.timeout";
     public static final String NETWORK_CONNECTION_SERVER_SHUTDOWN_TIMEOUT =
-        "alluxio.network.connection.server.shutdown.timeout";
+        alluLit() + "xio.network.connection.server.shutdown.timeout";
     public static final String NETWORK_CONNECTION_SHUTDOWN_GRACEFUL_TIMEOUT =
-        "alluxio.network.connection.shutdown.graceful.timeout";
+        alluLit() + "xio.network.connection.shutdown.graceful.timeout";
     public static final String NETWORK_CONNECTION_SHUTDOWN_TIMEOUT =
-        "alluxio.network.connection.shutdown.timeout";
+        alluLit() + "xio.network.connection.shutdown.timeout";
     public static final String NETWORK_HOST_RESOLUTION_TIMEOUT_MS =
-        "alluxio.network.host.resolution.timeout";
-    public static final String NETWORK_IP_ADDRESS_USED = "alluxio.network.ip.address.used";
-    public static final String SITE_CONF_DIR = "alluxio.site.conf.dir";
-    public static final String ROCKS_INODE_CONF_FILE = "alluxio.site.conf.rocks.inode.file";
-    public static final String ROCKS_BLOCK_CONF_FILE = "alluxio.site.conf.rocks.block.file";
-    public static final String TEST_MODE = "alluxio.test.mode";
-    public static final String TMP_DIRS = "alluxio.tmp.dirs";
-    public static final String USER_LOGS_DIR = "alluxio.user.logs.dir";
-    public static final String VERSION = "alluxio.version";
-    public static final String WEB_FILE_INFO_ENABLED = "alluxio.web.file.info.enabled";
-    public static final String WEB_RESOURCES = "alluxio.web.resources";
-    public static final String WEB_THREADS = "alluxio.web.threads";
-    public static final String WEB_CORS_ENABLED = "alluxio.web.cors.enabled";
-    public static final String WEB_CORS_ALLOW_CREDENTIAL = "alluxio.web.cors.allow.credential";
-    public static final String WEB_CORS_ALLOW_HEADERS = "alluxio.web.cors.allow.headers";
-    public static final String WEB_CORS_ALLOW_METHODS = "alluxio.web.cors.allow.methods";
-    public static final String WEB_CORS_ALLOW_ORIGINS = "alluxio.web.cors.allow.origins";
-    public static final String WEB_CORS_EXPOSED_HEADERS = "alluxio.web.cors.exposed.headers";
-    public static final String WEB_CORS_MAX_AGE = "alluxio.web.cors.max.age";
-    public static final String WEB_REFRESH_INTERVAL = "alluxio.web.refresh.interval";
-    public static final String WEB_THREAD_DUMP_TO_LOG = "alluxio.web.threaddump.log.enabled";
-    public static final String WEB_UI_ENABLED = "alluxio.web.ui.enabled";
-    public static final String WORK_DIR = "alluxio.work.dir";
-    public static final String ZOOKEEPER_ADDRESS = "alluxio.zookeeper.address";
+        alluLit() + "xio.network.host.resolution.timeout";
+    public static final String NETWORK_IP_ADDRESS_USED = alluLit() + "xio.network.ip.address.used";
+    public static final String SITE_CONF_DIR = alluLit() + "xio.site.conf.dir";
+    public static final String ROCKS_INODE_CONF_FILE = alluLit() + "xio.site.conf.rocks.inode.file";
+    public static final String ROCKS_BLOCK_CONF_FILE = alluLit() + "xio.site.conf.rocks.block.file";
+    public static final String TEST_MODE = alluLit() + "xio.test.mode";
+    public static final String TMP_DIRS = alluLit() + "xio.tmp.dirs";
+    public static final String USER_LOGS_DIR = alluLit() + "xio.user.logs.dir";
+    public static final String VERSION = alluLit() + "xio.version";
+    public static final String WEB_FILE_INFO_ENABLED = alluLit() + "xio.web.file.info.enabled";
+    public static final String WEB_RESOURCES = alluLit() + "xio.web.resources";
+    public static final String WEB_THREADS = alluLit() + "xio.web.threads";
+    public static final String WEB_CORS_ENABLED = alluLit() + "xio.web.cors.enabled";
+    public static final String WEB_CORS_ALLOW_CREDENTIAL = alluLit() + "xio.web.cors.allow.credential";
+    public static final String WEB_CORS_ALLOW_HEADERS = alluLit() + "xio.web.cors.allow.headers";
+    public static final String WEB_CORS_ALLOW_METHODS = alluLit() + "xio.web.cors.allow.methods";
+    public static final String WEB_CORS_ALLOW_ORIGINS = alluLit() + "xio.web.cors.allow.origins";
+    public static final String WEB_CORS_EXPOSED_HEADERS = alluLit() + "xio.web.cors.exposed.headers";
+    public static final String WEB_CORS_MAX_AGE = alluLit() + "xio.web.cors.max.age";
+    public static final String WEB_REFRESH_INTERVAL = alluLit() + "xio.web.refresh.interval";
+    public static final String WEB_THREAD_DUMP_TO_LOG = alluLit() + "xio.web.threaddump.log.enabled";
+    public static final String WEB_UI_ENABLED = alluLit() + "xio.web.ui.enabled";
+    public static final String WORK_DIR = alluLit() + "xio.work.dir";
+    public static final String ZOOKEEPER_ADDRESS = alluLit() + "xio.zookeeper.address";
     public static final String ZOOKEEPER_CONNECTION_TIMEOUT =
-        "alluxio.zookeeper.connection.timeout";
-    public static final String ZOOKEEPER_ELECTION_PATH = "alluxio.zookeeper.election.path";
-    public static final String ZOOKEEPER_ENABLED = "alluxio.zookeeper.enabled";
+        alluLit() + "xio.zookeeper.connection.timeout";
+    public static final String ZOOKEEPER_ELECTION_PATH = alluLit() + "xio.zookeeper.election.path";
+    public static final String ZOOKEEPER_ENABLED = alluLit() + "xio.zookeeper.enabled";
     public static final String ZOOKEEPER_LEADER_INQUIRY_RETRY_COUNT =
-        "alluxio.zookeeper.leader.inquiry.retry";
-    public static final String ZOOKEEPER_LEADER_PATH = "alluxio.zookeeper.leader.path";
-    public static final String ZOOKEEPER_SESSION_TIMEOUT = "alluxio.zookeeper.session.timeout";
-    public static final String ZOOKEEPER_AUTH_ENABLED = "alluxio.zookeeper.auth.enabled";
+        alluLit() + "xio.zookeeper.leader.inquiry.retry";
+    public static final String ZOOKEEPER_LEADER_PATH = alluLit() + "xio.zookeeper.leader.path";
+    public static final String ZOOKEEPER_SESSION_TIMEOUT = alluLit() + "xio.zookeeper.session.timeout";
+    public static final String ZOOKEEPER_AUTH_ENABLED = alluLit() + "xio.zookeeper.auth.enabled";
     public static final String ZOOKEEPER_LEADER_CONNECTION_ERROR_POLICY =
-        "alluxio.zookeeper.leader.connection.error.policy";
+        alluLit() + "xio.zookeeper.leader.connection.error.policy";
     //
     // UFS related properties
     //
     public static final String UNDERFS_STRICT_VERSION_MATCH_ENABLED =
-        "alluxio.underfs.strict.version.match.enabled";
+        alluLit() + "xio.underfs.strict.version.match.enabled";
     public static final String UNDERFS_ALLOW_SET_OWNER_FAILURE =
-        "alluxio.underfs.allow.set.owner.failure";
-    public static final String UNDERFS_CLEANUP_ENABLED = "alluxio.underfs.cleanup.enabled";
-    public static final String UNDERFS_CLEANUP_INTERVAL = "alluxio.underfs.cleanup.interval";
+        alluLit() + "xio.underfs.allow.set.owner.failure";
+    public static final String UNDERFS_CLEANUP_ENABLED = alluLit() + "xio.underfs.cleanup.enabled";
+    public static final String UNDERFS_CLEANUP_INTERVAL = alluLit() + "xio.underfs.cleanup.interval";
     public static final String UNDERFS_EVENTUAL_CONSISTENCY_RETRY_BASE_SLEEP_MS =
-        "alluxio.underfs.eventual.consistency.retry.base.sleep";
+        alluLit() + "xio.underfs.eventual.consistency.retry.base.sleep";
     public static final String UNDERFS_EVENTUAL_CONSISTENCY_RETRY_MAX_NUM =
-        "alluxio.underfs.eventual.consistency.retry.max.num";
+        alluLit() + "xio.underfs.eventual.consistency.retry.max.num";
     public static final String UNDERFS_EVENTUAL_CONSISTENCY_RETRY_MAX_SLEEP_MS =
-        "alluxio.underfs.eventual.consistency.retry.max.sleep";
-    public static final String UNDERFS_LISTING_LENGTH = "alluxio.underfs.listing.length";
-    public static final String UNDERFS_LOGGING_THRESHOLD = "alluxio.underfs.logging.threshold";
-    public static final String UNDERFS_GCS_DEFAULT_MODE = "alluxio.underfs.gcs.default.mode";
+        alluLit() + "xio.underfs.eventual.consistency.retry.max.sleep";
+    public static final String UNDERFS_LISTING_LENGTH = alluLit() + "xio.underfs.listing.length";
+    public static final String UNDERFS_LOGGING_THRESHOLD = alluLit() + "xio.underfs.logging.threshold";
+    public static final String UNDERFS_GCS_DEFAULT_MODE = alluLit() + "xio.underfs.gcs.default.mode";
     public static final String UNDERFS_GCS_DIRECTORY_SUFFIX =
-        "alluxio.underfs.gcs.directory.suffix";
+        alluLit() + "xio.underfs.gcs.directory.suffix";
     public static final String UNDERFS_GCS_OWNER_ID_TO_USERNAME_MAPPING =
-        "alluxio.underfs.gcs.owner.id.to.username.mapping";
+        alluLit() + "xio.underfs.gcs.owner.id.to.username.mapping";
     public static final String UNDERFS_GCS_RETRY_INITIAL_DELAY_MS =
-        "alluxio.underfs.gcs.retry.initial.delay";
+        alluLit() + "xio.underfs.gcs.retry.initial.delay";
     public static final String UNDERFS_GCS_RETRY_MAX_DELAY_MS =
-        "alluxio.underfs.gcs.retry.max.delay";
+        alluLit() + "xio.underfs.gcs.retry.max.delay";
     public static final String UNDERFS_GCS_RETRY_DELAY_MULTIPLIER =
-        "alluxio.underfs.gcs.retry.delay.multiplier";
+        alluLit() + "xio.underfs.gcs.retry.delay.multiplier";
     public static final String UNDERFS_GCS_RETRY_JITTER =
-        "alluxio.underfs.gcs.retry.jitter";
+        alluLit() + "xio.underfs.gcs.retry.jitter";
     public static final String UNDERFS_GCS_RETRY_TOTAL_DURATION_MS =
-        "alluxio.underfs.gcs.retry.total.duration";
+        alluLit() + "xio.underfs.gcs.retry.total.duration";
     public static final String UNDERFS_GCS_RETRY_MAX =
-        "alluxio.underfs.gcs.retry.max";
-    public static final String UNDERFS_GCS_VERSION = "alluxio.underfs.gcs.version";
-    public static final String UNDERFS_HDFS_CONFIGURATION = "alluxio.underfs.hdfs.configuration";
-    public static final String UNDERFS_HDFS_IMPL = "alluxio.underfs.hdfs.impl";
-    public static final String UNDERFS_HDFS_PREFIXES = "alluxio.underfs.hdfs.prefixes";
-    public static final String UNDERFS_OZONE_PREFIXES = "alluxio.underfs.ozone.prefixes";
-    public static final String UNDERFS_HDFS_REMOTE = "alluxio.underfs.hdfs.remote";
-    public static final String UNDERFS_IO_THREADS = "alluxio.underfs.io.threads";
+        alluLit() + "xio.underfs.gcs.retry.max";
+    public static final String UNDERFS_GCS_VERSION = alluLit() + "xio.underfs.gcs.version";
+    public static final String UNDERFS_HDFS_CONFIGURATION = alluLit() + "xio.underfs.hdfs.configuration";
+    public static final String UNDERFS_HDFS_IMPL = alluLit() + "xio.underfs.hdfs.impl";
+    public static final String UNDERFS_HDFS_PREFIXES = alluLit() + "xio.underfs.hdfs.prefixes";
+    public static final String UNDERFS_OZONE_PREFIXES = alluLit() + "xio.underfs.ozone.prefixes";
+    public static final String UNDERFS_HDFS_REMOTE = alluLit() + "xio.underfs.hdfs.remote";
+    public static final String UNDERFS_IO_THREADS = alluLit() + "xio.underfs.io.threads";
     public static final String UNDERFS_LOCAL_SKIP_BROKEN_SYMLINKS =
-        "alluxio.underfs.local.skip.broken.symlinks";
+        alluLit() + "xio.underfs.local.skip.broken.symlinks";
     public static final String UNDERFS_PERSISTENCE_ASYNC_TEMP_DIR =
-        "alluxio.underfs.persistence.async.temp.dir";
+        alluLit() + "xio.underfs.persistence.async.temp.dir";
     public static final String UNDERFS_WEB_HEADER_LAST_MODIFIED =
-        "alluxio.underfs.web.header.last.modified";
+        alluLit() + "xio.underfs.web.header.last.modified";
     public static final String UNDERFS_WEB_CONNECTION_TIMEOUT =
-        "alluxio.underfs.web.connnection.timeout";
-    public static final String UNDERFS_WEB_PARENT_NAMES = "alluxio.underfs.web.parent.names";
-    public static final String UNDERFS_WEB_TITLES = "alluxio.underfs.web.titles";
-    public static final String UNDERFS_VERSION = "alluxio.underfs.version";
+        alluLit() + "xio.underfs.web.connnection.timeout";
+    public static final String UNDERFS_WEB_PARENT_NAMES = alluLit() + "xio.underfs.web.parent.names";
+    public static final String UNDERFS_WEB_TITLES = alluLit() + "xio.underfs.web.titles";
+    public static final String UNDERFS_VERSION = alluLit() + "xio.underfs.version";
     public static final String UNDERFS_OBJECT_STORE_STREAMING_UPLOAD_PART_TIMEOUT =
-        "alluxio.underfs.object.store.streaming.upload.part.timeout";
+        alluLit() + "xio.underfs.object.store.streaming.upload.part.timeout";
     public static final String UNDERFS_OBJECT_STORE_BREADCRUMBS_ENABLED =
-        "alluxio.underfs.object.store.breadcrumbs.enabled";
+        alluLit() + "xio.underfs.object.store.breadcrumbs.enabled";
     public static final String UNDERFS_OBJECT_STORE_SERVICE_THREADS =
-        "alluxio.underfs.object.store.service.threads";
+        alluLit() + "xio.underfs.object.store.service.threads";
     public static final String UNDERFS_OBJECT_STORE_SKIP_PARENT_DIRECTORY_CREATION =
-        "alluxio.underfs.object.store.skip.parent.directory.creation";
+        alluLit() + "xio.underfs.object.store.skip.parent.directory.creation";
     public static final String UNDERFS_OBJECT_STORE_MOUNT_SHARED_PUBLICLY =
-        "alluxio.underfs.object.store.mount.shared.publicly";
+        alluLit() + "xio.underfs.object.store.mount.shared.publicly";
     public static final String UNDERFS_OBJECT_STORE_MULTI_RANGE_CHUNK_SIZE =
-        "alluxio.underfs.object.store.multi.range.chunk.size";
-    public static final String UNDERFS_OSS_CONNECT_MAX = "alluxio.underfs.oss.connection.max";
+        alluLit() + "xio.underfs.object.store.multi.range.chunk.size";
+    public static final String UNDERFS_OSS_CONNECT_MAX = alluLit() + "xio.underfs.oss.connection.max";
     public static final String UNDERFS_OSS_CONNECT_TIMEOUT =
-        "alluxio.underfs.oss.connection.timeout";
-    public static final String UNDERFS_OSS_CONNECT_TTL = "alluxio.underfs.oss.connection.ttl";
-    public static final String UNDERFS_OSS_SOCKET_TIMEOUT = "alluxio.underfs.oss.socket.timeout";
-    public static final String UNDERFS_OSS_ECS_RAM_ROLE = "alluxio.underfs.oss.ecs.ram.role";
-    public static final String UNDERFS_OSS_RETRY_MAX = "alluxio.underfs.oss.retry.max";
+        alluLit() + "xio.underfs.oss.connection.timeout";
+    public static final String UNDERFS_OSS_CONNECT_TTL = alluLit() + "xio.underfs.oss.connection.ttl";
+    public static final String UNDERFS_OSS_SOCKET_TIMEOUT = alluLit() + "xio.underfs.oss.socket.timeout";
+    public static final String UNDERFS_OSS_ECS_RAM_ROLE = alluLit() + "xio.underfs.oss.ecs.ram.role";
+    public static final String UNDERFS_OSS_RETRY_MAX = alluLit() + "xio.underfs.oss.retry.max";
     public static final String UNDERFS_OSS_STS_ECS_METADATA_SERVICE_ENDPOINT =
-        "alluxio.underfs.oss.sts.ecs.metadata.service.endpoint";
-    public static final String UNDERFS_OSS_STS_ENABLED = "alluxio.underfs.oss.sts.enabled";
+        alluLit() + "xio.underfs.oss.sts.ecs.metadata.service.endpoint";
+    public static final String UNDERFS_OSS_STS_ENABLED = alluLit() + "xio.underfs.oss.sts.enabled";
     public static final String UNDERFS_OSS_STS_TOKEN_REFRESH_INTERVAL_MS =
-        "alluxio.underfs.oss.sts.token.refresh.interval.ms";
+        alluLit() + "xio.underfs.oss.sts.token.refresh.interval.ms";
     public static final String UNDERFS_OSS_INTERMEDIATE_UPLOAD_CLEAN_AGE =
-        "alluxio.underfs.oss.intermediate.upload.clean.age";
+        alluLit() + "xio.underfs.oss.intermediate.upload.clean.age";
     public static final String UNDERFS_OSS_STREAMING_UPLOAD_ENABLED =
-        "alluxio.underfs.oss.streaming.upload.enabled";
+        alluLit() + "xio.underfs.oss.streaming.upload.enabled";
     public static final String UNDERFS_OSS_STREAMING_UPLOAD_PARTITION_SIZE =
-        "alluxio.underfs.oss.streaming.upload.partition.size";
+        alluLit() + "xio.underfs.oss.streaming.upload.partition.size";
     public static final String UNDERFS_OSS_STREAMING_UPLOAD_THREADS =
-        "alluxio.underfs.oss.streaming.upload.threads";
+        alluLit() + "xio.underfs.oss.streaming.upload.threads";
     public static final String UNDERFS_OSS_DEFAULT_MODE =
-        "alluxio.underfs.oss.default.mode";
+        alluLit() + "xio.underfs.oss.default.mode";
     public static final String UNDERFS_OSS_OWNER_ID_TO_USERNAME_MAPPING =
-        "alluxio.underfs.oss.owner.id.to.username.mapping";
+        alluLit() + "xio.underfs.oss.owner.id.to.username.mapping";
     public static final String UNDERFS_S3_BULK_DELETE_ENABLED =
-        "alluxio.underfs.s3.bulk.delete.enabled";
-    public static final String UNDERFS_S3_DEFAULT_MODE = "alluxio.underfs.s3.default.mode";
+        alluLit() + "xio.underfs.s3.bulk.delete.enabled";
+    public static final String UNDERFS_S3_DEFAULT_MODE = alluLit() + "xio.underfs.s3.default.mode";
     public static final String UNDERFS_S3_DIRECTORY_SUFFIX =
-        "alluxio.underfs.s3.directory.suffix";
-    public static final String UNDERFS_S3_INHERIT_ACL = "alluxio.underfs.s3.inherit.acl";
+        alluLit() + "xio.underfs.s3.directory.suffix";
+    public static final String UNDERFS_S3_INHERIT_ACL = alluLit() + "xio.underfs.s3.inherit.acl";
     public static final String UNDERFS_S3_INTERMEDIATE_UPLOAD_CLEAN_AGE =
-        "alluxio.underfs.s3.intermediate.upload.clean.age";
+        alluLit() + "xio.underfs.s3.intermediate.upload.clean.age";
     public static final String UNDERFS_S3_LIST_OBJECTS_V1 =
-        "alluxio.underfs.s3.list.objects.v1";
+        alluLit() + "xio.underfs.s3.list.objects.v1";
     public static final String UNDERFS_S3_MAX_ERROR_RETRY =
-        "alluxio.underfs.s3.max.error.retry";
+        alluLit() + "xio.underfs.s3.max.error.retry";
     public static final String UNDERFS_S3_REQUEST_TIMEOUT =
-        "alluxio.underfs.s3.request.timeout";
+        alluLit() + "xio.underfs.s3.request.timeout";
     public static final String UNDERFS_S3_SECURE_HTTP_ENABLED =
-        "alluxio.underfs.s3.secure.http.enabled";
+        alluLit() + "xio.underfs.s3.secure.http.enabled";
     public static final String UNDERFS_S3_SERVER_SIDE_ENCRYPTION_ENABLED =
-        "alluxio.underfs.s3.server.side.encryption.enabled";
+        alluLit() + "xio.underfs.s3.server.side.encryption.enabled";
     public static final String UNDERFS_S3_SIGNER_ALGORITHM =
-        "alluxio.underfs.s3.signer.algorithm";
+        alluLit() + "xio.underfs.s3.signer.algorithm";
     public static final String UNDERFS_S3_CONNECT_TTL =
-        "alluxio.underfs.s3.connection.ttl";
+        alluLit() + "xio.underfs.s3.connection.ttl";
     public static final String UNDERFS_S3_SOCKET_TIMEOUT =
-        "alluxio.underfs.s3.socket.timeout";
+        alluLit() + "xio.underfs.s3.socket.timeout";
     public static final String UNDERFS_S3_STREAMING_UPLOAD_ENABLED =
-        "alluxio.underfs.s3.streaming.upload.enabled";
+        alluLit() + "xio.underfs.s3.streaming.upload.enabled";
     public static final String UNDERFS_S3_STREAMING_UPLOAD_PARTITION_SIZE =
-        "alluxio.underfs.s3.streaming.upload.partition.size";
+        alluLit() + "xio.underfs.s3.streaming.upload.partition.size";
     public static final String UNDERFS_S3_ADMIN_THREADS_MAX =
-        "alluxio.underfs.s3.admin.threads.max";
+        alluLit() + "xio.underfs.s3.admin.threads.max";
     public static final String UNDERFS_S3_DISABLE_DNS_BUCKETS =
-        "alluxio.underfs.s3.disable.dns.buckets";
-    public static final String UNDERFS_S3_ENDPOINT = "alluxio.underfs.s3.endpoint";
-    public static final String UNDERFS_S3_ENDPOINT_REGION = "alluxio.underfs.s3.endpoint.region";
+        alluLit() + "xio.underfs.s3.disable.dns.buckets";
+    public static final String UNDERFS_S3_ENDPOINT = alluLit() + "xio.underfs.s3.endpoint";
+    public static final String UNDERFS_S3_ENDPOINT_REGION = alluLit() + "xio.underfs.s3.endpoint.region";
     public static final String UNDERFS_S3_OWNER_ID_TO_USERNAME_MAPPING =
-        "alluxio.underfs.s3.owner.id.to.username.mapping";
-    public static final String UNDERFS_S3_PROXY_HOST = "alluxio.underfs.s3.proxy.host";
-    public static final String UNDERFS_S3_PROXY_PORT = "alluxio.underfs.s3.proxy.port";
-    public static final String UNDERFS_S3_REGION = "alluxio.underfs.s3.region";
-    public static final String UNDERFS_S3_CONNECTIONS_MAX = "alluxio.underfs.s3.connections.max";
+        alluLit() + "xio.underfs.s3.owner.id.to.username.mapping";
+    public static final String UNDERFS_S3_PROXY_HOST = alluLit() + "xio.underfs.s3.proxy.host";
+    public static final String UNDERFS_S3_PROXY_PORT = alluLit() + "xio.underfs.s3.proxy.port";
+    public static final String UNDERFS_S3_REGION = alluLit() + "xio.underfs.s3.region";
+    public static final String UNDERFS_S3_CONNECTIONS_MAX = alluLit() + "xio.underfs.s3.connections.max";
     public static final String UNDERFS_S3_UPLOAD_THREADS_MAX =
-        "alluxio.underfs.s3.upload.threads.max";
-    public static final String KODO_ENDPOINT = "alluxio.underfs.kodo.endpoint";
-    public static final String KODO_DOWNLOAD_HOST = "alluxio.underfs.kodo.downloadhost";
+        alluLit() + "xio.underfs.s3.upload.threads.max";
+    public static final String KODO_ENDPOINT = alluLit() + "xio.underfs.kodo.endpoint";
+    public static final String KODO_DOWNLOAD_HOST = alluLit() + "xio.underfs.kodo.downloadhost";
     public static final String UNDERFS_KODO_CONNECT_TIMEOUT =
-        "alluxio.underfs.kodo.connect.timeout";
-    public static final String UNDERFS_KODO_REQUESTS_MAX = "alluxio.underfs.kodo.requests.max";
+        alluLit() + "xio.underfs.kodo.connect.timeout";
+    public static final String UNDERFS_KODO_REQUESTS_MAX = alluLit() + "xio.underfs.kodo.requests.max";
     public static final String UNDERFS_CEPHFS_AUTH_ID =
-        "alluxio.underfs.cephfs.auth.id";
+        alluLit() + "xio.underfs.cephfs.auth.id";
     public static final String UNDERFS_CEPHFS_CONF_FILE =
-        "alluxio.underfs.cephfs.conf.file";
+        alluLit() + "xio.underfs.cephfs.conf.file";
     public static final String UNDERFS_CEPHFS_CONF_OPTS =
-        "alluxio.underfs.cephfs.conf.options";
+        alluLit() + "xio.underfs.cephfs.conf.options";
     public static final String UNDERFS_CEPHFS_AUTH_KEY =
-        "alluxio.underfs.cephfs.auth.key";
+        alluLit() + "xio.underfs.cephfs.auth.key";
     public static final String UNDERFS_CEPHFS_AUTH_KEYFILE =
-        "alluxio.underfs.cephfs.auth.keyfile";
+        alluLit() + "xio.underfs.cephfs.auth.keyfile";
     public static final String UNDERFS_CEPHFS_AUTH_KEYRING =
-        "alluxio.underfs.cephfs.auth.keyring";
+        alluLit() + "xio.underfs.cephfs.auth.keyring";
     public static final String UNDERFS_CEPHFS_MON_HOST =
-        "alluxio.underfs.cephfs.mon.host";
+        alluLit() + "xio.underfs.cephfs.mon.host";
     public static final String UNDERFS_CEPHFS_MDS_NAMESPACE =
-        "alluxio.underfs.cephfs.mds.namespace";
+        alluLit() + "xio.underfs.cephfs.mds.namespace";
     public static final String UNDERFS_CEPHFS_MOUNT_UID =
-        "alluxio.underfs.cephfs.mount.uid";
+        alluLit() + "xio.underfs.cephfs.mount.uid";
     public static final String UNDERFS_CEPHFS_MOUNT_GID =
-        "alluxio.underfs.cephfs.mount.gid";
+        alluLit() + "xio.underfs.cephfs.mount.gid";
     public static final String UNDERFS_CEPHFS_MOUNT_POINT =
-        "alluxio.underfs.cephfs.mount.point";
+        alluLit() + "xio.underfs.cephfs.mount.point";
     public static final String UNDERFS_CEPHFS_LOCALIZE_READS =
-        "alluxio.underfs.cephfs.localize.reads";
+        alluLit() + "xio.underfs.cephfs.localize.reads";
     public static final String UNDERFS_OBS_INTERMEDIATE_UPLOAD_CLEAN_AGE =
-        "alluxio.underfs.obs.intermediate.upload.clean.age";
+        alluLit() + "xio.underfs.obs.intermediate.upload.clean.age";
     public static final String UNDERFS_OBS_STREAMING_UPLOAD_ENABLED =
-        "alluxio.underfs.obs.streaming.upload.enabled";
+        alluLit() + "xio.underfs.obs.streaming.upload.enabled";
     public static final String UNDERFS_OBS_STREAMING_UPLOAD_PARTITION_SIZE =
-        "alluxio.underfs.obs.streaming.upload.partition.size";
+        alluLit() + "xio.underfs.obs.streaming.upload.partition.size";
     public static final String UNDERFS_OBS_STREAMING_UPLOAD_THREADS =
-        "alluxio.underfs.obs.streaming.upload.threads";
+        alluLit() + "xio.underfs.obs.streaming.upload.threads";
     public static final String UNDERFS_TOS_STREAMING_UPLOAD_ENABLED =
-        "alluxio.underfs.tos.streaming.upload.enabled";
+        alluLit() + "xio.underfs.tos.streaming.upload.enabled";
     public static final String UNDERFS_TOS_STREAMING_UPLOAD_PARTITION_SIZE =
-        "alluxio.underfs.tos.streaming.upload.partition.size";
+        alluLit() + "xio.underfs.tos.streaming.upload.partition.size";
     public static final String UNDERFS_TOS_STREAMING_UPLOAD_THREADS =
-        "alluxio.underfs.tos.streaming.upload.threads";
-    public static final String UNDERFS_TOS_RETRY_MAX = "alluxio.underfs.tos.retry.max";
-    public static final String UNDERFS_TOS_WRITE_TIMEOUT = "alluxio.underfs.tos.write.timeout";
-    public static final String UNDERFS_TOS_READ_TIMEOUT = "alluxio.underfs.tos.read.timeout";
-    public static final String UNDERFS_TOS_CONNECT_TIMEOUT = "alluxio.underfs.tos.connect.timeout";
-    public static final String UNDERFS_TOS_CONNECT_TTL = "alluxio.underfs.tos.connect.ttl";
-    public static final String UNDERFS_TOS_CONNECT_MAX = "alluxio.underfs.tos.connect.max";
+        alluLit() + "xio.underfs.tos.streaming.upload.threads";
+    public static final String UNDERFS_TOS_RETRY_MAX = alluLit() + "xio.underfs.tos.retry.max";
+    public static final String UNDERFS_TOS_WRITE_TIMEOUT = alluLit() + "xio.underfs.tos.write.timeout";
+    public static final String UNDERFS_TOS_READ_TIMEOUT = alluLit() + "xio.underfs.tos.read.timeout";
+    public static final String UNDERFS_TOS_CONNECT_TIMEOUT = alluLit() + "xio.underfs.tos.connect.timeout";
+    public static final String UNDERFS_TOS_CONNECT_TTL = alluLit() + "xio.underfs.tos.connect.ttl";
+    public static final String UNDERFS_TOS_CONNECT_MAX = alluLit() + "xio.underfs.tos.connect.max";
     public static final String UNDERFS_TOS_INTERMEDIATE_UPLOAD_CLEAN_AGE =
-        "alluxio.underfs.tos.intermediate.upload.clean.age";
+        alluLit() + "xio.underfs.tos.intermediate.upload.clean.age";
 
     //
     // UFS access control related properties
@@ -8241,1135 +8245,1135 @@ public final class PropertyKey implements Comparable<PropertyKey> {
     // Master related properties
     //
     public static final String MASTER_ASYNC_PERSIST_SIZE_VALIDATION =
-        "alluxio.master.async.persist.size.validation";
+        alluLit() + "xio.master.async.persist.size.validation";
     public static final String MASTER_AUDIT_LOGGING_ENABLED =
-        "alluxio.master.audit.logging.enabled";
+        alluLit() + "xio.master.audit.logging.enabled";
     public static final String MASTER_AUDIT_LOGGING_QUEUE_CAPACITY =
-        "alluxio.master.audit.logging.queue.capacity";
+        alluLit() + "xio.master.audit.logging.queue.capacity";
     public static final String MASTER_BACKUP_DIRECTORY =
-        "alluxio.master.backup.directory";
+        alluLit() + "xio.master.backup.directory";
     public static final String MASTER_BACKUP_ENTRY_BUFFER_COUNT =
-        "alluxio.master.backup.entry.buffer.count";
+        alluLit() + "xio.master.backup.entry.buffer.count";
     public static final String MASTER_BACKUP_DELEGATION_ENABLED =
-        "alluxio.master.backup.delegation.enabled";
+        alluLit() + "xio.master.backup.delegation.enabled";
     public static final String MASTER_BACKUP_TRANSPORT_TIMEOUT =
-        "alluxio.master.backup.transport.timeout";
+        alluLit() + "xio.master.backup.transport.timeout";
     public static final String MASTER_BACKUP_HEARTBEAT_INTERVAL =
-        "alluxio.master.backup.heartbeat.interval";
+        alluLit() + "xio.master.backup.heartbeat.interval";
     public static final String MASTER_BACKUP_CONNECT_INTERVAL_MIN =
-        "alluxio.master.backup.connect.interval.min";
+        alluLit() + "xio.master.backup.connect.interval.min";
     public static final String MASTER_BACKUP_CONNECT_INTERVAL_MAX =
-        "alluxio.master.backup.connect.interval.max";
+        alluLit() + "xio.master.backup.connect.interval.max";
     public static final String MASTER_BACKUP_ABANDON_TIMEOUT =
-        "alluxio.master.backup.abandon.timeout";
+        alluLit() + "xio.master.backup.abandon.timeout";
     public static final String MASTER_BACKUP_STATE_LOCK_EXCLUSIVE_DURATION =
-        "alluxio.master.backup.state.lock.exclusive.duration";
+        alluLit() + "xio.master.backup.state.lock.exclusive.duration";
     public static final String MASTER_BACKUP_STATE_LOCK_INTERRUPT_CYCLE_ENABLED =
-        "alluxio.master.backup.state.lock.interrupt.cycle.enabled";
+        alluLit() + "xio.master.backup.state.lock.interrupt.cycle.enabled";
     public static final String MASTER_BACKUP_STATE_LOCK_FORCED_DURATION =
-        "alluxio.master.backup.state.lock.forced.duration";
+        alluLit() + "xio.master.backup.state.lock.forced.duration";
     public static final String MASTER_BACKUP_STATE_LOCK_INTERRUPT_CYCLE_INTERVAL =
-        "alluxio.master.backup.state.lock.interrupt.cycle.interval";
+        alluLit() + "xio.master.backup.state.lock.interrupt.cycle.interval";
     public static final String MASTER_BACKUP_SUSPEND_TIMEOUT =
-        "alluxio.master.backup.suspend.timeout";
+        alluLit() + "xio.master.backup.suspend.timeout";
     public static final String MASTER_BLOCK_SCAN_INVALID_BATCH_MAX_SIZE =
-        "alluxio.master.block.scan.invalid.batch.max.size";
+        alluLit() + "xio.master.block.scan.invalid.batch.max.size";
     public static final String MASTER_SHELL_BACKUP_STATE_LOCK_GRACE_MODE =
-        "alluxio.master.shell.backup.state.lock.grace.mode";
+        alluLit() + "xio.master.shell.backup.state.lock.grace.mode";
     public static final String MASTER_SHELL_BACKUP_STATE_LOCK_TRY_DURATION =
-        "alluxio.master.shell.backup.state.lock.try.duration";
+        alluLit() + "xio.master.shell.backup.state.lock.try.duration";
     public static final String MASTER_SHELL_BACKUP_STATE_LOCK_SLEEP_DURATION =
-        "alluxio.master.shell.backup.state.lock.sleep.duration";
+        alluLit() + "xio.master.shell.backup.state.lock.sleep.duration";
     public static final String MASTER_SHELL_BACKUP_STATE_LOCK_TIMEOUT =
-        "alluxio.master.shell.backup.state.lock.timeout";
+        alluLit() + "xio.master.shell.backup.state.lock.timeout";
     public static final String MASTER_DAILY_BACKUP_ENABLED =
-        "alluxio.master.daily.backup.enabled";
+        alluLit() + "xio.master.daily.backup.enabled";
     public static final String MASTER_DAILY_BACKUP_FILES_RETAINED =
-        "alluxio.master.daily.backup.files.retained";
+        alluLit() + "xio.master.daily.backup.files.retained";
     public static final String MASTER_DAILY_BACKUP_TIME =
-        "alluxio.master.daily.backup.time";
+        alluLit() + "xio.master.daily.backup.time";
     public static final String MASTER_DAILY_BACKUP_STATE_LOCK_GRACE_MODE =
-        "alluxio.master.daily.backup.state.lock.grace.mode";
+        alluLit() + "xio.master.daily.backup.state.lock.grace.mode";
     public static final String MASTER_DAILY_BACKUP_STATE_LOCK_TRY_DURATION =
-        "alluxio.master.daily.backup.state.lock.try.duration";
+        alluLit() + "xio.master.daily.backup.state.lock.try.duration";
     public static final String MASTER_DAILY_BACKUP_STATE_LOCK_SLEEP_DURATION =
-        "alluxio.master.daily.backup.state.lock.sleep.duration";
+        alluLit() + "xio.master.daily.backup.state.lock.sleep.duration";
     public static final String MASTER_DAILY_BACKUP_STATE_LOCK_TIMEOUT =
-        "alluxio.master.daily.backup.state.lock.timeout";
-    public static final String MASTER_BIND_HOST = "alluxio.master.bind.host";
+        alluLit() + "xio.master.daily.backup.state.lock.timeout";
+    public static final String MASTER_BIND_HOST = alluLit() + "xio.master.bind.host";
     public static final String MASTER_CLUSTER_METRICS_UPDATE_INTERVAL =
-        "alluxio.master.cluster.metrics.update.interval";
+        alluLit() + "xio.master.cluster.metrics.update.interval";
     public static final String MASTER_CONTAINER_ID_RESERVATION_SIZE =
-        "alluxio.master.container.id.reservation.size";
+        alluLit() + "xio.master.container.id.reservation.size";
     public static final String MASTER_FAILOVER_COLLECT_INFO =
-        "alluxio.master.failover.collect.info";
+        alluLit() + "xio.master.failover.collect.info";
     public static final String MASTER_FILE_ACCESS_TIME_UPDATER_ENABLED =
-        "alluxio.master.file.access.time.updater.enabled";
+        alluLit() + "xio.master.file.access.time.updater.enabled";
     public static final String MASTER_FILE_ACCESS_TIME_JOURNAL_FLUSH_INTERVAL =
-        "alluxio.master.file.access.time.journal.flush.interval";
+        alluLit() + "xio.master.file.access.time.journal.flush.interval";
     public static final String MASTER_FILE_ACCESS_TIME_UPDATE_PRECISION =
-        "alluxio.master.file.access.time.update.precision";
+        alluLit() + "xio.master.file.access.time.update.precision";
     public static final String MASTER_FILE_ACCESS_TIME_UPDATER_SHUTDOWN_TIMEOUT =
-        "alluxio.master.file.access.time.updater.shutdown.timeout";
-    public static final String MASTER_FORMAT_FILE_PREFIX = "alluxio.master.format.file.prefix";
+        alluLit() + "xio.master.file.access.time.updater.shutdown.timeout";
+    public static final String MASTER_FORMAT_FILE_PREFIX = alluLit() + "xio.master.format.file.prefix";
     public static final String MASTER_STANDBY_HEARTBEAT_INTERVAL =
-        "alluxio.master.standby.heartbeat.interval";
+        alluLit() + "xio.master.standby.heartbeat.interval";
     public static final String MASTER_LOST_WORKER_DETECTION_INTERVAL =
-        "alluxio.master.lost.worker.detection.interval";
+        alluLit() + "xio.master.lost.worker.detection.interval";
     public static final String MASTER_LOST_WORKER_FILE_DETECTION_INTERVAL =
-        "alluxio.master.lost.worker.file.detection.interval";
+        alluLit() + "xio.master.lost.worker.file.detection.interval";
     public static final String MASTER_HEARTBEAT_TIMEOUT =
-        "alluxio.master.heartbeat.timeout";
-    public static final String MASTER_HOSTNAME = "alluxio.master.hostname";
+        alluLit() + "xio.master.heartbeat.timeout";
+    public static final String MASTER_HOSTNAME = alluLit() + "xio.master.hostname";
     public static final String MASTER_LOCK_POOL_INITSIZE =
-        "alluxio.master.lock.pool.initsize";
+        alluLit() + "xio.master.lock.pool.initsize";
     public static final String MASTER_LOCK_POOL_LOW_WATERMARK =
-        "alluxio.master.lock.pool.low.watermark";
+        alluLit() + "xio.master.lock.pool.low.watermark";
     public static final String MASTER_LOCK_POOL_HIGH_WATERMARK =
-        "alluxio.master.lock.pool.high.watermark";
+        alluLit() + "xio.master.lock.pool.high.watermark";
     public static final String MASTER_LOCK_POOL_CONCURRENCY_LEVEL =
-        "alluxio.master.lock.pool.concurrency.level";
+        alluLit() + "xio.master.lock.pool.concurrency.level";
     public static final String MASTER_LOST_PROXY_DELETION_TIMEOUT_MS =
-        "alluxio.master.lost.proxy.deletion.timeout";
+        alluLit() + "xio.master.lost.proxy.deletion.timeout";
     public static final String MASTER_JOURNAL_CATCHUP_PROTECT_ENABLED =
-        "alluxio.master.journal.catchup.protect.enabled";
+        alluLit() + "xio.master.journal.catchup.protect.enabled";
     public static final String MASTER_JOURNAL_EXIT_ON_DEMOTION =
-        "alluxio.master.journal.exit.on.demotion";
+        alluLit() + "xio.master.journal.exit.on.demotion";
     public static final String MASTER_JOURNAL_FLUSH_BATCH_TIME_MS =
-        "alluxio.master.journal.flush.batch.time";
+        alluLit() + "xio.master.journal.flush.batch.time";
     public static final String MASTER_JOURNAL_FLUSH_TIMEOUT_MS =
-        "alluxio.master.journal.flush.timeout";
+        alluLit() + "xio.master.journal.flush.timeout";
     public static final String MASTER_JOURNAL_FLUSH_RETRY_INTERVAL =
-        "alluxio.master.journal.retry.interval";
-    public static final String MASTER_JOURNAL_FOLDER = "alluxio.master.journal.folder";
+        alluLit() + "xio.master.journal.retry.interval";
+    public static final String MASTER_JOURNAL_FOLDER = alluLit() + "xio.master.journal.folder";
     public static final String MASTER_JOURNAL_INIT_FROM_BACKUP =
-        "alluxio.master.journal.init.from.backup";
+        alluLit() + "xio.master.journal.init.from.backup";
     public static final String MASTER_JOURNAL_SYNC_ROOT_AFTER_INIT_FROM_BACKUP =
-        "alluxio.master.journal.sync.root.after.init.from.backup";
+        alluLit() + "xio.master.journal.sync.root.after.init.from.backup";
     public static final String MASTER_JOURNAL_SPACE_MONITOR_INTERVAL =
-        "alluxio.master.journal.space.monitor.interval";
+        alluLit() + "xio.master.journal.space.monitor.interval";
     public static final String MASTER_JOURNAL_SPACE_MONITOR_PERCENT_FREE_THRESHOLD
-        = "alluxio.master.journal.space.monitor.percent.free.threshold";
+        = alluLit() + "xio.master.journal.space.monitor.percent.free.threshold";
     public static final String MASTER_JOURNAL_TOLERATE_CORRUPTION
-        = "alluxio.master.journal.tolerate.corruption";
+        = alluLit() + "xio.master.journal.tolerate.corruption";
     public static final String MASTER_JOURNAL_BACKUP_WHEN_CORRUPTED
-        = "alluxio.master.journal.backup.when.corrupted";
-    public static final String MASTER_JOURNAL_TYPE = "alluxio.master.journal.type";
+        = alluLit() + "xio.master.journal.backup.when.corrupted";
+    public static final String MASTER_JOURNAL_TYPE = alluLit() + "xio.master.journal.type";
     public static final String MASTER_JOURNAL_LOG_SIZE_BYTES_MAX =
-        "alluxio.master.journal.log.size.bytes.max";
+        alluLit() + "xio.master.journal.log.size.bytes.max";
     public static final String MASTER_JOURNAL_LOG_CONCURRENCY_MAX =
-        "alluxio.master.journal.log.concurrency.max";
+        alluLit() + "xio.master.journal.log.concurrency.max";
     public static final String MASTER_JOURNAL_REQUEST_DATA_TIMEOUT =
-        "alluxio.master.journal.request.data.timeout";
+        alluLit() + "xio.master.journal.request.data.timeout";
     public static final String MASTER_JOURNAL_REQUEST_INFO_TIMEOUT =
-        "alluxio.master.journal.request.info.timeout";
+        alluLit() + "xio.master.journal.request.info.timeout";
     public static final String MASTER_JOURNAL_TAILER_SHUTDOWN_QUIET_WAIT_TIME_MS =
-        "alluxio.master.journal.tailer.shutdown.quiet.wait.time";
+        alluLit() + "xio.master.journal.tailer.shutdown.quiet.wait.time";
     public static final String MASTER_JOURNAL_TAILER_SLEEP_TIME_MS =
-        "alluxio.master.journal.tailer.sleep.time";
-    private static final String MASTER_JOURNAL_UFS_OPTION = "alluxio.master.journal.ufs.option";
-    public static final String MASTER_RPC_ADDRESSES = "alluxio.master.rpc.addresses";
+        alluLit() + "xio.master.journal.tailer.sleep.time";
+    private static final String MASTER_JOURNAL_UFS_OPTION = alluLit() + "xio.master.journal.ufs.option";
+    public static final String MASTER_RPC_ADDRESSES = alluLit() + "xio.master.rpc.addresses";
     public static final String MASTER_EMBEDDED_JOURNAL_ADDRESSES =
-        "alluxio.master.embedded.journal.addresses";
+        alluLit() + "xio.master.embedded.journal.addresses";
     public static final String MASTER_EMBEDDED_JOURNAL_MAX_ELECTION_TIMEOUT =
-        "alluxio.master.embedded.journal.election.timeout.max";
+        alluLit() + "xio.master.embedded.journal.election.timeout.max";
     public static final String MASTER_EMBEDDED_JOURNAL_MIN_ELECTION_TIMEOUT =
-        "alluxio.master.embedded.journal.election.timeout.min";
+        alluLit() + "xio.master.embedded.journal.election.timeout.min";
     public static final String MASTER_EMBEDDED_JOURNAL_CATCHUP_RETRY_WAIT =
-        "alluxio.master.embedded.journal.catchup.retry.wait";
+        alluLit() + "xio.master.embedded.journal.catchup.retry.wait";
     public static final String MASTER_EMBEDDED_JOURNAL_ENTRY_SIZE_MAX =
-        "alluxio.master.embedded.journal.entry.size.max";
+        alluLit() + "xio.master.embedded.journal.entry.size.max";
     public static final String MASTER_EMBEDDED_JOURNAL_FLUSH_SIZE_MAX =
-        "alluxio.master.embedded.journal.flush.size.max";
+        alluLit() + "xio.master.embedded.journal.flush.size.max";
     public static final String MASTER_EMBEDDED_JOURNAL_PORT =
-        "alluxio.master.embedded.journal.port";
+        alluLit() + "xio.master.embedded.journal.port";
     public static final String MASTER_EMBEDDED_JOURNAL_RETRY_CACHE_EXPIRY_TIME =
-        "alluxio.master.embedded.journal.retry.cache.expiry.time";
+        alluLit() + "xio.master.embedded.journal.retry.cache.expiry.time";
     public static final String MASTER_EMBEDDED_JOURNAL_UNSAFE_FLUSH_ENABLED =
-        "alluxio.master.embedded.journal.unsafe.flush.enabled";
+        alluLit() + "xio.master.embedded.journal.unsafe.flush.enabled";
     public static final String MASTER_EMBEDDED_JOURNAL_WRITE_LOCAL_FIRST_ENABLED =
-        "alluxio.master.embedded.journal.write.local.first.enabled";
+        alluLit() + "xio.master.embedded.journal.write.local.first.enabled";
     public static final String MASTER_EMBEDDED_JOURNAL_WRITE_REMOTE_ENABLED =
-        "alluxio.master.embedded.journal.write.remote.enabled";
+        alluLit() + "xio.master.embedded.journal.write.remote.enabled";
     public static final String MASTER_EMBEDDED_JOURNAL_WRITE_TIMEOUT =
-        "alluxio.master.embedded.journal.write.timeout";
+        alluLit() + "xio.master.embedded.journal.write.timeout";
     public static final String MASTER_EMBEDDED_JOURNAL_SNAPSHOT_REPLICATION_CHUNK_SIZE =
-        "alluxio.master.embedded.journal.snapshot.replication.chunk.size";
+        alluLit() + "xio.master.embedded.journal.snapshot.replication.chunk.size";
     public static final String MASTER_EMBEDDED_JOURNAL_SNAPSHOT_REPLICATION_COMPRESSION_TYPE =
-        "alluxio.master.embedded.journal.snapshot.replication.compression.type";
+        alluLit() + "xio.master.embedded.journal.snapshot.replication.compression.type";
     public static final String MASTER_EMBEDDED_JOURNAL_SNAPSHOT_REPLICATION_COMPRESSION_LEVEL =
-        "alluxio.master.embedded.journal.snapshot.replication.compression.level";
+        alluLit() + "xio.master.embedded.journal.snapshot.replication.compression.level";
     public static final String MASTER_EMBEDDED_JOURNAL_RAFT_CLIENT_REQUEST_TIMEOUT =
-        "alluxio.master.embedded.journal.raft.client.request.timeout";
+        alluLit() + "xio.master.embedded.journal.raft.client.request.timeout";
     public static final String MASTER_EMBEDDED_JOURNAL_RAFT_CLIENT_REQUEST_INTERVAL =
-        "alluxio.master.embedded.journal.raft.client.request.interval";
+        alluLit() + "xio.master.embedded.journal.raft.client.request.interval";
     public static final String MASTER_EMBEDDED_JOURNAL_RATIS_CONFIG =
-        "alluxio.master.embedded.journal.ratis.config";
+        alluLit() + "xio.master.embedded.journal.ratis.config";
     public static final String MASTER_EMBEDDED_JOURNAL_TRANSPORT_REQUEST_TIMEOUT_MS =
-        "alluxio.master.embedded.journal.transport.request.timeout.ms";
+        alluLit() + "xio.master.embedded.journal.transport.request.timeout.ms";
     public static final String MASTER_EMBEDDED_JOURNAL_TRANSPORT_MAX_INBOUND_MESSAGE_SIZE =
-        "alluxio.master.embedded.journal.transport.max.inbound.message.size";
-    public static final String MASTER_KEYTAB_KEY_FILE = "alluxio.master.keytab.file";
+        alluLit() + "xio.master.embedded.journal.transport.max.inbound.message.size";
+    public static final String MASTER_KEYTAB_KEY_FILE = alluLit() + "xio.master.keytab.file";
     public static final String MASTER_METADATA_SYNC_LOCK_POOL_INITSIZE =
-        "alluxio.master.metadata.sync.lock.pool.initsize";
+        alluLit() + "xio.master.metadata.sync.lock.pool.initsize";
     public static final String MASTER_METADATA_SYNC_LOCK_POOL_LOW_WATERMARK =
-        "alluxio.master.metadata.sync.lock.pool.low.watermark";
+        alluLit() + "xio.master.metadata.sync.lock.pool.low.watermark";
     public static final String MASTER_METADATA_SYNC_LOCK_POOL_HIGH_WATERMARK =
-        "alluxio.master.metadata.sync.lock.pool.high.watermark";
+        alluLit() + "xio.master.metadata.sync.lock.pool.high.watermark";
     public static final String MASTER_METADATA_SYNC_LOCK_POOL_CONCURRENCY_LEVEL =
-        "alluxio.master.metadata.sync.lock.pool.concurrency.level";
+        alluLit() + "xio.master.metadata.sync.lock.pool.concurrency.level";
     public static final String MASTER_METADATA_CONCURRENT_SYNC_DEDUP =
-        "alluxio.master.metadata.concurrent.sync.dedup";
+        alluLit() + "xio.master.metadata.concurrent.sync.dedup";
     public static final String MASTER_METADATA_SYNC_CONCURRENCY_LEVEL =
-        "alluxio.master.metadata.sync.concurrency.level";
+        alluLit() + "xio.master.metadata.sync.concurrency.level";
     public static final String MASTER_METADATA_SYNC_EXECUTOR_POOL_SIZE =
-        "alluxio.master.metadata.sync.executor.pool.size";
+        alluLit() + "xio.master.metadata.sync.executor.pool.size";
     public static final String MASTER_METADATA_SYNC_INSTRUMENT_EXECUTOR =
-        "alluxio.master.metadata.sync.instrument.executor";
+        alluLit() + "xio.master.metadata.sync.instrument.executor";
     public static final String MASTER_METADATA_SYNC_REPORT_FAILURE =
-        "alluxio.master.metadata.sync.report.failure";
+        alluLit() + "xio.master.metadata.sync.report.failure";
     public static final String MASTER_METADATA_SYNC_GET_DIRECTORY_STATUS_SKIP_LOADING_CHILDREN =
-        "alluxio.master.metadata.sync.get.directory.status.skip.loading.children";
+        alluLit() + "xio.master.metadata.sync.get.directory.status.skip.loading.children";
     public static final String MASTER_METADATA_SYNC_UFS_CONCURRENT_LOADS =
-        "alluxio.master.metadata.sync.ufs.concurrent.loads";
+        alluLit() + "xio.master.metadata.sync.ufs.concurrent.loads";
     public static final String MASTER_METADATA_SYNC_UFS_CONCURRENT_GET_STATUS =
-        "alluxio.master.metadata.sync.ufs.concurrent.get.status";
+        alluLit() + "xio.master.metadata.sync.ufs.concurrent.get.status";
     public static final String MASTER_METADATA_SYNC_UFS_CONCURRENT_LISTING =
-        "alluxio.master.metadata.sync.ufs.concurrent.listing";
+        alluLit() + "xio.master.metadata.sync.ufs.concurrent.listing";
     public static final String MASTER_METADATA_SYNC_UFS_PREFETCH_POOL_SIZE =
-        "alluxio.master.metadata.sync.ufs.prefetch.pool.size";
+        alluLit() + "xio.master.metadata.sync.ufs.prefetch.pool.size";
     public static final String MASTER_METADATA_SYNC_TRAVERSAL_ORDER =
-        "alluxio.master.metadata.sync.traversal.order";
+        alluLit() + "xio.master.metadata.sync.traversal.order";
     public static final String MASTER_METADATA_SYNC_UFS_PREFETCH_ENABLED =
-        "alluxio.master.metadata.sync.ufs.prefetch.status";
+        alluLit() + "xio.master.metadata.sync.ufs.prefetch.status";
     public static final String MASTER_METADATA_SYNC_UFS_PREFETCH_TIMEOUT =
-        "alluxio.master.metadata.sync.ufs.prefetch.timeout";
+        alluLit() + "xio.master.metadata.sync.ufs.prefetch.timeout";
     public static final String MASTER_METADATA_SYNC_UFS_RATE_LIMIT =
-        "alluxio.master.metadata.sync.ufs.rate.limit";
+        alluLit() + "xio.master.metadata.sync.ufs.rate.limit";
     public static final String MASTER_METADATA_SYNC_IGNORE_TTL =
-        "alluxio.master.metadata.sync.ignore.ttl";
-    public static final String MASTER_METASTORE = "alluxio.master.metastore";
-    public static final String MASTER_METASTORE_INODE = "alluxio.master.metastore.inode";
-    public static final String MASTER_METASTORE_BLOCK = "alluxio.master.metastore.block";
-    public static final String MASTER_METASTORE_DIR = "alluxio.master.metastore.dir";
+        alluLit() + "xio.master.metadata.sync.ignore.ttl";
+    public static final String MASTER_METASTORE = alluLit() + "xio.master.metastore";
+    public static final String MASTER_METASTORE_INODE = alluLit() + "xio.master.metastore.inode";
+    public static final String MASTER_METASTORE_BLOCK = alluLit() + "xio.master.metastore.block";
+    public static final String MASTER_METASTORE_DIR = alluLit() + "xio.master.metastore.dir";
     public static final String MASTER_METASTORE_DIR_INODE =
-        "alluxio.master.metastore.dir.inode";
+        alluLit() + "xio.master.metastore.dir.inode";
     public static final String MASTER_METASTORE_DIR_BLOCK =
-        "alluxio.master.metastore.dir.block";
+        alluLit() + "xio.master.metastore.dir.block";
     public static final String MASTER_METASTORE_ROCKS_CHECKPOINT_COMPRESSION_LEVEL =
-        "alluxio.master.metastore.rocks.checkpoint.compression.level";
+        alluLit() + "xio.master.metastore.rocks.checkpoint.compression.level";
     public static final String MASTER_METASTORE_ROCKS_CHECKPOINT_COMPRESSION_TYPE =
-        "alluxio.master.metastore.rocks.checkpoint.compression.type";
+        alluLit() + "xio.master.metastore.rocks.checkpoint.compression.type";
     public static final String MASTER_METASTORE_ROCKS_EXCLUSIVE_LOCK_TIMEOUT =
-        "alluxio.master.metastore.rocks.exclusive.lock.timeout";
+        alluLit() + "xio.master.metastore.rocks.exclusive.lock.timeout";
     public static final String MASTER_METASTORE_ROCKS_PARALLEL_BACKUP =
-        "alluxio.master.metastore.rocks.parallel.backup";
+        alluLit() + "xio.master.metastore.rocks.parallel.backup";
     public static final String MASTER_METASTORE_ROCKS_PARALLEL_BACKUP_THREADS =
-        "alluxio.master.metastore.rocks.parallel.backup.threads";
+        alluLit() + "xio.master.metastore.rocks.parallel.backup.threads";
     public static final String MASTER_METASTORE_INODE_CACHE_EVICT_BATCH_SIZE =
-        "alluxio.master.metastore.inode.cache.evict.batch.size";
+        alluLit() + "xio.master.metastore.inode.cache.evict.batch.size";
     public static final String MASTER_METASTORE_INODE_CACHE_HIGH_WATER_MARK_RATIO =
-        "alluxio.master.metastore.inode.cache.high.water.mark.ratio";
+        alluLit() + "xio.master.metastore.inode.cache.high.water.mark.ratio";
     public static final String MASTER_METASTORE_INODE_CACHE_LOW_WATER_MARK_RATIO =
-        "alluxio.master.metastore.inode.cache.low.water.mark.ratio";
+        alluLit() + "xio.master.metastore.inode.cache.low.water.mark.ratio";
     public static final String MASTER_METASTORE_INODE_CACHE_MAX_SIZE =
-        "alluxio.master.metastore.inode.cache.max.size";
+        alluLit() + "xio.master.metastore.inode.cache.max.size";
     public static final String MASTER_METASTORE_INODE_ITERATION_CRAWLER_COUNT =
-        "alluxio.master.metastore.inode.iteration.crawler.count";
+        alluLit() + "xio.master.metastore.inode.iteration.crawler.count";
     public static final String MASTER_METASTORE_INODE_ENUMERATOR_BUFFER_COUNT =
-        "alluxio.master.metastore.inode.enumerator.buffer.count";
+        alluLit() + "xio.master.metastore.inode.enumerator.buffer.count";
     public static final String MASTER_METASTORE_ITERATOR_READAHEAD_SIZE =
-        "alluxio.master.metastore.iterator.readahead.size";
+        alluLit() + "xio.master.metastore.iterator.readahead.size";
     public static final String MASTER_METASTORE_INODE_INHERIT_OWNER_AND_GROUP =
-        "alluxio.master.metastore.inode.inherit.owner.and.group";
+        alluLit() + "xio.master.metastore.inode.inherit.owner.and.group";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_META_BLOOM_FILTER =
-        "alluxio.master.metastore.rocks.block.meta.bloom.filter";
+        alluLit() + "xio.master.metastore.rocks.block.meta.bloom.filter";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_META_CACHE_SIZE =
-        "alluxio.master.metastore.rocks.block.meta.cache.size";
+        alluLit() + "xio.master.metastore.rocks.block.meta.cache.size";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_META_BLOCK_INDEX =
-        "alluxio.master.metastore.rocks.block.meta.block.index";
+        alluLit() + "xio.master.metastore.rocks.block.meta.block.index";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_META_INDEX =
-        "alluxio.master.metastore.rocks.block.meta.index";
+        alluLit() + "xio.master.metastore.rocks.block.meta.index";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_LOCATION_BLOOM_FILTER =
-        "alluxio.master.metastore.rocks.block.location.bloom.filter";
+        alluLit() + "xio.master.metastore.rocks.block.location.bloom.filter";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_LOCATION_CACHE_SIZE =
-        "alluxio.master.metastore.rocks.block.location.cache.size";
+        alluLit() + "xio.master.metastore.rocks.block.location.cache.size";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_LOCATION_BLOCK_INDEX =
-        "alluxio.master.metastore.rocks.block.location.block.index";
+        alluLit() + "xio.master.metastore.rocks.block.location.block.index";
     public static final String MASTER_METASTORE_ROCKS_BLOCK_LOCATION_INDEX =
-        "alluxio.master.metastore.rocks.block.location.index";
+        alluLit() + "xio.master.metastore.rocks.block.location.index";
     public static final String MASTER_METASTORE_ROCKS_EDGE_BLOOM_FILTER =
-        "alluxio.master.metastore.rocks.edge.bloom.filter";
+        alluLit() + "xio.master.metastore.rocks.edge.bloom.filter";
     public static final String MASTER_METASTORE_ROCKS_EDGE_CACHE_SIZE =
-        "alluxio.master.metastore.rocks.edge.cache.size";
+        alluLit() + "xio.master.metastore.rocks.edge.cache.size";
     public static final String MASTER_METASTORE_ROCKS_EDGE_BLOCK_INDEX =
-        "alluxio.master.metastore.rocks.edge.block.index";
+        alluLit() + "xio.master.metastore.rocks.edge.block.index";
     public static final String MASTER_METASTORE_ROCKS_EDGE_INDEX =
-        "alluxio.master.metastore.rocks.edge.index";
+        alluLit() + "xio.master.metastore.rocks.edge.index";
     public static final String MASTER_METASTORE_ROCKS_INODE_BLOOM_FILTER =
-        "alluxio.master.metastore.rocks.inode.bloom.filter";
+        alluLit() + "xio.master.metastore.rocks.inode.bloom.filter";
     public static final String MASTER_METASTORE_ROCKS_INODE_CACHE_SIZE =
-        "alluxio.master.metastore.rocks.inode.cache.size";
+        alluLit() + "xio.master.metastore.rocks.inode.cache.size";
     public static final String MASTER_METASTORE_ROCKS_INODE_BLOCK_INDEX =
-        "alluxio.master.metastore.rocks.inode.block.index";
+        alluLit() + "xio.master.metastore.rocks.inode.block.index";
     public static final String MASTER_METASTORE_ROCKS_INODE_INDEX =
-        "alluxio.master.metastore.rocks.inode.index";
+        alluLit() + "xio.master.metastore.rocks.inode.index";
     public static final String MASTER_METASTORE_METRICS_REFRESH_INTERVAL =
-        "alluxio.master.metastore.metrics.refresh.interval";
+        alluLit() + "xio.master.metastore.metrics.refresh.interval";
     public static final String MASTER_PERSISTENCE_CHECKER_INTERVAL_MS =
-        "alluxio.master.persistence.checker.interval";
+        alluLit() + "xio.master.persistence.checker.interval";
     public static final String MASTER_METRICS_HEAP_ENABLED =
-        "alluxio.master.metrics.heap.enabled";
+        alluLit() + "xio.master.metrics.heap.enabled";
     public static final String MASTER_METRICS_SERVICE_THREADS =
-        "alluxio.master.metrics.service.threads";
+        alluLit() + "xio.master.metrics.service.threads";
     public static final String MASTER_METRICS_TIME_SERIES_INTERVAL =
-        "alluxio.master.metrics.time.series.interval";
+        alluLit() + "xio.master.metrics.time.series.interval";
     public static final String MASTER_METRICS_FILE_SIZE_DISTRIBUTION_BUCKETS =
-        "alluxio.master.metrics.file.size.distribution.buckets";
+        alluLit() + "xio.master.metrics.file.size.distribution.buckets";
     public static final String MASTER_NETWORK_MAX_INBOUND_MESSAGE_SIZE =
-        "alluxio.master.network.max.inbound.message.size";
+        alluLit() + "xio.master.network.max.inbound.message.size";
     public static final String MASTER_NETWORK_FLOWCONTROL_WINDOW =
-        "alluxio.master.network.flowcontrol.window";
+        alluLit() + "xio.master.network.flowcontrol.window";
     public static final String MASTER_NETWORK_KEEPALIVE_TIME_MS =
-        "alluxio.master.network.keepalive.time";
+        alluLit() + "xio.master.network.keepalive.time";
     public static final String MASTER_NETWORK_KEEPALIVE_TIMEOUT_MS =
-        "alluxio.master.network.keepalive.timeout";
+        alluLit() + "xio.master.network.keepalive.timeout";
     public static final String MASTER_NETWORK_PERMIT_KEEPALIVE_TIME_MS =
-        "alluxio.master.network.permit.keepalive.time";
+        alluLit() + "xio.master.network.permit.keepalive.time";
     public static final String MASTER_PERSISTENCE_INITIAL_INTERVAL_MS =
-        "alluxio.master.persistence.initial.interval";
+        alluLit() + "xio.master.persistence.initial.interval";
     public static final String MASTER_PERSISTENCE_MAX_TOTAL_WAIT_TIME_MS =
-        "alluxio.master.persistence.max.total.wait.time";
+        alluLit() + "xio.master.persistence.max.total.wait.time";
     public static final String MASTER_PERSISTENCE_MAX_INTERVAL_MS =
-        "alluxio.master.persistence.max.interval";
+        alluLit() + "xio.master.persistence.max.interval";
     public static final String MASTER_PERSISTENCE_SCHEDULER_INTERVAL_MS =
-        "alluxio.master.persistence.scheduler.interval";
+        alluLit() + "xio.master.persistence.scheduler.interval";
     public static final String MASTER_PERSISTENCE_BLACKLIST =
-        "alluxio.master.persistence.blacklist";
+        alluLit() + "xio.master.persistence.blacklist";
     public static final String MASTER_LOG_CONFIG_REPORT_HEARTBEAT_INTERVAL =
-        "alluxio.master.log.config.report.heartbeat.interval";
+        alluLit() + "xio.master.log.config.report.heartbeat.interval";
     public static final String MASTER_MERGE_JOURNAL_CONTEXT_NUM_ENTRIES_LOGGING_THRESHOLD =
-        "alluxio.master.merge.journal.context.num.entries.logging.threshold";
+        alluLit() + "xio.master.merge.journal.context.num.entries.logging.threshold";
     public static final String MASTER_RECURSIVE_OPERATION_JOURNAL_FORCE_FLUSH_MAX_ENTRIES =
-        "alluxio.master.recursive.operation.journal.force.flush.max.entries";
+        alluLit() + "xio.master.recursive.operation.journal.force.flush.max.entries";
     public static final String MASTER_PERIODIC_BLOCK_INTEGRITY_CHECK_REPAIR =
-        "alluxio.master.periodic.block.integrity.check.repair";
+        alluLit() + "xio.master.periodic.block.integrity.check.repair";
     public static final String MASTER_PERIODIC_BLOCK_INTEGRITY_CHECK_INTERVAL =
-        "alluxio.master.periodic.block.integrity.check.interval";
-    public static final String MASTER_PRINCIPAL = "alluxio.master.principal";
-    public static final String MASTER_PROXY_TIMEOUT_MS = "alluxio.master.proxy.timeout";
+        alluLit() + "xio.master.periodic.block.integrity.check.interval";
+    public static final String MASTER_PRINCIPAL = alluLit() + "xio.master.principal";
+    public static final String MASTER_PROXY_TIMEOUT_MS = alluLit() + "xio.master.proxy.timeout";
     public static final String MASTER_PROXY_CHECK_HEARTBEAT_INTERVAL =
-        "alluxio.master.proxy.check.heartbeat.timeout";
+        alluLit() + "xio.master.proxy.check.heartbeat.timeout";
     public static final String MASTER_REPLICATION_CHECK_INTERVAL_MS =
-        "alluxio.master.replication.check.interval";
-    public static final String MASTER_RPC_PORT = "alluxio.master.rpc.port";
-    public static final String MASTER_RPC_EXECUTOR_TYPE = "alluxio.master.rpc.executor.type";
+        alluLit() + "xio.master.replication.check.interval";
+    public static final String MASTER_RPC_PORT = alluLit() + "xio.master.rpc.port";
+    public static final String MASTER_RPC_EXECUTOR_TYPE = alluLit() + "xio.master.rpc.executor.type";
     public static final String MASTER_RPC_EXECUTOR_CORE_POOL_SIZE =
-        "alluxio.master.rpc.executor.core.pool.size";
+        alluLit() + "xio.master.rpc.executor.core.pool.size";
     public static final String MASTER_RPC_EXECUTOR_MAX_POOL_SIZE =
-        "alluxio.master.rpc.executor.max.pool.size";
+        alluLit() + "xio.master.rpc.executor.max.pool.size";
     public static final String MASTER_RPC_EXECUTOR_KEEPALIVE =
-        "alluxio.master.rpc.executor.keepalive";
+        alluLit() + "xio.master.rpc.executor.keepalive";
     public static final String MASTER_RPC_EXECUTOR_TPE_QUEUE_TYPE =
-        "alluxio.master.rpc.executor.tpe.queue.type";
+        alluLit() + "xio.master.rpc.executor.tpe.queue.type";
     public static final String MASTER_RPC_EXECUTOR_TPE_ALLOW_CORE_THREADS_TIMEOUT =
-        "alluxio.master.rpc.executor.tpe.allow.core.threads.timeout";
+        alluLit() + "xio.master.rpc.executor.tpe.allow.core.threads.timeout";
     public static final String MASTER_RPC_EXECUTOR_FJP_PARALLELISM =
-        "alluxio.master.rpc.executor.fjp.parallelism";
+        alluLit() + "xio.master.rpc.executor.fjp.parallelism";
     public static final String MASTER_RPC_EXECUTOR_FJP_MIN_RUNNABLE =
-        "alluxio.master.rpc.executor.fjp.min.runnable";
+        alluLit() + "xio.master.rpc.executor.fjp.min.runnable";
     public static final String MASTER_RPC_EXECUTOR_FJP_ASYNC =
-        "alluxio.master.rpc.executor.fjp.async";
+        alluLit() + "xio.master.rpc.executor.fjp.async";
     public static final String MASTER_SERVING_THREAD_TIMEOUT =
-        "alluxio.master.serving.thread.timeout";
+        alluLit() + "xio.master.serving.thread.timeout";
     public static final String MASTER_SKIP_ROOT_ACL_CHECK =
-        "alluxio.master.skip.root.acl.check";
+        alluLit() + "xio.master.skip.root.acl.check";
     public static final String MASTER_STARTUP_BLOCK_INTEGRITY_CHECK_ENABLED =
-        "alluxio.master.startup.block.integrity.check.enabled";
+        alluLit() + "xio.master.startup.block.integrity.check.enabled";
     public static final String MASTER_STATE_LOCK_ERROR_THRESHOLD =
-        "alluxio.master.state.lock.error.threshold";
+        alluLit() + "xio.master.state.lock.error.threshold";
     public static final String MASTER_TIERED_STORE_GLOBAL_LEVEL0_ALIAS =
-        "alluxio.master.tieredstore.global.level0.alias";
+        alluLit() + "xio.master.tieredstore.global.level0.alias";
     public static final String MASTER_TIERED_STORE_GLOBAL_LEVEL1_ALIAS =
-        "alluxio.master.tieredstore.global.level1.alias";
+        alluLit() + "xio.master.tieredstore.global.level1.alias";
     public static final String MASTER_TIERED_STORE_GLOBAL_LEVEL2_ALIAS =
-        "alluxio.master.tieredstore.global.level2.alias";
+        alluLit() + "xio.master.tieredstore.global.level2.alias";
     public static final String MASTER_TIERED_STORE_GLOBAL_LEVELS =
-        "alluxio.master.tieredstore.global.levels";
+        alluLit() + "xio.master.tieredstore.global.levels";
     public static final String MASTER_TIERED_STORE_GLOBAL_MEDIUMTYPE =
-        "alluxio.master.tieredstore.global.mediumtype";
+        alluLit() + "xio.master.tieredstore.global.mediumtype";
     public static final String MASTER_TTL_CHECKER_INTERVAL_MS =
-        "alluxio.master.ttl.checker.interval";
+        alluLit() + "xio.master.ttl.checker.interval";
     public static final String MASTER_UFS_ACTIVE_SYNC_INTERVAL =
-        "alluxio.master.ufs.active.sync.interval";
+        alluLit() + "xio.master.ufs.active.sync.interval";
     public static final String MASTER_UFS_ACTIVE_SYNC_MAX_ACTIVITIES =
-        "alluxio.master.ufs.active.sync.max.activities";
+        alluLit() + "xio.master.ufs.active.sync.max.activities";
     public static final String MASTER_UFS_ACTIVE_SYNC_THREAD_POOL_SIZE =
-        "alluxio.master.ufs.active.sync.thread.pool.size";
+        alluLit() + "xio.master.ufs.active.sync.thread.pool.size";
     public static final String MASTER_UFS_ACTIVE_SYNC_POLL_TIMEOUT =
-        "alluxio.master.ufs.active.sync.poll.timeout";
+        alluLit() + "xio.master.ufs.active.sync.poll.timeout";
     public static final String MASTER_UFS_ACTIVE_SYNC_EVENT_RATE_INTERVAL =
-        "alluxio.master.ufs.active.sync.event.rate.interval";
+        alluLit() + "xio.master.ufs.active.sync.event.rate.interval";
     public static final String MASTER_UFS_ACTIVE_SYNC_MAX_AGE =
-        "alluxio.master.ufs.active.sync.max.age";
+        alluLit() + "xio.master.ufs.active.sync.max.age";
     public static final String MASTER_UFS_ACTIVE_SYNC_INITIAL_SYNC_ENABLED =
-        "alluxio.master.ufs.active.sync.initial.sync.enabled";
+        alluLit() + "xio.master.ufs.active.sync.initial.sync.enabled";
     public static final String MASTER_UFS_ACTIVE_SYNC_RETRY_TIMEOUT =
-        "alluxio.master.ufs.active.sync.retry.timeout";
+        alluLit() + "xio.master.ufs.active.sync.retry.timeout";
     public static final String MASTER_UFS_ACTIVE_SYNC_POLL_BATCH_SIZE =
-        "alluxio.master.ufs.active.sync.poll.batch.size";
+        alluLit() + "xio.master.ufs.active.sync.poll.batch.size";
     public static final String MASTER_UFS_BLOCK_LOCATION_CACHE_CAPACITY =
-        "alluxio.master.ufs.block.location.cache.capacity";
+        alluLit() + "xio.master.ufs.block.location.cache.capacity";
     public static final String MASTER_UFS_JOURNAL_MAX_CATCHUP_TIME =
-        "alluxio.master.ufs.journal.max.catchup.time";
+        alluLit() + "xio.master.ufs.journal.max.catchup.time";
     public static final String MASTER_UFS_MANAGED_BLOCKING_ENABLED =
-        "alluxio.master.ufs.managed.blocking.enabled";
+        alluLit() + "xio.master.ufs.managed.blocking.enabled";
     public static final String MASTER_UFS_PATH_CACHE_CAPACITY =
-        "alluxio.master.ufs.path.cache.capacity";
+        alluLit() + "xio.master.ufs.path.cache.capacity";
     public static final String MASTER_UFS_PATH_CACHE_THREADS =
-        "alluxio.master.ufs.path.cache.threads";
+        alluLit() + "xio.master.ufs.path.cache.threads";
     public static final String MASTER_UNSAFE_DIRECT_PERSIST_OBJECT_ENABLED =
-        "alluxio.master.unsafe.direct.persist.object.enabled";
+        alluLit() + "xio.master.unsafe.direct.persist.object.enabled";
     public static final String MASTER_UPDATE_CHECK_ENABLED =
-        "alluxio.master.update.check.enabled";
+        alluLit() + "xio.master.update.check.enabled";
     public static final String MASTER_UPDATE_CHECK_INTERVAL =
-        "alluxio.master.update.check.interval";
-    public static final String MASTER_WEB_BIND_HOST = "alluxio.master.web.bind.host";
-    public static final String MASTER_WEB_HOSTNAME = "alluxio.master.web.hostname";
-    public static final String MASTER_WEB_PORT = "alluxio.master.web.port";
+        alluLit() + "xio.master.update.check.interval";
+    public static final String MASTER_WEB_BIND_HOST = alluLit() + "xio.master.web.bind.host";
+    public static final String MASTER_WEB_HOSTNAME = alluLit() + "xio.master.web.hostname";
+    public static final String MASTER_WEB_PORT = alluLit() + "xio.master.web.port";
     public static final String MASTER_WEB_JOURNAL_CHECKPOINT_WARNING_THRESHOLD_TIME =
-        "alluxio.master.journal.checkpoint.warning.threshold.time";
+        alluLit() + "xio.master.journal.checkpoint.warning.threshold.time";
     public static final String MASTER_WEB_IN_ALLUXIO_DATA_PAGE_COUNT =
-        "alluxio.master.web.in.alluxio.data.page.count";
-    public static final String MASTER_WHITELIST = "alluxio.master.whitelist";
+        alluLit() + "xio.master.web.in.alluxio.data.page.count";
+    public static final String MASTER_WHITELIST = alluLit() + "xio.master.whitelist";
     public static final String MASTER_WORKER_CONNECT_WAIT_TIME =
-        "alluxio.master.worker.connect.wait.time";
+        alluLit() + "xio.master.worker.connect.wait.time";
     public static final String MASTER_WORKER_INFO_CACHE_REFRESH_TIME
-        = "alluxio.master.worker.info.cache.refresh.time";
+        = alluLit() + "xio.master.worker.info.cache.refresh.time";
     public static final String MASTER_WORKER_REGISTER_STREAM_RESPONSE_TIMEOUT =
-        "alluxio.master.worker.register.stream.response.timeout";
-    public static final String MASTER_WORKER_TIMEOUT_MS = "alluxio.master.worker.timeout";
+        alluLit() + "xio.master.worker.register.stream.response.timeout";
+    public static final String MASTER_WORKER_TIMEOUT_MS = alluLit() + "xio.master.worker.timeout";
     public static final String MASTER_LOST_WORKER_DELETION_TIMEOUT_MS =
-        "alluxio.master.lost.worker.deletion.timeout";
+        alluLit() + "xio.master.lost.worker.deletion.timeout";
     public static final String MASTER_JOURNAL_CHECKPOINT_PERIOD_ENTRIES =
-        "alluxio.master.journal.checkpoint.period.entries";
+        alluLit() + "xio.master.journal.checkpoint.period.entries";
     public static final String MASTER_JOURNAL_LOCAL_LOG_COMPACTION =
-        "alluxio.master.journal.local.log.compaction";
-    public static final String MASTER_JOURNAL_GC_PERIOD_MS = "alluxio.master.journal.gc.period";
+        alluLit() + "xio.master.journal.local.log.compaction";
+    public static final String MASTER_JOURNAL_GC_PERIOD_MS = alluLit() + "xio.master.journal.gc.period";
     public static final String MASTER_JOURNAL_GC_THRESHOLD_MS =
-        "alluxio.master.journal.gc.threshold";
+        alluLit() + "xio.master.journal.gc.threshold";
     public static final String MASTER_JOURNAL_TEMPORARY_FILE_GC_THRESHOLD_MS =
-        "alluxio.master.journal.temporary.file.gc.threshold";
+        alluLit() + "xio.master.journal.temporary.file.gc.threshold";
     public static final String MASTER_WORKER_REGISTER_LEASE_ENABLED =
-        "alluxio.master.worker.register.lease.enabled";
+        alluLit() + "xio.master.worker.register.lease.enabled";
     public static final String MASTER_WORKER_REGISTER_LEASE_COUNT =
-        "alluxio.master.worker.register.lease.count";
+        alluLit() + "xio.master.worker.register.lease.count";
     public static final String MASTER_WORKER_REGISTER_LEASE_RESPECT_JVM_SPACE =
-        "alluxio.master.worker.register.lease.respect.jvm.space";
+        alluLit() + "xio.master.worker.register.lease.respect.jvm.space";
     public static final String MASTER_WORKER_REGISTER_LEASE_TTL =
-        "alluxio.master.worker.register.lease.ttl";
+        alluLit() + "xio.master.worker.register.lease.ttl";
 
     //
     // File system master related properties
     //
     public static final String MASTER_FILE_SYSTEM_LISTSTATUS_RESULTS_PER_MESSAGE =
-        "alluxio.master.filesystem.liststatus.result.message.length";
+        alluLit() + "xio.master.filesystem.liststatus.result.message.length";
     public static final String MASTER_FILE_SYSTEM_OPERATION_RETRY_CACHE_ENABLED =
-        "alluxio.master.filesystem.operation.retry.cache.enabled";
+        alluLit() + "xio.master.filesystem.operation.retry.cache.enabled";
     public static final String MASTER_FILE_SYSTEM_OPERATION_RETRY_CACHE_SIZE =
-        "alluxio.master.filesystem.operation.retry.cache.size";
+        alluLit() + "xio.master.filesystem.operation.retry.cache.size";
     public static final String MASTER_FILE_SYSTEM_MERGE_INODE_JOURNALS =
-        "alluxio.master.filesystem.merge.inode.journals";
+        alluLit() + "xio.master.filesystem.merge.inode.journals";
 
     //
     // Throttle
     //
     public static final String MASTER_THROTTLE_BACKGROUND_ENABLED =
-        "alluxio.master.throttle.background.enabled";
-    public static final String MASTER_THROTTLE_ENABLED = "alluxio.master.throttle.enabled";
+        alluLit() + "xio.master.throttle.background.enabled";
+    public static final String MASTER_THROTTLE_ENABLED = alluLit() + "xio.master.throttle.enabled";
     public static final String MASTER_THROTTLE_HEARTBEAT_INTERVAL =
-        "alluxio.master.throttle.heartbeat.interval";
+        alluLit() + "xio.master.throttle.heartbeat.interval";
     public static final String MASTER_THROTTLE_FOREGROUND_ENABLED =
-        "alluxio.master.throttle.foreground.enabled";
+        alluLit() + "xio.master.throttle.foreground.enabled";
     public static final String MASTER_THROTTLE_ACTIVE_CPU_LOAD_RATIO =
-        "alluxio.master.throttle.active.cpu.load.ratio";
+        alluLit() + "xio.master.throttle.active.cpu.load.ratio";
     public static final String MASTER_THROTTLE_ACTIVE_HEAP_USED_RATIO =
-        "alluxio.master.throttle.active.heap.used.ratio";
+        alluLit() + "xio.master.throttle.active.heap.used.ratio";
     public static final String MASTER_THROTTLE_ACTIVE_HEAP_GC_TIME =
-        "alluxio.master.throttle.active.heap.gc.time";
+        alluLit() + "xio.master.throttle.active.heap.gc.time";
     public static final String MASTER_THROTTLE_ACTIVE_RPC_QUEUE_SIZE =
-        "alluxio.master.throttle.active.rpc.queue.size";
+        alluLit() + "xio.master.throttle.active.rpc.queue.size";
     public static final String MASTER_THROTTLE_STRESSED_CPU_LOAD_RATIO =
-        "alluxio.master.throttle.stressed.cpu.load.ratio";
+        alluLit() + "xio.master.throttle.stressed.cpu.load.ratio";
     public static final String MASTER_THROTTLE_STRESSED_HEAP_USED_RATIO =
-        "alluxio.master.throttle.stressed.heap.used.ratio";
+        alluLit() + "xio.master.throttle.stressed.heap.used.ratio";
     public static final String MASTER_THROTTLE_STRESSED_HEAP_GC_TIME =
-        "alluxio.master.throttle.stressed.heap.gc.time";
+        alluLit() + "xio.master.throttle.stressed.heap.gc.time";
     public static final String MASTER_THROTTLE_STRESSED_RPC_QUEUE_SIZE =
-        "alluxio.master.throttle.stressed.rpc.queue.size";
+        alluLit() + "xio.master.throttle.stressed.rpc.queue.size";
     public static final String MASTER_THROTTLE_OVERLOADED_CPU_LOAD_RATIO =
-        "alluxio.master.throttle.overloaded.cpu.load.ratio";
+        alluLit() + "xio.master.throttle.overloaded.cpu.load.ratio";
     public static final String MASTER_THROTTLE_OVERLOADED_HEAP_USED_RATIO =
-        "alluxio.master.throttle.overloaded.heap.used.ratio";
+        alluLit() + "xio.master.throttle.overloaded.heap.used.ratio";
     public static final String MASTER_THROTTLE_OVERLOADED_HEAP_GC_TIME =
-        "alluxio.master.throttle.overloaded.heap.gc.time";
+        alluLit() + "xio.master.throttle.overloaded.heap.gc.time";
     public static final String MASTER_THROTTLE_OVERLOADED_RPC_QUEUE_SIZE =
-        "alluxio.master.throttle.overloaded.rpc.queue.size";
+        alluLit() + "xio.master.throttle.overloaded.rpc.queue.size";
     public static final String MASTER_THROTTLE_OBSERVED_PIT_NUMBER =
-        "alluxio.master.throttle.observed.pit.number";
+        alluLit() + "xio.master.throttle.observed.pit.number";
     public static final String MASTER_THROTTLE_FILESYSTEM_OP_PER_SEC =
-        "alluxio.master.throttle.filesystem.op.per.sec";
+        alluLit() + "xio.master.throttle.filesystem.op.per.sec";
     public static final String MASTER_THROTTLE_FILESYSTEM_RPC_QUEUE_SIZE_LIMIT =
-        "alluxio.master.throttle.filesystem.rpc.queue.size.limit";
+        alluLit() + "xio.master.throttle.filesystem.rpc.queue.size.limit";
 
     //
     // Secondary master related properties
     //
     public static final String SECONDARY_MASTER_METASTORE_DIR =
-        "alluxio.secondary.master.metastore.dir";
+        alluLit() + "xio.secondary.master.metastore.dir";
     public static final String STANDBY_MASTER_METRICS_SINK_ENABLED =
-        "alluxio.standby.master.metrics.sink.enabled";
+        alluLit() + "xio.standby.master.metrics.sink.enabled";
     public static final String STANDBY_MASTER_WEB_ENABLED =
-        "alluxio.standby.master.web.enabled";
+        alluLit() + "xio.standby.master.web.enabled";
     public static final String STANDBY_MASTER_GRPC_ENABLED =
-        "alluxio.standby.master.grpc.enabled";
+        alluLit() + "xio.standby.master.grpc.enabled";
 
     //
     // Worker related properties
     //
-    public static final String WORKER_ALLOCATOR_CLASS = "alluxio.worker.allocator.class";
-    public static final String WORKER_BIND_HOST = "alluxio.worker.bind.host";
+    public static final String WORKER_ALLOCATOR_CLASS = alluLit() + "xio.worker.allocator.class";
+    public static final String WORKER_BIND_HOST = alluLit() + "xio.worker.bind.host";
     public static final String WORKER_BLOCK_HEARTBEAT_INTERVAL_MS =
-        "alluxio.worker.block.heartbeat.interval";
+        alluLit() + "xio.worker.block.heartbeat.interval";
     public static final String WORKER_BLOCK_HEARTBEAT_TIMEOUT_MS =
-        "alluxio.worker.block.heartbeat.timeout";
-    public static final String WORKER_BLOCK_STORE_TYPE = "alluxio.worker.block.store.type";
+        alluLit() + "xio.worker.block.heartbeat.timeout";
+    public static final String WORKER_BLOCK_STORE_TYPE = alluLit() + "xio.worker.block.store.type";
     public static final String WORKER_BLOCK_CHECKSUM_CALCULATION_THROUGHPUT_THRESHOLD =
-        "alluxio.worker.block.checksum.calculation.throughput.threshold";
+        alluLit() + "xio.worker.block.checksum.calculation.throughput.threshold";
     public static final String WORKER_BLOCK_CHECKSUM_CALCULATION_THREAD_POOL_SIZE =
-        "alluxio.worker.block.checksum.calculation.thread.pool.size";
+        alluLit() + "xio.worker.block.checksum.calculation.thread.pool.size";
     public static final String WORKER_BLOCK_CHECKSUM_CALCULATION_USE_BUFFER_POOL =
-        "alluxio.worker.block.checksum.calculation.use.buffer.pool";
+        alluLit() + "xio.worker.block.checksum.calculation.use.buffer.pool";
     public static final String WORKER_CONTAINER_HOSTNAME =
-        "alluxio.worker.container.hostname";
-    public static final String WORKER_DATA_FOLDER = "alluxio.worker.data.folder";
+        alluLit() + "xio.worker.container.hostname";
+    public static final String WORKER_DATA_FOLDER = alluLit() + "xio.worker.data.folder";
     public static final String WORKER_DATA_FOLDER_PERMISSIONS =
-        "alluxio.worker.data.folder.permissions";
+        alluLit() + "xio.worker.data.folder.permissions";
     public static final String WORKER_DATA_SERVER_DOMAIN_SOCKET_ADDRESS =
-        "alluxio.worker.data.server.domain.socket.address";
+        alluLit() + "xio.worker.data.server.domain.socket.address";
     public static final String WORKER_DATA_SERVER_DOMAIN_SOCKET_AS_UUID =
-        "alluxio.worker.data.server.domain.socket.as.uuid";
-    public static final String WORKER_DATA_TMP_FOLDER = "alluxio.worker.data.folder.tmp";
-    public static final String WORKER_DATA_TMP_SUBDIR_MAX = "alluxio.worker.data.tmp.subdir.max";
-    public static final String WORKER_EVICTOR_CLASS = "alluxio.worker.evictor.class";
+        alluLit() + "xio.worker.data.server.domain.socket.as.uuid";
+    public static final String WORKER_DATA_TMP_FOLDER = alluLit() + "xio.worker.data.folder.tmp";
+    public static final String WORKER_DATA_TMP_SUBDIR_MAX = alluLit() + "xio.worker.data.tmp.subdir.max";
+    public static final String WORKER_EVICTOR_CLASS = alluLit() + "xio.worker.evictor.class";
     public static final String WORKER_BLOCK_ANNOTATOR_CLASS =
-        "alluxio.worker.block.annotator.class";
+        alluLit() + "xio.worker.block.annotator.class";
     public static final String WORKER_BLOCK_ANNOTATOR_LRFU_ATTENUATION_FACTOR =
-        "alluxio.worker.block.annotator.lrfu.attenuation.factor";
+        alluLit() + "xio.worker.block.annotator.lrfu.attenuation.factor";
     public static final String WORKER_BLOCK_ANNOTATOR_LRFU_STEP_FACTOR =
-        "alluxio.worker.block.annotator.lrfu.step.factor";
+        alluLit() + "xio.worker.block.annotator.lrfu.step.factor";
     public static final String WORKER_FUSE_ENABLED =
-        "alluxio.worker.fuse.enabled";
+        alluLit() + "xio.worker.fuse.enabled";
     public static final String WORKER_FUSE_MOUNT_ALLUXIO_PATH =
-        "alluxio.worker.fuse.mount.alluxio.path";
+        alluLit() + "xio.worker.fuse.mount.alluxio.path";
     public static final String WORKER_FUSE_MOUNT_OPTIONS =
-        "alluxio.worker.fuse.mount.options";
+        alluLit() + "xio.worker.fuse.mount.options";
     public static final String WORKER_FUSE_MOUNT_POINT =
-        "alluxio.worker.fuse.mount.point";
+        alluLit() + "xio.worker.fuse.mount.point";
     public static final String WORKER_MANAGEMENT_TIER_ALIGN_RESERVED_BYTES =
-        "alluxio.worker.management.tier.align.reserved.bytes";
+        alluLit() + "xio.worker.management.tier.align.reserved.bytes";
     public static final String WORKER_MANAGEMENT_BACKOFF_STRATEGY =
-        "alluxio.worker.management.backoff.strategy";
+        alluLit() + "xio.worker.management.backoff.strategy";
     public static final String WORKER_MANAGEMENT_LOAD_DETECTION_COOL_DOWN_TIME =
-        "alluxio.worker.management.load.detection.cool.down.time";
+        alluLit() + "xio.worker.management.load.detection.cool.down.time";
     public static final String WORKER_MANAGEMENT_TASK_THREAD_COUNT =
-        "alluxio.worker.management.task.thread.count";
+        alluLit() + "xio.worker.management.task.thread.count";
     public static final String WORKER_MANAGEMENT_BLOCK_TRANSFER_CONCURRENCY_LIMIT =
-        "alluxio.worker.management.block.transfer.concurrency.limit";
+        alluLit() + "xio.worker.management.block.transfer.concurrency.limit";
     public static final String WORKER_MANAGEMENT_TIER_ALIGN_ENABLED =
-        "alluxio.worker.management.tier.align.enabled";
+        alluLit() + "xio.worker.management.tier.align.enabled";
     public static final String WORKER_MANAGEMENT_TIER_PROMOTE_ENABLED =
-        "alluxio.worker.management.tier.promote.enabled";
+        alluLit() + "xio.worker.management.tier.promote.enabled";
     public static final String WORKER_MANAGEMENT_TIER_SWAP_RESTORE_ENABLED =
-        "alluxio.worker.management.tier.swap.restore.enabled";
+        alluLit() + "xio.worker.management.tier.swap.restore.enabled";
     public static final String WORKER_MANAGEMENT_TIER_ALIGN_RANGE =
-        "alluxio.worker.management.tier.align.range";
+        alluLit() + "xio.worker.management.tier.align.range";
     public static final String WORKER_MANAGEMENT_TIER_PROMOTE_RANGE =
-        "alluxio.worker.management.tier.promote.range";
+        alluLit() + "xio.worker.management.tier.promote.range";
     public static final String WORKER_MANAGEMENT_TIER_PROMOTE_QUOTA_PERCENT =
-        "alluxio.worker.management.tier.promote.quota.percent";
-    public static final String WORKER_FREE_SPACE_TIMEOUT = "alluxio.worker.free.space.timeout";
-    public static final String WORKER_HOSTNAME = "alluxio.worker.hostname";
-    public static final String WORKER_KEYTAB_FILE = "alluxio.worker.keytab.file";
+        alluLit() + "xio.worker.management.tier.promote.quota.percent";
+    public static final String WORKER_FREE_SPACE_TIMEOUT = alluLit() + "xio.worker.free.space.timeout";
+    public static final String WORKER_HOSTNAME = alluLit() + "xio.worker.hostname";
+    public static final String WORKER_KEYTAB_FILE = alluLit() + "xio.worker.keytab.file";
     public static final String WORKER_MASTER_CONNECT_RETRY_TIMEOUT =
-        "alluxio.worker.master.connect.retry.timeout";
+        alluLit() + "xio.worker.master.connect.retry.timeout";
     public static final String WORKER_MASTER_PERIODICAL_RPC_TIMEOUT =
-        "alluxio.worker.master.periodical.rpc.timeout";
-    public static final String WORKER_MEMORY_SIZE = "alluxio.worker.memory.size";
+        alluLit() + "xio.worker.master.periodical.rpc.timeout";
+    public static final String WORKER_MEMORY_SIZE = alluLit() + "xio.worker.memory.size";
     public static final String WORKER_NETWORK_ASYNC_CACHE_MANAGER_THREADS_MAX =
-        "alluxio.worker.network.async.cache.manager.threads.max";
+        alluLit() + "xio.worker.network.async.cache.manager.threads.max";
     public static final String WORKER_NETWORK_ASYNC_CACHE_MANAGER_QUEUE_MAX =
-        "alluxio.worker.network.async.cache.manager.queue.max";
+        alluLit() + "xio.worker.network.async.cache.manager.queue.max";
     public static final String WORKER_NETWORK_BLOCK_READER_THREADS_MAX =
-        "alluxio.worker.network.block.reader.threads.max";
+        alluLit() + "xio.worker.network.block.reader.threads.max";
     public static final String WORKER_NETWORK_BLOCK_WRITER_THREADS_MAX =
-        "alluxio.worker.network.block.writer.threads.max";
+        alluLit() + "xio.worker.network.block.writer.threads.max";
     public static final String WORKER_NETWORK_WRITER_BUFFER_SIZE_MESSAGES =
-        "alluxio.worker.network.writer.buffer.size.messages";
+        alluLit() + "xio.worker.network.writer.buffer.size.messages";
     public static final String WORKER_NETWORK_FLOWCONTROL_WINDOW =
-        "alluxio.worker.network.flowcontrol.window";
+        alluLit() + "xio.worker.network.flowcontrol.window";
     public static final String WORKER_NETWORK_KEEPALIVE_TIME_MS =
-        "alluxio.worker.network.keepalive.time";
+        alluLit() + "xio.worker.network.keepalive.time";
     public static final String WORKER_NETWORK_KEEPALIVE_TIMEOUT_MS =
-        "alluxio.worker.network.keepalive.timeout";
+        alluLit() + "xio.worker.network.keepalive.timeout";
     public static final String WORKER_NETWORK_PERMIT_KEEPALIVE_TIME_MS =
-            "alluxio.worker.network.permit.keepalive.time";
+            alluLit() + "xio.worker.network.permit.keepalive.time";
     public static final String WORKER_NETWORK_MAX_INBOUND_MESSAGE_SIZE =
-        "alluxio.worker.network.max.inbound.message.size";
+        alluLit() + "xio.worker.network.max.inbound.message.size";
     public static final String WORKER_NETWORK_NETTY_BOSS_THREADS =
-        "alluxio.worker.network.netty.boss.threads";
+        alluLit() + "xio.worker.network.netty.boss.threads";
     public static final String WORKER_NETWORK_NETTY_CHANNEL =
-        "alluxio.worker.network.netty.channel";
+        alluLit() + "xio.worker.network.netty.channel";
     public static final String WORKER_NETWORK_NETTY_SHUTDOWN_QUIET_PERIOD =
-        "alluxio.worker.network.netty.shutdown.quiet.period";
+        alluLit() + "xio.worker.network.netty.shutdown.quiet.period";
     public static final String WORKER_NETWORK_NETTY_WATERMARK_HIGH =
-        "alluxio.worker.network.netty.watermark.high";
+        alluLit() + "xio.worker.network.netty.watermark.high";
     public static final String WORKER_NETWORK_NETTY_WATERMARK_LOW =
-        "alluxio.worker.network.netty.watermark.low";
+        alluLit() + "xio.worker.network.netty.watermark.low";
     public static final String WORKER_NETWORK_NETTY_WORKER_THREADS =
-        "alluxio.worker.network.netty.worker.threads";
+        alluLit() + "xio.worker.network.netty.worker.threads";
     public static final String WORKER_NETWORK_READER_BUFFER_SIZE_BYTES =
-        "alluxio.worker.network.reader.buffer.size";
+        alluLit() + "xio.worker.network.reader.buffer.size";
     public static final String WORKER_NETWORK_READER_BUFFER_POOLED =
-        "alluxio.worker.network.reader.buffer.pooled";
+        alluLit() + "xio.worker.network.reader.buffer.pooled";
     public static final String WORKER_NETWORK_READER_MAX_CHUNK_SIZE_BYTES =
-        "alluxio.worker.network.reader.max.chunk.size.bytes";
+        alluLit() + "xio.worker.network.reader.max.chunk.size.bytes";
     public static final String WORKER_NETWORK_SHUTDOWN_TIMEOUT =
-        "alluxio.worker.network.shutdown.timeout";
+        alluLit() + "xio.worker.network.shutdown.timeout";
     public static final String WORKER_NETWORK_ZEROCOPY_ENABLED =
-        "alluxio.worker.network.zerocopy.enabled";
+        alluLit() + "xio.worker.network.zerocopy.enabled";
     public static final String WORKER_REGISTER_STREAM_ENABLED =
-        "alluxio.worker.register.stream.enabled";
+        alluLit() + "xio.worker.register.stream.enabled";
     public static final String WORKER_REGISTER_STREAM_BATCH_SIZE =
-        "alluxio.worker.register.stream.batch.size";
+        alluLit() + "xio.worker.register.stream.batch.size";
     public static final String WORKER_REGISTER_STREAM_DEADLINE =
-        "alluxio.worker.register.stream.deadline";
+        alluLit() + "xio.worker.register.stream.deadline";
     public static final String WORKER_REGISTER_STREAM_RESPONSE_TIMEOUT =
-        "alluxio.worker.register.stream.response.timeout";
+        alluLit() + "xio.worker.register.stream.response.timeout";
     public static final String WORKER_REGISTER_STREAM_COMPLETE_TIMEOUT =
-        "alluxio.worker.register.stream.complete.timeout";
+        alluLit() + "xio.worker.register.stream.complete.timeout";
     public static final String WORKER_REGISTER_TO_ALL_MASTERS =
-        "alluxio.worker.register.to.all.masters";
+        alluLit() + "xio.worker.register.to.all.masters";
     public static final String WORKER_REMOTE_IO_SLOW_THRESHOLD =
-        "alluxio.worker.remote.io.slow.threshold";
+        alluLit() + "xio.worker.remote.io.slow.threshold";
     public static final String WORKER_BLOCK_MASTER_CLIENT_POOL_SIZE =
-        "alluxio.worker.block.master.client.pool.size";
+        alluLit() + "xio.worker.block.master.client.pool.size";
     public static final String WORKER_BLOCK_HEARTBEAT_REPORT_SIZE_THRESHOLD =
-        "alluxio.worker.block.heartbeat.report.size.threshold";
-    public static final String WORKER_PRINCIPAL = "alluxio.worker.principal";
+        alluLit() + "xio.worker.block.heartbeat.report.size.threshold";
+    public static final String WORKER_PRINCIPAL = alluLit() + "xio.worker.principal";
     public static final String WORKER_PAGE_STORE_ASYNC_RESTORE_ENABLED =
-        "alluxio.worker.page.store.async.restore.enabled";
+        alluLit() + "xio.worker.page.store.async.restore.enabled";
     public static final String WORKER_PAGE_STORE_ASYNC_WRITE_ENABLED =
-        "alluxio.worker.page.store.async.write.enabled";
+        alluLit() + "xio.worker.page.store.async.write.enabled";
     public static final String WORKER_PAGE_STORE_ASYNC_WRITE_THREADS =
-        "alluxio.worker.page.store.async.write.threads";
+        alluLit() + "xio.worker.page.store.async.write.threads";
     public static final String WORKER_PAGE_STORE_DIRS =
-        "alluxio.worker.page.store.dirs";
+        alluLit() + "xio.worker.page.store.dirs";
     public static final String WORKER_PAGE_STORE_EVICTION_RETRIES =
-        "alluxio.worker.page.store.eviction.retries";
+        alluLit() + "xio.worker.page.store.eviction.retries";
     public static final String WORKER_PAGE_STORE_EVICTOR_CLASS =
-        "alluxio.worker.page.store.evictor.class";
+        alluLit() + "xio.worker.page.store.evictor.class";
     public static final String WORKER_PAGE_STORE_EVICTOR_LFU_LOGBASE =
-        "alluxio.worker.page.store.evictor.lfu.logbase";
+        alluLit() + "xio.worker.page.store.evictor.lfu.logbase";
     public static final String WORKER_PAGE_STORE_EVICTOR_NONDETERMINISTIC_ENABLED =
-        "alluxio.worker.page.store.evictor.nondeterministic.enabled";
+        alluLit() + "xio.worker.page.store.evictor.nondeterministic.enabled";
     public static final String WORKER_PAGE_STORE_LOCAL_STORE_FILE_BUCKETS =
-        "alluxio.worker.page.store.local.store.file.buckets";
+        alluLit() + "xio.worker.page.store.local.store.file.buckets";
     public static final String WORKER_PAGE_STORE_OVERHEAD =
-        "alluxio.worker.page.store.overhead";
+        alluLit() + "xio.worker.page.store.overhead";
     public static final String WORKER_PAGE_STORE_PAGE_SIZE =
-        "alluxio.worker.page.store.page.size";
+        alluLit() + "xio.worker.page.store.page.size";
     public static final String WORKER_PAGE_STORE_QUOTA_ENABLED =
-        "alluxio.worker.page.store.quota.enabled";
+        alluLit() + "xio.worker.page.store.quota.enabled";
     public static final String WORKER_PAGE_STORE_SIZES =
-        "alluxio.worker.page.store.sizes";
+        alluLit() + "xio.worker.page.store.sizes";
     public static final String WORKER_PAGE_STORE_TIMEOUT_DURATION =
-        "alluxio.worker.page.store.timeout.duration";
+        alluLit() + "xio.worker.page.store.timeout.duration";
     public static final String WORKER_PAGE_STORE_TIMEOUT_THREADS =
-        "alluxio.worker.page.store.timeout.threads";
+        alluLit() + "xio.worker.page.store.timeout.threads";
     public static final String WORKER_PAGE_STORE_TYPE =
-        "alluxio.worker.page.store.type";
-    public static final String WORKER_RAMDISK_SIZE = "alluxio.worker.ramdisk.size";
+        alluLit() + "xio.worker.page.store.type";
+    public static final String WORKER_RAMDISK_SIZE = alluLit() + "xio.worker.ramdisk.size";
     public static final String WORKER_REGISTER_LEASE_ENABLED =
-        "alluxio.worker.register.lease.enabled";
+        alluLit() + "xio.worker.register.lease.enabled";
     public static final String WORKER_REGISTER_LEASE_RETRY_SLEEP_MIN =
-        "alluxio.worker.register.lease.retry.sleep.min";
+        alluLit() + "xio.worker.register.lease.retry.sleep.min";
     public static final String WORKER_REGISTER_LEASE_RETRY_SLEEP_MAX =
-        "alluxio.worker.register.lease.retry.sleep.max";
+        alluLit() + "xio.worker.register.lease.retry.sleep.max";
     public static final String WORKER_REGISTER_LEASE_RETRY_MAX_DURATION =
-        "alluxio.worker.register.lease.retry.max.duration";
+        alluLit() + "xio.worker.register.lease.retry.max.duration";
     public static final String WORKER_REVIEWER_PROBABILISTIC_HARDLIMIT_BYTES =
-            "alluxio.worker.reviewer.probabilistic.hardlimit.bytes";
+            alluLit() + "xio.worker.reviewer.probabilistic.hardlimit.bytes";
     public static final String WORKER_REVIEWER_PROBABILISTIC_SOFTLIMIT_BYTES =
-            "alluxio.worker.reviewer.probabilistic.softlimit.bytes";
-    public static final String WORKER_REVIEWER_CLASS = "alluxio.worker.reviewer.class";
-    public static final String WORKER_RPC_PORT = "alluxio.worker.rpc.port";
-    public static final String WORKER_RPC_EXECUTOR_TYPE = "alluxio.worker.rpc.executor.type";
+            alluLit() + "xio.worker.reviewer.probabilistic.softlimit.bytes";
+    public static final String WORKER_REVIEWER_CLASS = alluLit() + "xio.worker.reviewer.class";
+    public static final String WORKER_RPC_PORT = alluLit() + "xio.worker.rpc.port";
+    public static final String WORKER_RPC_EXECUTOR_TYPE = alluLit() + "xio.worker.rpc.executor.type";
     public static final String WORKER_RPC_EXECUTOR_CORE_POOL_SIZE =
-        "alluxio.worker.rpc.executor.core.pool.size";
+        alluLit() + "xio.worker.rpc.executor.core.pool.size";
     public static final String WORKER_RPC_EXECUTOR_MAX_POOL_SIZE =
-        "alluxio.worker.rpc.executor.max.pool.size";
+        alluLit() + "xio.worker.rpc.executor.max.pool.size";
     public static final String WORKER_RPC_EXECUTOR_KEEPALIVE =
-        "alluxio.worker.rpc.executor.keepalive";
+        alluLit() + "xio.worker.rpc.executor.keepalive";
     public static final String WORKER_RPC_EXECUTOR_TPE_QUEUE_TYPE =
-        "alluxio.worker.rpc.executor.tpe.queue.type";
+        alluLit() + "xio.worker.rpc.executor.tpe.queue.type";
     public static final String WORKER_RPC_EXECUTOR_TPE_ALLOW_CORE_THREADS_TIMEOUT =
-        "alluxio.worker.rpc.executor.tpe.allow.core.threads.timeout";
+        alluLit() + "xio.worker.rpc.executor.tpe.allow.core.threads.timeout";
     public static final String WORKER_RPC_EXECUTOR_FJP_PARALLELISM =
-        "alluxio.worker.rpc.executor.fjp.parallelism";
+        alluLit() + "xio.worker.rpc.executor.fjp.parallelism";
     public static final String WORKER_RPC_EXECUTOR_FJP_MIN_RUNNABLE =
-        "alluxio.worker.rpc.executor.fjp.min.runnable";
+        alluLit() + "xio.worker.rpc.executor.fjp.min.runnable";
     public static final String WORKER_RPC_EXECUTOR_FJP_ASYNC =
-        "alluxio.worker.rpc.executor.fjp.async";
-    public static final String WORKER_SESSION_TIMEOUT_MS = "alluxio.worker.session.timeout";
-    public static final String WORKER_STARTUP_TIMEOUT = "alluxio.worker.startup.timeout";
+        alluLit() + "xio.worker.rpc.executor.fjp.async";
+    public static final String WORKER_SESSION_TIMEOUT_MS = alluLit() + "xio.worker.session.timeout";
+    public static final String WORKER_STARTUP_TIMEOUT = alluLit() + "xio.worker.startup.timeout";
     public static final String WORKER_STORAGE_CHECKER_ENABLED =
-        "alluxio.worker.storage.checker.enabled";
+        alluLit() + "xio.worker.storage.checker.enabled";
     public static final String WORKER_TIERED_STORE_BLOCK_LOCK_READERS =
-        "alluxio.worker.tieredstore.block.lock.readers";
+        alluLit() + "xio.worker.tieredstore.block.lock.readers";
     public static final String WORKER_TIERED_STORE_BLOCK_LOCKS =
-        "alluxio.worker.tieredstore.block.locks";
+        alluLit() + "xio.worker.tieredstore.block.locks";
     public static final String WORKER_TIERED_STORE_FREE_AHEAD_BYTES =
-        "alluxio.worker.tieredstore.free.ahead.bytes";
-    public static final String WORKER_TIERED_STORE_LEVELS = "alluxio.worker.tieredstore.levels";
-    public static final String WORKER_WEB_BIND_HOST = "alluxio.worker.web.bind.host";
-    public static final String WORKER_WEB_HOSTNAME = "alluxio.worker.web.hostname";
-    public static final String WORKER_WEB_PORT = "alluxio.worker.web.port";
+        alluLit() + "xio.worker.tieredstore.free.ahead.bytes";
+    public static final String WORKER_TIERED_STORE_LEVELS = alluLit() + "xio.worker.tieredstore.levels";
+    public static final String WORKER_WEB_BIND_HOST = alluLit() + "xio.worker.web.bind.host";
+    public static final String WORKER_WEB_HOSTNAME = alluLit() + "xio.worker.web.hostname";
+    public static final String WORKER_WEB_PORT = alluLit() + "xio.worker.web.port";
     public static final String WORKER_UFS_INSTREAM_CACHE_EXPIRATION_TIME =
-        "alluxio.worker.ufs.instream.cache.expiration.time";
+        alluLit() + "xio.worker.ufs.instream.cache.expiration.time";
     public static final String WORKER_UFS_INSTREAM_CACHE_ENABLED =
-        "alluxio.worker.ufs.instream.cache.enabled";
+        alluLit() + "xio.worker.ufs.instream.cache.enabled";
     public static final String WORKER_UFS_INSTREAM_CACHE_MAX_SIZE =
-        "alluxio.worker.ufs.instream.cache.max.size";
-    public static final String WORKER_WHITELIST = "alluxio.worker.whitelist";
+        alluLit() + "xio.worker.ufs.instream.cache.max.size";
+    public static final String WORKER_WHITELIST = alluLit() + "xio.worker.whitelist";
 
     //
     // Proxy related properties
     //
     public static final String PROXY_MASTER_HEARTBEAT_INTERVAL =
-        "alluxio.proxy.master.heartbeat.interval";
-    public static final String PROXY_S3_WRITE_TYPE = "alluxio.proxy.s3.writetype";
-    public static final String PROXY_S3_DELETE_TYPE = "alluxio.proxy.s3.deletetype";
+        alluLit() + "xio.proxy.master.heartbeat.interval";
+    public static final String PROXY_S3_WRITE_TYPE = alluLit() + "xio.proxy.s3.writetype";
+    public static final String PROXY_S3_DELETE_TYPE = alluLit() + "xio.proxy.s3.deletetype";
     public static final String PROXY_S3_MULTIPART_UPLOAD_CLEANER_ENABLED =
-        "alluxio.proxy.s3.multipart.upload.cleaner.enabled";
+        alluLit() + "xio.proxy.s3.multipart.upload.cleaner.enabled";
     public static final String PROXY_S3_MULTIPART_UPLOAD_CLEANER_TIMEOUT =
-        "alluxio.proxy.s3.multipart.upload.cleaner.timeout";
+        alluLit() + "xio.proxy.s3.multipart.upload.cleaner.timeout";
     public static final String PROXY_S3_MULTIPART_UPLOAD_CLEANER_RETRY_COUNT =
-        "alluxio.proxy.s3.multipart.upload.cleaner.retry.count";
+        alluLit() + "xio.proxy.s3.multipart.upload.cleaner.retry.count";
     public static final String PROXY_S3_MULTIPART_UPLOAD_CLEANER_RETRY_DELAY =
-        "alluxio.proxy.s3.multipart.upload.cleaner.retry.delay";
+        alluLit() + "xio.proxy.s3.multipart.upload.cleaner.retry.delay";
     public static final String PROXY_S3_MULTIPART_UPLOAD_CLEANER_POOL_SIZE =
-        "alluxio.proxy.s3.multipart.upload.cleaner.pool.size";
+        alluLit() + "xio.proxy.s3.multipart.upload.cleaner.pool.size";
     public static final String PROXY_S3_COMPLETE_MULTIPART_UPLOAD_KEEPALIVE_ENABLED =
-        "alluxio.proxy.s3.complete.multipart.upload.keepalive.enabled";
+        alluLit() + "xio.proxy.s3.complete.multipart.upload.keepalive.enabled";
     public static final String PROXY_S3_COMPLETE_MULTIPART_UPLOAD_KEEPALIVE_TIME_INTERVAL =
-        "alluxio.proxy.s3.complete.multipart.upload.keepalive.time.interval";
+        alluLit() + "xio.proxy.s3.complete.multipart.upload.keepalive.time.interval";
     public static final String PROXY_S3_COMPLETE_MULTIPART_UPLOAD_MIN_PART_SIZE =
-        "alluxio.proxy.s3.complete.multipart.upload.min.part.size";
+        alluLit() + "xio.proxy.s3.complete.multipart.upload.min.part.size";
     public static final String PROXY_S3_COMPLETE_MULTIPART_UPLOAD_POOL_SIZE =
-        "alluxio.proxy.s3.complete.multipart.upload.pool.size";
+        alluLit() + "xio.proxy.s3.complete.multipart.upload.pool.size";
     public static final String PROXY_S3_HEADER_METADATA_MAX_SIZE =
-        "alluxio.proxy.s3.header.metadata.max.size";
+        alluLit() + "xio.proxy.s3.header.metadata.max.size";
     public static final String PROXY_S3_BUCKET_NAMING_RESTRICTIONS_ENABLED =
-        "alluxio.proxy.s3.bucket.naming.restrictions.enabled";
+        alluLit() + "xio.proxy.s3.bucket.naming.restrictions.enabled";
     public static final String PROXY_S3_TAGGING_RESTRICTIONS_ENABLED =
-        "alluxio.proxy.s3.tagging.restrictions.enabled";
+        alluLit() + "xio.proxy.s3.tagging.restrictions.enabled";
     public static final String PROXY_STREAM_CACHE_TIMEOUT_MS =
-        "alluxio.proxy.stream.cache.timeout";
-    public static final String PROXY_WEB_BIND_HOST = "alluxio.proxy.web.bind.host";
-    public static final String PROXY_WEB_HOSTNAME = "alluxio.proxy.web.hostname";
-    public static final String PROXY_WEB_PORT = "alluxio.proxy.web.port";
+        alluLit() + "xio.proxy.stream.cache.timeout";
+    public static final String PROXY_WEB_BIND_HOST = alluLit() + "xio.proxy.web.bind.host";
+    public static final String PROXY_WEB_HOSTNAME = alluLit() + "xio.proxy.web.hostname";
+    public static final String PROXY_WEB_PORT = alluLit() + "xio.proxy.web.port";
     public static final String PROXY_AUDIT_LOGGING_ENABLED =
-        "alluxio.proxy.audit.logging.enabled";
+        alluLit() + "xio.proxy.audit.logging.enabled";
     public static final String PROXY_S3_V2_VERSION_ENABLED =
-            "alluxio.proxy.s3.v2.version.enabled";
+            alluLit() + "xio.proxy.s3.v2.version.enabled";
     public static final String PROXY_S3_V2_ASYNC_PROCESSING_ENABLED =
-            "alluxio.proxy.s3.v2.async.processing.enabled";
+            alluLit() + "xio.proxy.s3.v2.async.processing.enabled";
     public static final String PROXY_S3_V2_ASYNC_CONTEXT_TIMEOUT_MS =
-        "alluxio.proxy.s3.v2.async.context.timeout.ms";
+        alluLit() + "xio.proxy.s3.v2.async.context.timeout.ms";
     public static final String PROXY_S3_V2_ASYNC_LIGHT_POOL_CORE_THREAD_NUMBER =
-        "alluxio.proxy.s3.v2.async.light.pool.core.thread.number";
+        alluLit() + "xio.proxy.s3.v2.async.light.pool.core.thread.number";
     public static final String PROXY_S3_V2_ASYNC_LIGHT_POOL_MAXIMUM_THREAD_NUMBER =
-        "alluxio.proxy.s3.v2.async.light.pool.maximum.thread.number";
+        alluLit() + "xio.proxy.s3.v2.async.light.pool.maximum.thread.number";
     public static final String PROXY_S3_V2_ASYNC_LIGHT_POOL_QUEUE_SIZE =
-        "alluxio.proxy.s3.v2.async.light.pool.queue.size";
+        alluLit() + "xio.proxy.s3.v2.async.light.pool.queue.size";
     public static final String PROXY_S3_V2_ASYNC_HEAVY_POOL_CORE_THREAD_NUMBER =
-        "alluxio.proxy.s3.v2.async.heavy.pool.core.thread.number";
+        alluLit() + "xio.proxy.s3.v2.async.heavy.pool.core.thread.number";
     public static final String PROXY_S3_V2_ASYNC_HEAVY_POOL_MAXIMUM_THREAD_NUMBER =
-        "alluxio.proxy.s3.v2.async.heavy.pool.maximum.thread.number";
+        alluLit() + "xio.proxy.s3.v2.async.heavy.pool.maximum.thread.number";
     public static final String PROXY_S3_V2_ASYNC_HEAVY_POOL_QUEUE_SIZE =
-        "alluxio.proxy.s3.v2.async.heavy.pool.queue.size";
+        alluLit() + "xio.proxy.s3.v2.async.heavy.pool.queue.size";
     public static final String S3_UPLOADS_ID_XATTR_KEY = "s3_uploads_mulitpartupload_id";
     public static final String PROXY_S3_BUCKETPATHCACHE_TIMEOUT_MS =
-        "alluxio.proxy.s3.bucketpathcache.timeout";
+        alluLit() + "xio.proxy.s3.bucketpathcache.timeout";
     public static final String PROXY_S3_GLOBAL_READ_RATE_LIMIT_MB =
-        "alluxio.proxy.s3.global.read.rate.limit.mb";
+        alluLit() + "xio.proxy.s3.global.read.rate.limit.mb";
     public static final String PROXY_S3_SINGLE_CONNECTION_READ_RATE_LIMIT_MB =
-        "alluxio.proxy.s3.single.connection.read.rate.limit.mb";
+        alluLit() + "xio.proxy.s3.single.connection.read.rate.limit.mb";
     public static final String PROXY_S3_USE_POSITION_READ_RANGE_SIZE =
-        "alluxio.proxy.s3.use.position.read.range.size";
+        alluLit() + "xio.proxy.s3.use.position.read.range.size";
 
     //
     // Locality related properties
     //
-    public static final String LOCALITY_ORDER = "alluxio.locality.order";
-    public static final String LOCALITY_SCRIPT = "alluxio.locality.script";
-    public static final String LOCALITY_COMPARE_NODE_IP = "alluxio.locality.compare.node.ip";
+    public static final String LOCALITY_ORDER = alluLit() + "xio.locality.order";
+    public static final String LOCALITY_SCRIPT = alluLit() + "xio.locality.script";
+    public static final String LOCALITY_COMPARE_NODE_IP = alluLit() + "xio.locality.compare.node.ip";
 
     //
     // Log server related properties
     //
-    public static final String LOGSERVER_HOSTNAME = "alluxio.logserver.hostname";
-    public static final String LOGSERVER_LOGS_DIR = "alluxio.logserver.logs.dir";
-    public static final String LOGSERVER_PORT = "alluxio.logserver.port";
-    public static final String LOGSERVER_THREADS_MAX = "alluxio.logserver.threads.max";
-    public static final String LOGSERVER_THREADS_MIN = "alluxio.logserver.threads.min";
+    public static final String LOGSERVER_HOSTNAME = alluLit() + "xio.logserver.hostname";
+    public static final String LOGSERVER_LOGS_DIR = alluLit() + "xio.logserver.logs.dir";
+    public static final String LOGSERVER_PORT = alluLit() + "xio.logserver.port";
+    public static final String LOGSERVER_THREADS_MAX = alluLit() + "xio.logserver.threads.max";
+    public static final String LOGSERVER_THREADS_MIN = alluLit() + "xio.logserver.threads.min";
 
     //
     // User related properties
     //
     public static final String USER_BLOCK_AVOID_EVICTION_POLICY_RESERVED_BYTES =
-        "alluxio.user.block.avoid.eviction.policy.reserved.size.bytes";
+        alluLit() + "xio.user.block.avoid.eviction.policy.reserved.size.bytes";
     public static final String USER_BLOCK_MASTER_CLIENT_POOL_SIZE_MIN =
-        "alluxio.user.block.master.client.pool.size.min";
+        alluLit() + "xio.user.block.master.client.pool.size.min";
     public static final String USER_BLOCK_MASTER_CLIENT_POOL_SIZE_MAX =
-        "alluxio.user.block.master.client.pool.size.max";
+        alluLit() + "xio.user.block.master.client.pool.size.max";
     public static final String USER_BLOCK_MASTER_CLIENT_POOL_GC_INTERVAL_MS =
-        "alluxio.user.block.master.client.pool.gc.interval";
+        alluLit() + "xio.user.block.master.client.pool.gc.interval";
     public static final String USER_BLOCK_MASTER_CLIENT_POOL_GC_THRESHOLD_MS =
-        "alluxio.user.block.master.client.pool.gc.threshold";
+        alluLit() + "xio.user.block.master.client.pool.gc.threshold";
     public static final String USER_BLOCK_READ_METRICS_ENABLED =
-        "alluxio.user.block.read.metrics.enabled";
+        alluLit() + "xio.user.block.read.metrics.enabled";
     public static final String USER_BLOCK_REMOTE_READ_BUFFER_SIZE_BYTES =
-        "alluxio.user.block.remote.read.buffer.size.bytes";
+        alluLit() + "xio.user.block.remote.read.buffer.size.bytes";
     public static final String USER_BLOCK_SIZE_BYTES_DEFAULT =
-        "alluxio.user.block.size.bytes.default";
+        alluLit() + "xio.user.block.size.bytes.default";
     public static final String USER_BLOCK_READ_RETRY_SLEEP_MIN =
-        "alluxio.user.block.read.retry.sleep.base";
+        alluLit() + "xio.user.block.read.retry.sleep.base";
     public static final String USER_BLOCK_READ_RETRY_SLEEP_MAX =
-        "alluxio.user.block.read.retry.sleep.max";
+        alluLit() + "xio.user.block.read.retry.sleep.max";
     public static final String USER_BLOCK_READ_RETRY_MAX_DURATION =
-        "alluxio.user.block.read.retry.max.duration";
+        alluLit() + "xio.user.block.read.retry.max.duration";
     public static final String USER_BLOCK_WORKER_CLIENT_POOL_GC_THRESHOLD_MS =
-        "alluxio.user.block.worker.client.pool.gc.threshold";
+        alluLit() + "xio.user.block.worker.client.pool.gc.threshold";
     public static final String USER_BLOCK_WORKER_CLIENT_POOL_MIN =
-        "alluxio.user.block.worker.client.pool.min";
+        alluLit() + "xio.user.block.worker.client.pool.min";
     public static final String USER_BLOCK_WORKER_CLIENT_POOL_MAX =
-        "alluxio.user.block.worker.client.pool.max";
+        alluLit() + "xio.user.block.worker.client.pool.max";
     public static final String USER_BLOCK_WRITE_LOCATION_POLICY =
         "alluxio.user.block.write.location.policy.class";
     public static final String USER_CLIENT_CACHE_ASYNC_RESTORE_ENABLED =
-        "alluxio.user.client.cache.async.restore.enabled";
+        alluLit() + "xio.user.client.cache.async.restore.enabled";
     public static final String USER_CLIENT_CACHE_ASYNC_WRITE_ENABLED =
-        "alluxio.user.client.cache.async.write.enabled";
+        alluLit() + "xio.user.client.cache.async.write.enabled";
     public static final String USER_CLIENT_CACHE_ASYNC_WRITE_THREADS =
-        "alluxio.user.client.cache.async.write.threads";
+        alluLit() + "xio.user.client.cache.async.write.threads";
     public static final String USER_CLIENT_CACHE_ENABLED =
-        "alluxio.user.client.cache.enabled";
+        alluLit() + "xio.user.client.cache.enabled";
     public static final String USER_CLIENT_CACHE_FALLBACK_ENABLED =
-        "alluxio.user.client.cache.fallback.enabled";
+        alluLit() + "xio.user.client.cache.fallback.enabled";
     public static final String USER_CLIENT_CACHE_FILTER_CLASS =
         "alluxio.user.client.cache.filter.class";
     public static final String USER_CLIENT_CACHE_FILTER_CONFIG_FILE =
-        "alluxio.user.client.cache.filter.config-file";
+        alluLit() + "xio.user.client.cache.filter.config-file";
     public static final String USER_CLIENT_CACHE_EVICTION_RETRIES =
-        "alluxio.user.client.cache.eviction.retries";
+        alluLit() + "xio.user.client.cache.eviction.retries";
     public static final String USER_CLIENT_CACHE_EVICTOR_CLASS =
         "alluxio.user.client.cache.evictor.class";
     public static final String USER_CLIENT_CACHE_EVICTOR_LFU_LOGBASE =
-        "alluxio.user.client.cache.evictor.lfu.logbase";
+        alluLit() + "xio.user.client.cache.evictor.lfu.logbase";
     public static final String USER_CLIENT_CACHE_EVICTOR_NONDETERMINISTIC_ENABLED =
-        "alluxio.user.client.cache.evictor.nondeterministic.enabled";
+        alluLit() + "xio.user.client.cache.evictor.nondeterministic.enabled";
     public static final String USER_CLIENT_CACHE_SHADOW_ENABLED =
-        "alluxio.user.client.cache.shadow.enabled";
+        alluLit() + "xio.user.client.cache.shadow.enabled";
     public static final String USER_CLIENT_CACHE_SHADOW_TYPE =
-        "alluxio.user.client.cache.shadow.type";
+        alluLit() + "xio.user.client.cache.shadow.type";
     public static final String USER_CLIENT_CACHE_SHADOW_WINDOW =
-        "alluxio.user.client.cache.shadow.window";
+        alluLit() + "xio.user.client.cache.shadow.window";
     public static final String USER_CLIENT_CACHE_SHADOW_MEMORY_OVERHEAD =
-        "alluxio.user.client.cache.shadow.memory.overhead";
+        alluLit() + "xio.user.client.cache.shadow.memory.overhead";
     public static final String USER_CLIENT_CACHE_SHADOW_BLOOMFILTER_NUM =
-        "alluxio.user.client.cache.shadow.bloomfilter.num";
+        alluLit() + "xio.user.client.cache.shadow.bloomfilter.num";
     public static final String USER_CLIENT_CACHE_SHADOW_CUCKOO_CLOCK_BITS =
-        "alluxio.user.client.cache.shadow.cuckoo.clock.bits";
+        alluLit() + "xio.user.client.cache.shadow.cuckoo.clock.bits";
     public static final String USER_CLIENT_CACHE_SHADOW_CUCKOO_SIZE_BITS =
-        "alluxio.user.client.cache.shadow.cuckoo.size.bits";
+        alluLit() + "xio.user.client.cache.shadow.cuckoo.size.bits";
     public static final String USER_CLIENT_CACHE_SHADOW_CUCKOO_SCOPE_BITS =
-        "alluxio.user.client.cache.shadow.cuckoo.scope.bits";
+        alluLit() + "xio.user.client.cache.shadow.cuckoo.scope.bits";
     public static final String USER_CLIENT_CACHE_SHADOW_CUCKOO_SIZE_ENCODER_ENABLED =
-        "alluxio.user.client.cache.shadow.cuckoo.size.encoder.enabled";
+        alluLit() + "xio.user.client.cache.shadow.cuckoo.size.encoder.enabled";
     public static final String USER_CLIENT_CACHE_SHADOW_CUCKOO_SIZE_PREFIX_BITS =
-        "alluxio.user.client.cache.shadow.cuckoo.size.prefix.bits";
+        alluLit() + "xio.user.client.cache.shadow.cuckoo.size.prefix.bits";
     public static final String USER_CLIENT_CACHE_SHADOW_CUCKOO_SIZE_SUFFIX_BITS =
-        "alluxio.user.client.cache.shadow.cuckoo.size.suffix.bits";
+        alluLit() + "xio.user.client.cache.shadow.cuckoo.size.suffix.bits";
     public static final String USER_CLIENT_CACHE_DIRS =
-        "alluxio.user.client.cache.dirs";
+        alluLit() + "xio.user.client.cache.dirs";
     public static final String USER_CLIENT_CACHE_LOCAL_STORE_FILE_BUCKETS =
-        "alluxio.user.client.cache.local.store.file.buckets";
+        alluLit() + "xio.user.client.cache.local.store.file.buckets";
     public static final String USER_CLIENT_CACHE_IN_STREAM_BUFFER_SIZE =
-        "alluxio.user.client.cache.instream_buffer_size";
+        alluLit() + "xio.user.client.cache.instream_buffer_size";
     public static final String USER_CLIENT_CACHE_PAGE_SIZE =
-        "alluxio.user.client.cache.page.size";
+        alluLit() + "xio.user.client.cache.page.size";
     public static final String USER_CLIENT_CACHE_QUOTA_ENABLED =
-        "alluxio.user.client.cache.quota.enabled";
+        alluLit() + "xio.user.client.cache.quota.enabled";
     public static final String USER_CLIENT_CACHE_TTL_ENABLED =
-            "alluxio.user.client.cache.ttl.enabled";
+            alluLit() + "xio.user.client.cache.ttl.enabled";
     public static final String USER_CLIENT_CACHE_TTL_CHECK_INTERVAL_SECONDS =
-            "alluxio.user.client.cache.ttl.check.interval.seconds";
+            alluLit() + "xio.user.client.cache.ttl.check.interval.seconds";
     public static final String USER_CLIENT_CACHE_TTL_THRESHOLD_SECONDS =
-            "alluxio.user.client.cache.ttl.threshold.seconds";
+            alluLit() + "xio.user.client.cache.ttl.threshold.seconds";
     public static final String USER_CLIENT_CACHE_SIZE =
-        "alluxio.user.client.cache.size";
+        alluLit() + "xio.user.client.cache.size";
     public static final String USER_CLIENT_CACHE_STORE_OVERHEAD =
-        "alluxio.user.client.cache.store.overhead";
+        alluLit() + "xio.user.client.cache.store.overhead";
     public static final String USER_CLIENT_CACHE_STORE_TYPE =
-        "alluxio.user.client.cache.store.type";
+        alluLit() + "xio.user.client.cache.store.type";
     public static final String USER_CLIENT_CACHE_TIMEOUT_DURATION =
-        "alluxio.user.client.cache.timeout.duration";
+        alluLit() + "xio.user.client.cache.timeout.duration";
     public static final String USER_CLIENT_CACHE_TIMEOUT_THREADS =
-        "alluxio.user.client.cache.timeout.threads";
+        alluLit() + "xio.user.client.cache.timeout.threads";
     public static final String USER_CLIENT_CACHE_IDENTIFIER_INCLUDE_MTIME =
-        "alluxio.user.client.cache.include.mtime";
+        alluLit() + "xio.user.client.cache.include.mtime";
     public static final String USER_CLIENT_REPORT_VERSION_ENABLED =
-        "alluxio.user.client.report.version.enabled";
+        alluLit() + "xio.user.client.report.version.enabled";
     public static final String USER_CLIENT_CHECKSUM_CALCULATION_BATCH_SIZE =
-        "alluxio.useer.client.checksum.calculation.batch.size";
+        alluLit() + "xio.useer.client.checksum.calculation.batch.size";
     public static final String USER_CONF_CLUSTER_DEFAULT_ENABLED =
-        "alluxio.user.conf.cluster.default.enabled";
-    public static final String USER_CONF_SYNC_INTERVAL = "alluxio.user.conf.sync.interval";
-    public static final String USER_DATE_FORMAT_PATTERN = "alluxio.user.date.format.pattern";
-    public static final String USER_FILE_BUFFER_BYTES = "alluxio.user.file.buffer.bytes";
-    public static final String USER_FILE_RESERVED_BYTES = "alluxio.user.file.reserved.bytes";
+        alluLit() + "xio.user.conf.cluster.default.enabled";
+    public static final String USER_CONF_SYNC_INTERVAL = alluLit() + "xio.user.conf.sync.interval";
+    public static final String USER_DATE_FORMAT_PATTERN = alluLit() + "xio.user.date.format.pattern";
+    public static final String USER_FILE_BUFFER_BYTES = alluLit() + "xio.user.file.buffer.bytes";
+    public static final String USER_FILE_RESERVED_BYTES = alluLit() + "xio.user.file.reserved.bytes";
     public static final String USER_FILE_COPYFROMLOCAL_BLOCK_LOCATION_POLICY =
         "alluxio.user.file.copyfromlocal.block.location.policy.class";
     public static final String USER_FILE_DELETE_UNCHECKED =
-        "alluxio.user.file.delete.unchecked";
+        alluLit() + "xio.user.file.delete.unchecked";
     public static final String USER_FILE_DIRECT_ACCESS =
-        "alluxio.user.file.direct.access";
+        alluLit() + "xio.user.file.direct.access";
     public static final String USER_FILE_MASTER_CLIENT_POOL_SIZE_MIN =
-        "alluxio.user.file.master.client.pool.size.min";
+        alluLit() + "xio.user.file.master.client.pool.size.min";
     public static final String USER_FILE_MASTER_CLIENT_POOL_SIZE_MAX =
-        "alluxio.user.file.master.client.pool.size.max";
+        alluLit() + "xio.user.file.master.client.pool.size.max";
     public static final String USER_FILE_MASTER_CLIENT_POOL_GC_INTERVAL_MS =
-        "alluxio.user.file.master.client.pool.gc.interval";
+        alluLit() + "xio.user.file.master.client.pool.gc.interval";
     public static final String USER_FILE_MASTER_CLIENT_POOL_GC_THRESHOLD_MS =
-        "alluxio.user.file.master.client.pool.gc.threshold";
+        alluLit() + "xio.user.file.master.client.pool.gc.threshold";
     public static final String USER_FILE_METADATA_LOAD_TYPE =
-        "alluxio.user.file.metadata.load.type";
+        alluLit() + "xio.user.file.metadata.load.type";
     public static final String USER_FILE_METADATA_SYNC_INTERVAL =
-        "alluxio.user.file.metadata.sync.interval";
+        alluLit() + "xio.user.file.metadata.sync.interval";
     public static final String USER_FILE_PASSIVE_CACHE_ENABLED =
-        "alluxio.user.file.passive.cache.enabled";
-    public static final String USER_FILE_READ_TYPE_DEFAULT = "alluxio.user.file.readtype.default";
-    public static final String USER_FILE_PERSIST_ON_RENAME = "alluxio.user.file.persist.on.rename";
+        alluLit() + "xio.user.file.passive.cache.enabled";
+    public static final String USER_FILE_READ_TYPE_DEFAULT = alluLit() + "xio.user.file.readtype.default";
+    public static final String USER_FILE_PERSIST_ON_RENAME = alluLit() + "xio.user.file.persist.on.rename";
     public static final String USER_FILE_PERSISTENCE_INITIAL_WAIT_TIME =
-        "alluxio.user.file.persistence.initial.wait.time";
-    public static final String USER_FILE_REPLICATION_MAX = "alluxio.user.file.replication.max";
-    public static final String USER_FILE_REPLICATION_MIN = "alluxio.user.file.replication.min";
-    public static final String USER_FILE_TARGET_MEDIA = "alluxio.user.file.target.media";
+        alluLit() + "xio.user.file.persistence.initial.wait.time";
+    public static final String USER_FILE_REPLICATION_MAX = alluLit() + "xio.user.file.replication.max";
+    public static final String USER_FILE_REPLICATION_MIN = alluLit() + "xio.user.file.replication.min";
+    public static final String USER_FILE_TARGET_MEDIA = alluLit() + "xio.user.file.target.media";
     public static final String USER_FILE_REPLICATION_DURABLE =
-        "alluxio.user.file.replication.durable";
+        alluLit() + "xio.user.file.replication.durable";
     public static final String USER_FILE_SEQUENTIAL_PREAD_THRESHOLD =
-        "alluxio.user.file.sequential.pread.threshold";
-    public static final String USER_FILE_UFS_TIER_ENABLED = "alluxio.user.file.ufs.tier.enabled";
+        alluLit() + "xio.user.file.sequential.pread.threshold";
+    public static final String USER_FILE_UFS_TIER_ENABLED = alluLit() + "xio.user.file.ufs.tier.enabled";
     public static final String USER_FILE_WAITCOMPLETED_POLL_MS =
-        "alluxio.user.file.waitcompleted.poll";
+        alluLit() + "xio.user.file.waitcompleted.poll";
     public static final String USER_FILE_CREATE_TTL =
-        "alluxio.user.file.create.ttl";
+        alluLit() + "xio.user.file.create.ttl";
     public static final String USER_FILE_CREATE_TTL_ACTION =
-        "alluxio.user.file.create.ttl.action";
-    public static final String USER_FILE_WRITE_TYPE_DEFAULT = "alluxio.user.file.writetype.default";
+        alluLit() + "xio.user.file.create.ttl.action";
+    public static final String USER_FILE_WRITE_TYPE_DEFAULT = alluLit() + "xio.user.file.writetype.default";
     public static final String USER_FILE_WRITE_TIER_DEFAULT =
-        "alluxio.user.file.write.tier.default";
+        alluLit() + "xio.user.file.write.tier.default";
     public static final String USER_FILE_INCLUDE_OPERATION_ID =
-        "alluxio.user.file.include.operation.id";
+        alluLit() + "xio.user.file.include.operation.id";
     public static final String USER_FILE_IN_STREAM_STATUS_EXPIRATION_TIME =
-        "alluxio.user.file.in.stream.status.expiration.time";
+        alluLit() + "xio.user.file.in.stream.status.expiration.time";
     public static final String USER_FILE_WRITE_INIT_SLEEP_MIN =
-        "alluxio.user.file.write.init.sleep.min";
+        alluLit() + "xio.user.file.write.init.sleep.min";
     public static final String USER_FILE_WRITE_INIT_SLEEP_MAX =
-        "alluxio.user.file.write.init.sleep.max";
+        alluLit() + "xio.user.file.write.init.sleep.max";
     public static final String USER_FILE_WRITE_INIT_MAX_DURATION =
-        "alluxio.user.file.write.init.max.duration";
-    public static final String USER_HOSTNAME = "alluxio.user.hostname";
+        alluLit() + "xio.user.file.write.init.max.duration";
+    public static final String USER_HOSTNAME = alluLit() + "xio.user.hostname";
     public static final String USER_HDFS_CLIENT_EXCLUDE_MOUNT_INFO_ON_LIST_STATUS =
-        "alluxio.user.hdfs.client.exclude.mount.info.on.list.status";
+        alluLit() + "xio.user.hdfs.client.exclude.mount.info.on.list.status";
     public static final String USER_LOCAL_READER_CHUNK_SIZE_BYTES =
-        "alluxio.user.local.reader.chunk.size.bytes";
+        alluLit() + "xio.user.local.reader.chunk.size.bytes";
     public static final String USER_LOCAL_WRITER_CHUNK_SIZE_BYTES =
-        "alluxio.user.local.writer.chunk.size.bytes";
-    public static final String USER_LOGGING_THRESHOLD = "alluxio.user.logging.threshold";
-    public static final String USER_MASTER_POLLING_TIMEOUT = "alluxio.user.master.polling.timeout";
+        alluLit() + "xio.user.local.writer.chunk.size.bytes";
+    public static final String USER_LOGGING_THRESHOLD = alluLit() + "xio.user.logging.threshold";
+    public static final String USER_MASTER_POLLING_TIMEOUT = alluLit() + "xio.user.master.polling.timeout";
     public static final String USER_MASTER_POLLING_CONCURRENT =
-        "alluxio.user.master.polling.concurrent";
+        alluLit() + "xio.user.master.polling.concurrent";
     public static final String USER_METADATA_CACHE_ENABLED =
-        "alluxio.user.metadata.cache.enabled";
+        alluLit() + "xio.user.metadata.cache.enabled";
     public static final String USER_METADATA_CACHE_MAX_SIZE =
-        "alluxio.user.metadata.cache.max.size";
+        alluLit() + "xio.user.metadata.cache.max.size";
     public static final String USER_METADATA_CACHE_EXPIRATION_TIME =
-        "alluxio.user.metadata.cache.expiration.time";
+        alluLit() + "xio.user.metadata.cache.expiration.time";
     public static final String USER_METRICS_COLLECTION_ENABLED =
-        "alluxio.user.metrics.collection.enabled";
+        alluLit() + "xio.user.metrics.collection.enabled";
     public static final String USER_METRICS_HEARTBEAT_INTERVAL_MS =
-        "alluxio.user.metrics.heartbeat.interval";
-    public static final String USER_APP_ID = "alluxio.user.app.id";
+        alluLit() + "xio.user.metrics.heartbeat.interval";
+    public static final String USER_APP_ID = alluLit() + "xio.user.app.id";
     public static final String USER_NETWORK_DATA_TIMEOUT =
-        "alluxio.user.network.data.timeout";
+        alluLit() + "xio.user.network.data.timeout";
     public static final String USER_NETWORK_READER_BUFFER_SIZE_MESSAGES =
-        "alluxio.user.network.reader.buffer.size.messages";
+        alluLit() + "xio.user.network.reader.buffer.size.messages";
     public static final String USER_NETWORK_READER_CHUNK_SIZE_BYTES =
-        "alluxio.user.network.reader.chunk.size.bytes";
+        alluLit() + "xio.user.network.reader.chunk.size.bytes";
     public static final String USER_NETWORK_WRITER_BUFFER_SIZE_MESSAGES =
-        "alluxio.user.network.writer.buffer.size.messages";
+        alluLit() + "xio.user.network.writer.buffer.size.messages";
     public static final String USER_NETWORK_WRITER_CHUNK_SIZE_BYTES =
-        "alluxio.user.network.writer.chunk.size.bytes";
+        alluLit() + "xio.user.network.writer.chunk.size.bytes";
     public static final String USER_NETWORK_WRITER_CLOSE_TIMEOUT =
-        "alluxio.user.network.writer.close.timeout";
+        alluLit() + "xio.user.network.writer.close.timeout";
     public static final String USER_NETWORK_WRITER_FLUSH_TIMEOUT =
-        "alluxio.user.network.writer.flush.timeout";
+        alluLit() + "xio.user.network.writer.flush.timeout";
     public static final String USER_NETWORK_ZEROCOPY_ENABLED =
-        "alluxio.user.network.zerocopy.enabled";
+        alluLit() + "xio.user.network.zerocopy.enabled";
     public static final String USER_SKIP_AUTHORITY_CHECK =
-        "alluxio.user.skip.authority.check";
+        alluLit() + "xio.user.skip.authority.check";
     public static final String USER_STREAMING_DATA_TIMEOUT =
-        "alluxio.user.streaming.data.timeout";
+        alluLit() + "xio.user.streaming.data.timeout";
     public static final String USER_STREAMING_DATA_READ_TIMEOUT =
-        "alluxio.user.streaming.data.read.timeout";
+        alluLit() + "xio.user.streaming.data.read.timeout";
     public static final String USER_STREAMING_DATA_WRITE_TIMEOUT =
-        "alluxio.user.streaming.data.write.timeout";
+        alluLit() + "xio.user.streaming.data.write.timeout";
     public static final String USER_STREAMING_READER_BUFFER_SIZE_MESSAGES =
-        "alluxio.user.streaming.reader.buffer.size.messages";
+        alluLit() + "xio.user.streaming.reader.buffer.size.messages";
     public static final String USER_STREAMING_READER_CHUNK_SIZE_BYTES =
-        "alluxio.user.streaming.reader.chunk.size.bytes";
+        alluLit() + "xio.user.streaming.reader.chunk.size.bytes";
     public static final String USER_STREAMING_READER_CLOSE_TIMEOUT =
-        "alluxio.user.streaming.reader.close.timeout";
+        alluLit() + "xio.user.streaming.reader.close.timeout";
     public static final String USER_STREAMING_WRITER_BUFFER_SIZE_MESSAGES =
-        "alluxio.user.streaming.writer.buffer.size.messages";
+        alluLit() + "xio.user.streaming.writer.buffer.size.messages";
     public static final String USER_STREAMING_WRITER_CHUNK_SIZE_BYTES =
-        "alluxio.user.streaming.writer.chunk.size.bytes";
+        alluLit() + "xio.user.streaming.writer.chunk.size.bytes";
     public static final String USER_STREAMING_WRITER_CLOSE_TIMEOUT =
-        "alluxio.user.streaming.writer.close.timeout";
+        alluLit() + "xio.user.streaming.writer.close.timeout";
     public static final String USER_STREAMING_WRITER_FLUSH_TIMEOUT =
-        "alluxio.user.streaming.writer.flush.timeout";
+        alluLit() + "xio.user.streaming.writer.flush.timeout";
     public static final String USER_STREAMING_ZEROCOPY_ENABLED =
-        "alluxio.user.streaming.zerocopy.enabled";
+        alluLit() + "xio.user.streaming.zerocopy.enabled";
     public static final String USER_NETWORK_FLOWCONTROL_WINDOW =
-        "alluxio.user.network.flowcontrol.window";
+        alluLit() + "xio.user.network.flowcontrol.window";
     public static final String USER_NETWORK_KEEPALIVE_TIME =
-        "alluxio.user.network.keepalive.time";
+        alluLit() + "xio.user.network.keepalive.time";
     public static final String USER_NETWORK_KEEPALIVE_TIMEOUT =
-        "alluxio.user.network.keepalive.timeout";
+        alluLit() + "xio.user.network.keepalive.timeout";
     public static final String USER_NETWORK_MAX_INBOUND_MESSAGE_SIZE =
-        "alluxio.user.network.max.inbound.message.size";
+        alluLit() + "xio.user.network.max.inbound.message.size";
     public static final String USER_NETWORK_NETTY_CHANNEL =
-        "alluxio.user.network.netty.channel";
+        alluLit() + "xio.user.network.netty.channel";
     public static final String USER_NETWORK_NETTY_WORKER_THREADS =
-        "alluxio.user.network.netty.worker.threads";
+        alluLit() + "xio.user.network.netty.worker.threads";
     public static final String USER_NETWORK_RPC_FLOWCONTROL_WINDOW =
-        "alluxio.user.network.rpc.flowcontrol.window";
+        alluLit() + "xio.user.network.rpc.flowcontrol.window";
     public static final String USER_NETWORK_RPC_KEEPALIVE_TIME =
-        "alluxio.user.network.rpc.keepalive.time";
+        alluLit() + "xio.user.network.rpc.keepalive.time";
     public static final String USER_NETWORK_RPC_KEEPALIVE_TIMEOUT =
-        "alluxio.user.network.rpc.keepalive.timeout";
+        alluLit() + "xio.user.network.rpc.keepalive.timeout";
     public static final String USER_NETWORK_RPC_MAX_INBOUND_MESSAGE_SIZE =
-        "alluxio.user.network.rpc.max.inbound.message.size";
+        alluLit() + "xio.user.network.rpc.max.inbound.message.size";
     public static final String USER_NETWORK_RPC_NETTY_CHANNEL =
-        "alluxio.user.network.rpc.netty.channel";
+        alluLit() + "xio.user.network.rpc.netty.channel";
     public static final String USER_NETWORK_RPC_NETTY_WORKER_THREADS =
-        "alluxio.user.network.rpc.netty.worker.threads";
+        alluLit() + "xio.user.network.rpc.netty.worker.threads";
     public static final String USER_NETWORK_RPC_MAX_CONNECTIONS =
-        "alluxio.user.network.rpc.max.connections";
+        alluLit() + "xio.user.network.rpc.max.connections";
     public static final String USER_NETWORK_STREAMING_FLOWCONTROL_WINDOW =
-        "alluxio.user.network.streaming.flowcontrol.window";
+        alluLit() + "xio.user.network.streaming.flowcontrol.window";
     public static final String USER_NETWORK_STREAMING_KEEPALIVE_TIME =
-        "alluxio.user.network.streaming.keepalive.time";
+        alluLit() + "xio.user.network.streaming.keepalive.time";
     public static final String USER_NETWORK_STREAMING_KEEPALIVE_TIMEOUT =
-        "alluxio.user.network.streaming.keepalive.timeout";
+        alluLit() + "xio.user.network.streaming.keepalive.timeout";
     public static final String USER_NETWORK_STREAMING_MAX_INBOUND_MESSAGE_SIZE =
-        "alluxio.user.network.streaming.max.inbound.message.size";
+        alluLit() + "xio.user.network.streaming.max.inbound.message.size";
     public static final String USER_NETWORK_STREAMING_NETTY_CHANNEL =
-        "alluxio.user.network.streaming.netty.channel";
+        alluLit() + "xio.user.network.streaming.netty.channel";
     public static final String USER_NETWORK_STREAMING_NETTY_WORKER_THREADS =
-        "alluxio.user.network.streaming.netty.worker.threads";
+        alluLit() + "xio.user.network.streaming.netty.worker.threads";
     public static final String USER_NETWORK_STREAMING_MAX_CONNECTIONS =
-        "alluxio.user.network.streaming.max.connections";
+        alluLit() + "xio.user.network.streaming.max.connections";
     public static final String USER_RPC_RETRY_BASE_SLEEP_MS =
-        "alluxio.user.rpc.retry.base.sleep";
+        alluLit() + "xio.user.rpc.retry.base.sleep";
     public static final String USER_RPC_RETRY_MAX_DURATION =
-        "alluxio.user.rpc.retry.max.duration";
+        alluLit() + "xio.user.rpc.retry.max.duration";
     public static final String USER_RPC_SHUFFLE_MASTERS_ENABLED =
-        "alluxio.user.rpc.shuffle.masters.enabled";
-    public static final String USER_RPC_RETRY_MAX_SLEEP_MS = "alluxio.user.rpc.retry.max.sleep";
+        alluLit() + "xio.user.rpc.shuffle.masters.enabled";
+    public static final String USER_RPC_RETRY_MAX_SLEEP_MS = alluLit() + "xio.user.rpc.retry.max.sleep";
     public static final String USER_UFS_BLOCK_LOCATION_ALL_FALLBACK_ENABLED =
-        "alluxio.user.ufs.block.location.all.fallback.enabled";
+        alluLit() + "xio.user.ufs.block.location.all.fallback.enabled";
     public static final String USER_UFS_BLOCK_READ_LOCATION_POLICY =
         "alluxio.user.ufs.block.read.location.policy";
     public static final String USER_UFS_BLOCK_READ_LOCATION_POLICY_DETERMINISTIC_HASH_SHARDS =
-        "alluxio.user.ufs.block.read.location.policy.deterministic.hash.shards";
+        alluLit() + "xio.user.ufs.block.read.location.policy.deterministic.hash.shards";
     public static final String USER_UFS_BLOCK_READ_LOCATION_POLICY_CACHE_SIZE =
-        "alluxio.user.ufs.block.read.location.policy.cache.size";
+        alluLit() + "xio.user.ufs.block.read.location.policy.cache.size";
     public static final String USER_UFS_BLOCK_READ_LOCATION_POLICY_CACHE_EXPIRATION_TIME =
-        "alluxio.user.ufs.block.read.location.policy.cache.expiration.time";
+        alluLit() + "xio.user.ufs.block.read.location.policy.cache.expiration.time";
     public static final String USER_UFS_BLOCK_READ_CONCURRENCY_MAX =
-        "alluxio.user.ufs.block.read.concurrency.max";
+        alluLit() + "xio.user.ufs.block.read.concurrency.max";
     public static final String USER_UNSAFE_DIRECT_LOCAL_IO_ENABLED =
-        "alluxio.user.unsafe.direct.local.io.enabled";
+        alluLit() + "xio.user.unsafe.direct.local.io.enabled";
     public static final String USER_UPDATE_FILE_ACCESSTIME_DISABLED =
-        "alluxio.user.update.file.accesstime.disabled";
-    public static final String USER_SHORT_CIRCUIT_ENABLED = "alluxio.user.short.circuit.enabled";
+        alluLit() + "xio.user.update.file.accesstime.disabled";
+    public static final String USER_SHORT_CIRCUIT_ENABLED = alluLit() + "xio.user.short.circuit.enabled";
     public static final String USER_SHORT_CIRCUIT_PREFERRED =
-        "alluxio.user.short.circuit.preferred";
+        alluLit() + "xio.user.short.circuit.preferred";
     public static final String USER_WORKER_LIST_REFRESH_INTERVAL =
-        "alluxio.user.worker.list.refresh.interval";
+        alluLit() + "xio.user.worker.list.refresh.interval";
 
     //
     // FUSE integration related properties
     //
     public static final String FUSE_AUTH_POLICY_CLASS = "alluxio.fuse.auth.policy.class";
     public static final String FUSE_AUTH_POLICY_CUSTOM_USER =
-        "alluxio.fuse.auth.policy.custom.user";
+        alluLit() + "xio.fuse.auth.policy.custom.user";
     public static final String FUSE_AUTH_POLICY_CUSTOM_GROUP =
-        "alluxio.fuse.auth.policy.custom.group";
-    public static final String FUSE_CACHED_PATHS_MAX = "alluxio.fuse.cached.paths.max";
-    public static final String FUSE_DEBUG_ENABLED = "alluxio.fuse.debug.enabled";
-    public static final String FUSE_FS_NAME = "alluxio.fuse.fs.name";
-    public static final String FUSE_JNIFUSE_ENABLED = "alluxio.fuse.jnifuse.enabled";
+        alluLit() + "xio.fuse.auth.policy.custom.group";
+    public static final String FUSE_CACHED_PATHS_MAX = alluLit() + "xio.fuse.cached.paths.max";
+    public static final String FUSE_DEBUG_ENABLED = alluLit() + "xio.fuse.debug.enabled";
+    public static final String FUSE_FS_NAME = alluLit() + "xio.fuse.fs.name";
+    public static final String FUSE_JNIFUSE_ENABLED = alluLit() + "xio.fuse.jnifuse.enabled";
     public static final String FUSE_SHARED_CACHING_READER_ENABLED
-        = "alluxio.fuse.shared.caching.reader.enabled";
-    public static final String FUSE_LOGGING_THRESHOLD = "alluxio.fuse.logging.threshold";
+        = alluLit() + "xio.fuse.shared.caching.reader.enabled";
+    public static final String FUSE_LOGGING_THRESHOLD = alluLit() + "xio.fuse.logging.threshold";
     public static final String FUSE_MOUNT_ALLUXIO_PATH =
-        "alluxio.fuse.mount.alluxio.path";
+        alluLit() + "xio.fuse.mount.alluxio.path";
     public static final String FUSE_MOUNT_OPTIONS =
-        "alluxio.fuse.mount.options";
+        alluLit() + "xio.fuse.mount.options";
     public static final String FUSE_MOUNT_POINT =
-        "alluxio.fuse.mount.point";
+        alluLit() + "xio.fuse.mount.point";
     public static final String FUSE_STAT_CACHE_REFRESH_INTERVAL =
-        "alluxio.fuse.stat.cache.refresh.interval";
+        alluLit() + "xio.fuse.stat.cache.refresh.interval";
     public static final String FUSE_UMOUNT_TIMEOUT =
-        "alluxio.fuse.umount.timeout";
+        alluLit() + "xio.fuse.umount.timeout";
     public static final String FUSE_USER_GROUP_TRANSLATION_ENABLED =
-        "alluxio.fuse.user.group.translation.enabled";
+        alluLit() + "xio.fuse.user.group.translation.enabled";
     public static final String FUSE_SPECIAL_COMMAND_ENABLED =
-        "alluxio.fuse.special.command.enabled";
+        alluLit() + "xio.fuse.special.command.enabled";
     //
     // Standalone FUSE process related properties
     //
-    public static final String FUSE_WEB_ENABLED = "alluxio.fuse.web.enabled";
-    public static final String FUSE_WEB_BIND_HOST = "alluxio.fuse.web.bind.host";
-    public static final String FUSE_WEB_HOSTNAME = "alluxio.fuse.web.hostname";
-    public static final String FUSE_WEB_PORT = "alluxio.fuse.web.port";
+    public static final String FUSE_WEB_ENABLED = alluLit() + "xio.fuse.web.enabled";
+    public static final String FUSE_WEB_BIND_HOST = alluLit() + "xio.fuse.web.bind.host";
+    public static final String FUSE_WEB_HOSTNAME = alluLit() + "xio.fuse.web.hostname";
+    public static final String FUSE_WEB_PORT = alluLit() + "xio.fuse.web.port";
     public static final String FUSE_JNIFUSE_LIBFUSE_VERSION =
-        "alluxio.fuse.jnifuse.libfuse.version";
+        alluLit() + "xio.fuse.jnifuse.libfuse.version";
 
     //
     // Security related properties
@@ -9377,143 +9381,143 @@ public final class PropertyKey implements Comparable<PropertyKey> {
     public static final String SECURITY_AUTHENTICATION_CUSTOM_PROVIDER_CLASS =
         "alluxio.security.authentication.custom.provider.class";
     public static final String SECURITY_AUTHENTICATION_TYPE =
-        "alluxio.security.authentication.type";
+        alluLit() + "xio.security.authentication.type";
     public static final String SECURITY_AUTHORIZATION_PERMISSION_ENABLED =
-        "alluxio.security.authorization.permission.enabled";
+        alluLit() + "xio.security.authorization.permission.enabled";
     public static final String SECURITY_AUTHORIZATION_PERMISSION_SUPERGROUP =
-        "alluxio.security.authorization.permission.supergroup";
+        alluLit() + "xio.security.authorization.permission.supergroup";
     public static final String SECURITY_AUTHORIZATION_PERMISSION_UMASK =
-        "alluxio.security.authorization.permission.umask";
+        alluLit() + "xio.security.authorization.permission.umask";
     public static final String SECURITY_GROUP_MAPPING_CACHE_TIMEOUT_MS =
-        "alluxio.security.group.mapping.cache.timeout";
+        alluLit() + "xio.security.group.mapping.cache.timeout";
     public static final String SECURITY_GROUP_MAPPING_CLASS =
         "alluxio.security.group.mapping.class";
     public static final String SECURITY_LOGIN_IMPERSONATION_USERNAME =
-        "alluxio.security.login.impersonation.username";
-    public static final String SECURITY_LOGIN_USERNAME = "alluxio.security.login.username";
+        alluLit() + "xio.security.login.impersonation.username";
+    public static final String SECURITY_LOGIN_USERNAME = alluLit() + "xio.security.login.username";
     public static final String AUTHENTICATION_INACTIVE_CHANNEL_REAUTHENTICATE_PERIOD =
-        "alluxio.security.stale.channel.purge.interval";
+        alluLit() + "xio.security.stale.channel.purge.interval";
     public static final String S3_REST_AUTHENTICATION_ENABLED =
-        "alluxio.s3.rest.authentication.enabled";
+        alluLit() + "xio.s3.rest.authentication.enabled";
     public static final String S3_REST_AUTHENTICATOR_CLASSNAME =
-        "alluxio.s3.rest.authenticator.classname";
+        alluLit() + "xio.s3.rest.authenticator.classname";
 
     //
     // Network TLS support
     //
     public static final String NETWORK_TLS_SSL_CONTEXT_PROVIDER_CLASSNAME =
         "alluxio.network.tls.ssl.context.provider.classname";
-    public static final String NETWORK_TLS_ENABLED = "alluxio.network.tls.enabled";
+    public static final String NETWORK_TLS_ENABLED = alluLit() + "xio.network.tls.enabled";
 
     // new job service
-    public static final String JOB_BATCH_SIZE = "alluxio.job.batch.size";
-    public static final String JOB_RETENTION_TIME = "alluxio.job.retention.time";
+    public static final String JOB_BATCH_SIZE = alluLit() + "xio.job.batch.size";
+    public static final String JOB_RETENTION_TIME = alluLit() + "xio.job.retention.time";
 
     //
     // Job service
     //
     public static final String JOB_MASTER_CLIENT_THREADS =
-        "alluxio.job.master.client.threads";
+        alluLit() + "xio.job.master.client.threads";
     public static final String JOB_MASTER_FINISHED_JOB_PURGE_COUNT =
-        "alluxio.job.master.finished.job.purge.count";
+        alluLit() + "xio.job.master.finished.job.purge.count";
     public static final String JOB_MASTER_FINISHED_JOB_RETENTION_TIME =
-        "alluxio.job.master.finished.job.retention.time";
+        alluLit() + "xio.job.master.finished.job.retention.time";
     public static final String JOB_MASTER_JOB_TRACE_RETENTION_TIME =
-        "alluxio.job.master.job.trace.retention.time";
-    public static final String JOB_MASTER_JOB_CAPACITY = "alluxio.job.master.job.capacity";
+        alluLit() + "xio.job.master.job.trace.retention.time";
+    public static final String JOB_MASTER_JOB_CAPACITY = alluLit() + "xio.job.master.job.capacity";
     public static final String JOB_MASTER_MASTER_HEARTBEAT_INTERVAL =
-        "alluxio.job.master.master.heartbeat.interval";
+        alluLit() + "xio.job.master.master.heartbeat.interval";
     public static final String JOB_MASTER_MASTER_TIMEOUT =
-        "alluxio.job.master.master.timeout";
+        alluLit() + "xio.job.master.master.timeout";
     public static final String JOB_MASTER_WORKER_HEARTBEAT_INTERVAL =
-        "alluxio.job.master.worker.heartbeat.interval";
+        alluLit() + "xio.job.master.worker.heartbeat.interval";
     public static final String JOB_MASTER_WORKER_TIMEOUT =
-        "alluxio.job.master.worker.timeout";
+        alluLit() + "xio.job.master.worker.timeout";
 
-    public static final String JOB_MASTER_BIND_HOST = "alluxio.job.master.bind.host";
-    public static final String JOB_MASTER_HOSTNAME = "alluxio.job.master.hostname";
+    public static final String JOB_MASTER_BIND_HOST = alluLit() + "xio.job.master.bind.host";
+    public static final String JOB_MASTER_HOSTNAME = alluLit() + "xio.job.master.hostname";
     public static final String JOB_MASTER_LOST_MASTER_INTERVAL =
-            "alluxio.job.master.lost.master.interval";
+            alluLit() + "xio.job.master.lost.master.interval";
     public static final String JOB_MASTER_LOST_WORKER_INTERVAL =
-        "alluxio.job.master.lost.worker.interval";
-    public static final String JOB_MASTER_RPC_PORT = "alluxio.job.master.rpc.port";
-    public static final String JOB_MASTER_WEB_BIND_HOST = "alluxio.job.master.web.bind.host";
-    public static final String JOB_MASTER_WEB_HOSTNAME = "alluxio.job.master.web.hostname";
-    public static final String JOB_MASTER_WEB_PORT = "alluxio.job.master.web.port";
+        alluLit() + "xio.job.master.lost.worker.interval";
+    public static final String JOB_MASTER_RPC_PORT = alluLit() + "xio.job.master.rpc.port";
+    public static final String JOB_MASTER_WEB_BIND_HOST = alluLit() + "xio.job.master.web.bind.host";
+    public static final String JOB_MASTER_WEB_HOSTNAME = alluLit() + "xio.job.master.web.hostname";
+    public static final String JOB_MASTER_WEB_PORT = alluLit() + "xio.job.master.web.port";
 
-    public static final String JOB_MASTER_RPC_ADDRESSES = "alluxio.job.master.rpc.addresses";
+    public static final String JOB_MASTER_RPC_ADDRESSES = alluLit() + "xio.job.master.rpc.addresses";
     public static final String JOB_MASTER_EMBEDDED_JOURNAL_ADDRESSES =
-        "alluxio.job.master.embedded.journal.addresses";
+        alluLit() + "xio.job.master.embedded.journal.addresses";
     public static final String JOB_MASTER_EMBEDDED_JOURNAL_PORT =
-        "alluxio.job.master.embedded.journal.port";
+        alluLit() + "xio.job.master.embedded.journal.port";
     // Job master RPC server related.
     public static final String JOB_MASTER_NETWORK_MAX_INBOUND_MESSAGE_SIZE =
-        "alluxio.job.master.network.max.inbound.message.size";
+        alluLit() + "xio.job.master.network.max.inbound.message.size";
     public static final String JOB_MASTER_NETWORK_FLOWCONTROL_WINDOW =
-        "alluxio.job.master.network.flowcontrol.window";
+        alluLit() + "xio.job.master.network.flowcontrol.window";
     public static final String JOB_MASTER_NETWORK_KEEPALIVE_TIME_MS =
-        "alluxio.job.master.network.keepalive.time";
+        alluLit() + "xio.job.master.network.keepalive.time";
     public static final String JOB_MASTER_NETWORK_KEEPALIVE_TIMEOUT_MS =
-        "alluxio.job.master.network.keepalive.timeout";
+        alluLit() + "xio.job.master.network.keepalive.timeout";
     public static final String JOB_MASTER_NETWORK_PERMIT_KEEPALIVE_TIME_MS =
-        "alluxio.job.master.network.permit.keepalive.time";
-    public static final String JOB_REQUEST_BATCH_SIZE = "alluxio.job.request.batch.size";
-    public static final String JOB_WORKER_BIND_HOST = "alluxio.job.worker.bind.host";
-    public static final String JOB_WORKER_DATA_PORT = "alluxio.job.worker.data.port";
-    public static final String JOB_WORKER_HOSTNAME = "alluxio.job.worker.hostname";
-    public static final String JOB_WORKER_RPC_PORT = "alluxio.job.worker.rpc.port";
-    public static final String JOB_WORKER_THREADPOOL_SIZE = "alluxio.job.worker.threadpool.size";
-    public static final String JOB_WORKER_THROTTLING = "alluxio.job.worker.throttling";
-    public static final String JOB_WORKER_WEB_BIND_HOST = "alluxio.job.worker.web.bind.host";
-    public static final String JOB_WORKER_WEB_PORT = "alluxio.job.worker.web.port";
+        alluLit() + "xio.job.master.network.permit.keepalive.time";
+    public static final String JOB_REQUEST_BATCH_SIZE = alluLit() + "xio.job.request.batch.size";
+    public static final String JOB_WORKER_BIND_HOST = alluLit() + "xio.job.worker.bind.host";
+    public static final String JOB_WORKER_DATA_PORT = alluLit() + "xio.job.worker.data.port";
+    public static final String JOB_WORKER_HOSTNAME = alluLit() + "xio.job.worker.hostname";
+    public static final String JOB_WORKER_RPC_PORT = alluLit() + "xio.job.worker.rpc.port";
+    public static final String JOB_WORKER_THREADPOOL_SIZE = alluLit() + "xio.job.worker.threadpool.size";
+    public static final String JOB_WORKER_THROTTLING = alluLit() + "xio.job.worker.throttling";
+    public static final String JOB_WORKER_WEB_BIND_HOST = alluLit() + "xio.job.worker.web.bind.host";
+    public static final String JOB_WORKER_WEB_PORT = alluLit() + "xio.job.worker.web.port";
 
-    public static final String ZOOKEEPER_JOB_ELECTION_PATH = "alluxio.zookeeper.job.election.path";
-    public static final String ZOOKEEPER_JOB_LEADER_PATH = "alluxio.zookeeper.job.leader.path";
+    public static final String ZOOKEEPER_JOB_ELECTION_PATH = alluLit() + "xio.zookeeper.job.election.path";
+    public static final String ZOOKEEPER_JOB_LEADER_PATH = alluLit() + "xio.zookeeper.job.leader.path";
 
     //
     // JVM Monitor related properties
     //
     public static final String JVM_MONITOR_WARN_THRESHOLD_MS =
-        "alluxio.jvm.monitor.warn.threshold";
+        alluLit() + "xio.jvm.monitor.warn.threshold";
     public static final String JVM_MONITOR_INFO_THRESHOLD_MS =
-        "alluxio.jvm.monitor.info.threshold";
+        alluLit() + "xio.jvm.monitor.info.threshold";
     public static final String JVM_MONITOR_SLEEP_INTERVAL_MS =
-        "alluxio.jvm.monitor.sleep.interval";
-    public static final String MASTER_JVM_MONITOR_ENABLED = "alluxio.master.jvm.monitor.enabled";
-    public static final String WORKER_JVM_MONITOR_ENABLED = "alluxio.worker.jvm.monitor.enabled";
+        alluLit() + "xio.jvm.monitor.sleep.interval";
+    public static final String MASTER_JVM_MONITOR_ENABLED = alluLit() + "xio.master.jvm.monitor.enabled";
+    public static final String WORKER_JVM_MONITOR_ENABLED = alluLit() + "xio.worker.jvm.monitor.enabled";
     public static final String STANDALONE_FUSE_JVM_MONITOR_ENABLED
-        = "alluxio.standalone.fuse.jvm.monitor.enabled";
+        = alluLit() + "xio.standalone.fuse.jvm.monitor.enabled";
 
     //
     // Table service properties
     //
-    public static final String TABLE_ENABLED = "alluxio.table.enabled";
-    public static final String TABLE_CATALOG_PATH = "alluxio.table.catalog.path";
+    public static final String TABLE_ENABLED = alluLit() + "xio.table.enabled";
+    public static final String TABLE_CATALOG_PATH = alluLit() + "xio.table.catalog.path";
     public static final String TABLE_CATALOG_UDB_SYNC_TIMEOUT =
-        "alluxio.table.catalog.udb.sync.timeout";
+        alluLit() + "xio.table.catalog.udb.sync.timeout";
     public static final String TABLE_JOURNAL_PARTITIONS_CHUNK_SIZE =
-        "alluxio.table.journal.partitions.chunk.size";
+        alluLit() + "xio.table.journal.partitions.chunk.size";
     public static final String TABLE_TRANSFORM_MANAGER_JOB_MONITOR_INTERVAL =
-        "alluxio.table.transform.manager.job.monitor.interval";
+        alluLit() + "xio.table.transform.manager.job.monitor.interval";
     public static final String TABLE_TRANSFORM_MANAGER_JOB_HISTORY_RETENTION_TIME =
-        "alluxio.table.transform.manager.job.history.retention.time";
+        alluLit() + "xio.table.transform.manager.job.history.retention.time";
     public static final String TABLE_UDB_HIVE_CLIENTPOOL_MIN =
-        "alluxio.table.udb.hive.clientpool.min";
+        alluLit() + "xio.table.udb.hive.clientpool.min";
     public static final String TABLE_UDB_HIVE_CLIENTPOOL_MAX =
-        "alluxio.table.udb.hive.clientpool.MAX";
+        alluLit() + "xio.table.udb.hive.clientpool.MAX";
     public static final String TABLE_LOAD_DEFAULT_REPLICATION =
-        "alluxio.table.load.default.replication";
+        alluLit() + "xio.table.load.default.replication";
 
     public static final String HADOOP_SECURITY_AUTHENTICATION =
-        "alluxio.hadoop.security.authentication";
+        alluLit() + "xio.hadoop.security.authentication";
 
     public static final String HADOOP_KRB5_CONF_KEY_FILE =
-        "alluxio.hadoop.security.krb5.conf";
+        alluLit() + "xio.hadoop.security.krb5.conf";
 
     public static final String HADOOP_KERBEROS_KEYTAB_LOGIN_AUTORENEWAL =
-        "alluxio.hadoop.kerberos.keytab.login.autorenewal";
+        alluLit() + "xio.hadoop.kerberos.keytab.login.autorenewal";
     public static final String HADOOP_CHECKSUM_COMBINE_MODE =
-        "alluxio.hadoop.checksum.combine.mode";
+        alluLit() + "xio.hadoop.checksum.combine.mode";
 
     private Name() {} // prevent instantiation
   }
@@ -9537,50 +9541,50 @@ public final class PropertyKey implements Comparable<PropertyKey> {
    */
   @ThreadSafe
   public enum Template {
-    LOCALITY_TIER("alluxio.locality.%s", "alluxio\\.locality\\.(\\w+)", PropertyType.STRING),
-    MASTER_IMPERSONATION_GROUPS_OPTION("alluxio.master.security.impersonation.%s.groups",
+    LOCALITY_TIER(alluLit() + "xio.locality.%s", "alluxio\\.locality\\.(\\w+)", PropertyType.STRING),
+    MASTER_IMPERSONATION_GROUPS_OPTION(alluLit() + "xio.master.security.impersonation.%s.groups",
         "alluxio\\.master\\.security\\.impersonation\\.([a-zA-Z_0-9-\\.@]+)\\.groups",
         PropertyType.STRING),
-    MASTER_IMPERSONATION_USERS_OPTION("alluxio.master.security.impersonation.%s.users",
+    MASTER_IMPERSONATION_USERS_OPTION(alluLit() + "xio.master.security.impersonation.%s.users",
         "alluxio\\.master\\.security\\.impersonation\\.([a-zA-Z_0-9-\\.@]+)\\.users",
         PropertyType.STRING),
-    MASTER_JOURNAL_UFS_OPTION_PROPERTY("alluxio.master.journal.ufs.option.%s",
+    MASTER_JOURNAL_UFS_OPTION_PROPERTY(alluLit() + "xio.master.journal.ufs.option.%s",
         "alluxio\\.master\\.journal\\.ufs\\.option\\.(?<nested>(\\w+\\.)*+\\w+)",
         PropertyCreators.NESTED_JOURNAL_PROPERTY_CREATOR),
     MASTER_EMBEDDED_JOURNAL_RATIS_CONFIG_PROPERTY(
-        "alluxio.master.embedded.journal.ratis.config.%s",
+        alluLit() + "xio.master.embedded.journal.ratis.config.%s",
         "alluxio\\.master\\.embedded\\.journal\\.ratis\\.config\\.(?<nested>(\\w+\\.)*+\\w+)",
         PropertyCreators.NESTED_JOURNAL_PROPERTY_CREATOR),
-    MASTER_LOGICAL_NAMESERVICES("alluxio.master.nameservices.%s",
+    MASTER_LOGICAL_NAMESERVICES(alluLit() + "xio.master.nameservices.%s",
         String.format("alluxio\\.master\\.nameservices\\.%s",
             NAMESERVICE_PATTERN_STRING)),
-    MASTER_LOGICAL_RPC_ADDRESS("alluxio.master.rpc.address.%s.%s",
+    MASTER_LOGICAL_RPC_ADDRESS(alluLit() + "xio.master.rpc.address.%s.%s",
         String.format("alluxio\\.master\\.rpc\\.address\\.%s\\.%s",
             NAMESERVICE_PATTERN_STRING, ALLUXIO_MASTER_ID_PATTERN_STRING)),
-    MASTER_LOGICAL_ZOOKEEPER_NAMESERVICES("alluxio.master.zookeeper.nameservices.%s",
+    MASTER_LOGICAL_ZOOKEEPER_NAMESERVICES(alluLit() + "xio.master.zookeeper.nameservices.%s",
         String.format("alluxio\\.master\\.zookeeper\\.nameservices\\.%s",
             NAMESERVICE_PATTERN_STRING)),
-    MASTER_LOGICAL_ZOOKEEPER_ADDRESS("alluxio.master.zookeeper.address.%s.%s",
+    MASTER_LOGICAL_ZOOKEEPER_ADDRESS(alluLit() + "xio.master.zookeeper.address.%s.%s",
         String.format("alluxio\\.master\\.zookeeper\\.address\\.%s\\.%s",
             NAMESERVICE_PATTERN_STRING, ZOOKEEPER_NODE_ID_PATTERN_STRING)),
-    MASTER_MOUNT_TABLE_ALLUXIO("alluxio.master.mount.table.%s.alluxio",
+    MASTER_MOUNT_TABLE_ALLUXIO(alluLit() + "xio.master.mount.table.%s.alluxio",
         "alluxio\\.master\\.mount\\.table.(\\w+)\\.alluxio",
         PropertyType.STRING),
-    MASTER_MOUNT_TABLE_OPTION("alluxio.master.mount.table.%s.option",
+    MASTER_MOUNT_TABLE_OPTION(alluLit() + "xio.master.mount.table.%s.option",
         "alluxio\\.master\\.mount\\.table\\.(\\w+)\\.option"),
-    MASTER_MOUNT_TABLE_OPTION_PROPERTY("alluxio.master.mount.table.%s.option.%s",
+    MASTER_MOUNT_TABLE_OPTION_PROPERTY(alluLit() + "xio.master.mount.table.%s.option.%s",
         "alluxio\\.master\\.mount\\.table\\.(\\w+)\\.option\\.(?<nested>(\\w+\\.)*+\\w+)",
         PropertyCreators.NESTED_UFS_PROPERTY_CREATOR),
-    MASTER_MOUNT_TABLE_READONLY("alluxio.master.mount.table.%s.readonly",
+    MASTER_MOUNT_TABLE_READONLY(alluLit() + "xio.master.mount.table.%s.readonly",
         "alluxio\\.master\\.mount\\.table\\.(\\w+)\\.readonly",
         PropertyType.BOOLEAN),
-    MASTER_MOUNT_TABLE_SHARED("alluxio.master.mount.table.%s.shared",
+    MASTER_MOUNT_TABLE_SHARED(alluLit() + "xio.master.mount.table.%s.shared",
         "alluxio\\.master\\.mount\\.table\\.(\\w+)\\.shared",
         PropertyType.BOOLEAN),
-    MASTER_MOUNT_TABLE_UFS("alluxio.master.mount.table.%s.ufs",
+    MASTER_MOUNT_TABLE_UFS(alluLit() + "xio.master.mount.table.%s.ufs",
         "alluxio\\.master\\.mount\\.table\\.(\\w+)\\.ufs",
         PropertyType.STRING),
-    MASTER_TIERED_STORE_GLOBAL_LEVEL_ALIAS("alluxio.master.tieredstore.global.level%d.alias",
+    MASTER_TIERED_STORE_GLOBAL_LEVEL_ALIAS(alluLit() + "xio.master.tieredstore.global.level%d.alias",
         "alluxio\\.master\\.tieredstore\\.global\\.level(\\d+)\\.alias",
         PropertyType.STRING),
     UNDERFS_ABFS_ACCOUNT_KEY(
@@ -9607,73 +9611,73 @@ public final class PropertyKey implements Comparable<PropertyKey> {
         "fs\\.adl\\.account\\.(\\w+)\\.oauth2\\.refresh\\.url",
         PropertyType.STRING),
     // TODO(binfan): use alluxio.worker.tieredstore.levelX.mediatype instead
-    WORKER_TIERED_STORE_LEVEL_ALIAS("alluxio.worker.tieredstore.level%d.alias",
+    WORKER_TIERED_STORE_LEVEL_ALIAS(alluLit() + "xio.worker.tieredstore.level%d.alias",
         "alluxio\\.worker\\.tieredstore\\.level(\\d+)\\.alias",
         PropertyType.STRING),
-    WORKER_TIERED_STORE_LEVEL_DIRS_PATH("alluxio.worker.tieredstore.level%d.dirs.path",
+    WORKER_TIERED_STORE_LEVEL_DIRS_PATH(alluLit() + "xio.worker.tieredstore.level%d.dirs.path",
         "alluxio\\.worker\\.tieredstore\\.level(\\d+)\\.dirs\\.path",
         PropertyType.LIST, Optional.of(",")),
-    WORKER_TIERED_STORE_LEVEL_DIRS_MEDIUMTYPE("alluxio.worker.tieredstore.level%d.dirs.mediumtype",
+    WORKER_TIERED_STORE_LEVEL_DIRS_MEDIUMTYPE(alluLit() + "xio.worker.tieredstore.level%d.dirs.mediumtype",
         "alluxio\\.worker\\.tieredstore\\.level(\\d+)\\.dirs\\.mediumtype",
         PropertyType.LIST, Optional.of(",")),
-    WORKER_TIERED_STORE_LEVEL_DIRS_QUOTA("alluxio.worker.tieredstore.level%d.dirs.quota",
+    WORKER_TIERED_STORE_LEVEL_DIRS_QUOTA(alluLit() + "xio.worker.tieredstore.level%d.dirs.quota",
         "alluxio\\.worker\\.tieredstore\\.level(\\d+)\\.dirs\\.quota",
         PropertyType.LIST, Optional.of(",")),
     WORKER_TIERED_STORE_LEVEL_HIGH_WATERMARK_RATIO(
-        "alluxio.worker.tieredstore.level%d.watermark.high.ratio",
+        alluLit() + "xio.worker.tieredstore.level%d.watermark.high.ratio",
         "alluxio\\.worker\\.tieredstore\\.level(\\d+)\\.watermark\\.high\\.ratio",
         PropertyType.DOUBLE),
     WORKER_TIERED_STORE_LEVEL_LOW_WATERMARK_RATIO(
-        "alluxio.worker.tieredstore.level%d.watermark.low.ratio",
+        alluLit() + "xio.worker.tieredstore.level%d.watermark.low.ratio",
         "alluxio\\.worker\\.tieredstore\\.level(\\d+)\\.watermark\\.low\\.ratio",
         PropertyType.DOUBLE),
-    USER_NETWORK_KEEPALIVE_TIME_MS("alluxio.user.network.%s.keepalive.time",
+    USER_NETWORK_KEEPALIVE_TIME_MS(alluLit() + "xio.user.network.%s.keepalive.time",
         "alluxio\\.user\\.network\\.(\\w+)\\.keepalive\\.time",
         PropertyType.DURATION),
-    USER_NETWORK_KEEPALIVE_TIMEOUT_MS("alluxio.user.network.%s.keepalive.timeout",
+    USER_NETWORK_KEEPALIVE_TIMEOUT_MS(alluLit() + "xio.user.network.%s.keepalive.timeout",
         "alluxio\\.user\\.network\\.(\\w+)\\.keepalive\\.timeout",
         PropertyType.DURATION),
-    USER_NETWORK_MAX_INBOUND_MESSAGE_SIZE("alluxio.user.network.%s.max.inbound.message.size",
+    USER_NETWORK_MAX_INBOUND_MESSAGE_SIZE(alluLit() + "xio.user.network.%s.max.inbound.message.size",
         "alluxio\\.user\\.network\\.(\\w+)\\.max\\.inbound\\.message\\.size",
         PropertyType.DATASIZE),
-    USER_NETWORK_FLOWCONTROL_WINDOW("alluxio.user.network.%s.flowcontrol.window",
+    USER_NETWORK_FLOWCONTROL_WINDOW(alluLit() + "xio.user.network.%s.flowcontrol.window",
         "alluxio\\.user\\.network\\.(\\w+)\\.flowcontrol\\.window",
         PropertyType.DATASIZE),
-    USER_NETWORK_NETTY_CHANNEL("alluxio.user.network.%s.netty.channel",
+    USER_NETWORK_NETTY_CHANNEL(alluLit() + "xio.user.network.%s.netty.channel",
         "alluxio\\.user\\.network\\.(\\w+)\\.netty\\.channel",
         ChannelType.class),
-    USER_NETWORK_NETTY_WORKER_THREADS("alluxio.user.network.%s.netty.worker.threads",
+    USER_NETWORK_NETTY_WORKER_THREADS(alluLit() + "xio.user.network.%s.netty.worker.threads",
         "alluxio\\.user\\.network\\.(\\w+)\\.netty\\.worker\\.threads",
         PropertyType.INTEGER),
-    USER_NETWORK_MAX_CONNECTIONS("alluxio.user.network.%s.max.connections",
+    USER_NETWORK_MAX_CONNECTIONS(alluLit() + "xio.user.network.%s.max.connections",
         "alluxio\\.user\\.network\\.(\\w+)\\.max\\.connections",
         PropertyType.LONG),
-    RPC_EXECUTOR_TYPE("alluxio.%s.rpc.executor.type",
+    RPC_EXECUTOR_TYPE(alluLit() + "xio.%s.rpc.executor.type",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.type",
         RpcExecutorType.class),
-    RPC_EXECUTOR_CORE_POOL_SIZE("alluxio.%s.rpc.executor.core.pool.size",
+    RPC_EXECUTOR_CORE_POOL_SIZE(alluLit() + "xio.%s.rpc.executor.core.pool.size",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.core\\.pool\\.size",
         PropertyType.INTEGER),
-    RPC_EXECUTOR_MAX_POOL_SIZE("alluxio.%s.rpc.executor.max.pool.size",
+    RPC_EXECUTOR_MAX_POOL_SIZE(alluLit() + "xio.%s.rpc.executor.max.pool.size",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.max\\.pool\\.size",
         PropertyType.INTEGER),
-    RPC_EXECUTOR_KEEPALIVE("alluxio.%s.rpc.executor.keepalive",
+    RPC_EXECUTOR_KEEPALIVE(alluLit() + "xio.%s.rpc.executor.keepalive",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.keep\\.alive",
         PropertyType.DURATION),
-    RPC_EXECUTOR_TPE_QUEUE_TYPE("alluxio.%s.rpc.executor.tpe.queue.type",
+    RPC_EXECUTOR_TPE_QUEUE_TYPE(alluLit() + "xio.%s.rpc.executor.tpe.queue.type",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.tpe\\.queue\\.type",
         ThreadPoolExecutorQueueType.class),
     RPC_EXECUTOR_TPE_ALLOW_CORE_THREADS_TIMEOUT(
-        "alluxio.%s.rpc.executor.tpe.allow.core.threads.timeout",
+        alluLit() + "xio.%s.rpc.executor.tpe.allow.core.threads.timeout",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.tpe\\.allow\\.core\\.threads\\.timeout",
         PropertyType.BOOLEAN),
-    RPC_EXECUTOR_FJP_PARALLELISM("alluxio.%s.rpc.executor.fjp.parallelism",
+    RPC_EXECUTOR_FJP_PARALLELISM(alluLit() + "xio.%s.rpc.executor.fjp.parallelism",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.fjp\\.parallelism",
         PropertyType.INTEGER),
-    RPC_EXECUTOR_FJP_MIN_RUNNABLE("alluxio.%s.rpc.executor.fjp.min.runnable",
+    RPC_EXECUTOR_FJP_MIN_RUNNABLE(alluLit() + "xio.%s.rpc.executor.fjp.min.runnable",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.fjp\\.min\\.runnable",
         PropertyType.INTEGER),
-    RPC_EXECUTOR_FJP_ASYNC("alluxio.%s.rpc.executor.fjp.async",
+    RPC_EXECUTOR_FJP_ASYNC(alluLit() + "xio.%s.rpc.executor.fjp.async",
         "alluxio\\.(\\w+)\\.rpc\\.executor\\.fjp\\.async",
         PropertyType.BOOLEAN),
 
@@ -9682,7 +9686,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
      */
     @Deprecated(message = "testDeprecatedMsg")
     TEST_DEPRECATED_TEMPLATE(
-        "alluxio.test.%s.format.deprecated.template",
+        alluLit() + "xio.test.%s.format.deprecated.template",
         "alluxio\\.test\\.(\\w+)\\.format\\.deprecated\\.template"),
     ;
 

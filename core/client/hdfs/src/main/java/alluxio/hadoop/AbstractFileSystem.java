@@ -16,6 +16,7 @@ import static java.util.stream.Collectors.toList;
 import alluxio.AlluxioURI;
 import alluxio.ClientContext;
 import alluxio.Constants;
+import alluxio.client.WriteType;
 import alluxio.client.file.FileOutStream;
 import alluxio.client.file.FileSystem;
 import alluxio.client.file.URIStatus;
@@ -33,6 +34,7 @@ import alluxio.grpc.CreateFilePOptions;
 import alluxio.grpc.DeletePOptions;
 import alluxio.grpc.ListStatusPOptions;
 import alluxio.grpc.SetAttributePOptions;
+import alluxio.grpc.WritePType;
 import alluxio.master.MasterInquireClient.Factory;
 import alluxio.security.CurrentUser;
 import alluxio.security.authorization.Mode;
@@ -202,6 +204,7 @@ public abstract class AbstractFileSystem extends org.apache.hadoop.fs.FileSystem
     AlluxioURI uri = getAlluxioPath(path);
     CreateFilePOptions options = CreateFilePOptions.newBuilder().setBlockSizeBytes(blockSize)
         .setMode(new Mode(permission.toShort()).toProto()).setRecursive(true)
+        .setWriteType(WritePType.MUST_CACHE)
         .setOverwrite(overwrite).build();
 
     FileOutStream outStream;
@@ -533,6 +536,7 @@ public abstract class AbstractFileSystem extends org.apache.hadoop.fs.FileSystem
     // Merge relevant connection details in the URI with the highest priority
     alluxioProps.merge(uriConfProperties, Source.RUNTIME);
     // Creating a new instanced configuration from an AlluxioProperties object isn't expensive.
+    alluxioProps.set(PropertyKey.USER_FILE_WRITE_TYPE_DEFAULT, WriteType.MUST_CACHE);
     mAlluxioConf = new InstancedConfiguration(alluxioProps);
     mAlluxioConf.validate();
     mExcludeMountInfoOnListStatus = mAlluxioConf.getBoolean(

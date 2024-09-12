@@ -766,6 +766,8 @@ public class FileSystemContext implements Closeable {
    * @return the writeBlockLocationPolicy
    */
   public BlockLocationPolicy getWriteBlockLocationPolicy(AlluxioConfiguration alluxioConf) {
+    System.out.println(PropertyKey.USER_BLOCK_WRITE_LOCATION_POLICY.getName());
+    System.out.println(PropertyKey.USER_BLOCK_WRITE_LOCATION_POLICY.getDescription());
     return mBlockLocationPolicyMap.computeIfAbsent(
         alluxioConf.getClass(PropertyKey.USER_BLOCK_WRITE_LOCATION_POLICY),
         pc -> BlockLocationPolicy.Factory.create(pc, alluxioConf));

@@ -61,7 +61,7 @@ public class FileSystem extends AbstractFileSystem {
 
   @Override
   public String getScheme() {
-    return Constants.SCHEME;
+    return "alluxio-ephemeral";
   }
 
   @Override

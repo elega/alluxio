@@ -1,0 +1,499 @@
+{
+  "version" : "4.0.0",
+  "gauges" : {
+    "PS-MarkSweep.count" : {
+      "value" : 2
+    },
+    "PS-MarkSweep.time" : {
+      "value" : 87
+    },
+    "PS-Scavenge.count" : {
+      "value" : 7
+    },
+    "PS-Scavenge.time" : {
+      "value" : 58
+    },
+    "Worker.BlockReaderCompleteTaskCount" : {
+      "value" : 0
+    },
+    "Worker.BlockReaderThreadActiveCount" : {
+      "value" : 0
+    },
+    "Worker.BlockReaderThreadCurrentCount" : {
+      "value" : 0
+    },
+    "Worker.BlockReaderThreadMaxCount" : {
+      "value" : 2048
+    },
+    "Worker.BlockRemoverRemovingBlocksSize" : {
+      "value" : 0
+    },
+    "Worker.BlockRemoverTryRemoveBlocksSize" : {
+      "value" : 0
+    },
+    "Worker.BlockSerializedCompleteTaskCount" : {
+      "value" : 0
+    },
+    "Worker.BlockSerializedThreadActiveCount" : {
+      "value" : 0
+    },
+    "Worker.BlockSerializedThreadCurrentCount" : {
+      "value" : 0
+    },
+    "Worker.BlockSerializedThreadMaxCount" : {
+      "value" : 2048
+    },
+    "Worker.BlockWriterCompleteTaskCount" : {
+      "value" : 0
+    },
+    "Worker.BlockWriterThreadActiveCount" : {
+      "value" : 0
+    },
+    "Worker.BlockWriterThreadCurrentCount" : {
+      "value" : 0
+    },
+    "Worker.BlockWriterThreadMaxCount" : {
+      "value" : 1024
+    },
+    "Worker.BlocksCached" : {
+      "value" : 0
+    },
+    "Worker.CacheManagerCompleteTaskCount" : {
+      "value" : 0
+    },
+    "Worker.CacheManagerThreadActiveCount" : {
+      "value" : 0
+    },
+    "Worker.CacheManagerThreadCurrentCount" : {
+      "value" : 0
+    },
+    "Worker.CacheManagerThreadMaxCount" : {
+      "value" : 40
+    },
+    "Worker.CacheManagerThreadQueueWaitingTaskCount" : {
+      "value" : 0
+    },
+    "Worker.CapacityFree" : {
+      "value" : 10737418240
+    },
+    "Worker.CapacityFreeTierSSD" : {
+      "value" : 10737418240
+    },
+    "Worker.CapacityTotal" : {
+      "value" : 10737418240
+    },
+    "Worker.CapacityTotalTierSSD" : {
+      "value" : 10737418240
+    },
+    "Worker.CapacityUsed" : {
+      "value" : 0
+    },
+    "Worker.CapacityUsedTierSSD" : {
+      "value" : 0
+    },
+    "Worker.Process.netty.direct.mem.used" : {
+      "value" : 31457559
+    },
+    "Worker.Process.pool.direct.mem.used" : {
+      "value" : 4153345
+    },
+    "Worker.RpcQueueLength" : {
+      "value" : 0
+    },
+    "Worker.RpcThreadActiveCount" : {
+      "value" : 0
+    },
+    "Worker.RpcThreadCurrentCount" : {
+      "value" : 0
+    },
+    "Worker.Server.JvmPauseMonitorInfoTimeExceeded" : {
+      "value" : 0
+    },
+    "Worker.Server.JvmPauseMonitorTotalExtraTime" : {
+      "value" : 231
+    },
+    "Worker.Server.JvmPauseMonitorWarnTimeExceeded" : {
+      "value" : 0
+    },
+    "blocked.count" : {
+      "value" : 1
+    },
+    "count" : {
+      "value" : 78
+    },
+    "daemon.count" : {
+      "value" : 66
+    },
+    "deadlock.count" : {
+      "value" : 0
+    },
+    "deadlocks" : {
+      "value" : [ ]
+    },
+    "heap.committed" : {
+      "value" : 416284672
+    },
+    "heap.init" : {
+      "value" : 297795584
+    },
+    "heap.max" : {
+      "value" : 4235722752
+    },
+    "heap.usage" : {
+      "value" : 0.06010642124293597
+    },
+    "heap.used" : {
+      "value" : 48089184
+    },
+    "loaded" : {
+      "value" : 7405
+    },
+    "name" : {
+      "value" : "686238@yimin-Virtual-Machine"
+    },
+    "new.count" : {
+      "value" : 0
+    },
+    "non-heap.committed" : {
+      "value" : 72744960
+    },
+    "non-heap.init" : {
+      "value" : 2555904
+    },
+    "non-heap.max" : {
+      "value" : -1
+    },
+    "non-heap.usage" : {
+      "value" : -7.0095048E7
+    },
+    "non-heap.used" : {
+      "value" : 70097408
+    },
+    "os.cpuLoad" : {
+      "value" : 0.6666666666666666
+    },
+    "os.freePhysicalMemory" : {
+      "value" : 2052730880
+    },
+    "os.maxFileCount" : {
+      "value" : 1048576
+    },
+    "os.openFileCount" : {
+      "value" : 466
+    },
+    "os.totalPhysicalMemory" : {
+      "value" : 19058585600
+    },
+    "peak.count" : {
+      "value" : 283
+    },
+    "pools.Code-Cache.committed" : {
+      "value" : 21626880
+    },
+    "pools.Code-Cache.init" : {
+      "value" : 2555904
+    },
+    "pools.Code-Cache.max" : {
+      "value" : 251658240
+    },
+    "pools.Code-Cache.usage" : {
+      "value" : 0.08336944580078125
+    },
+    "pools.Code-Cache.used" : {
+      "value" : 20981632
+    },
+    "pools.Compressed-Class-Space.committed" : {
+      "value" : 5636096
+    },
+    "pools.Compressed-Class-Space.init" : {
+      "value" : 0
+    },
+    "pools.Compressed-Class-Space.max" : {
+      "value" : 1073741824
+    },
+    "pools.Compressed-Class-Space.usage" : {
+      "value" : 0.004909925162792206
+    },
+    "pools.Compressed-Class-Space.used" : {
+      "value" : 5271992
+    },
+    "pools.Metaspace.committed" : {
+      "value" : 45481984
+    },
+    "pools.Metaspace.init" : {
+      "value" : 0
+    },
+    "pools.Metaspace.max" : {
+      "value" : -1
+    },
+    "pools.Metaspace.usage" : {
+      "value" : 0.9654090727440562
+    },
+    "pools.Metaspace.used" : {
+      "value" : 43908720
+    },
+    "pools.PS-Eden-Space.committed" : {
+      "value" : 287834112
+    },
+    "pools.PS-Eden-Space.init" : {
+      "value" : 74973184
+    },
+    "pools.PS-Eden-Space.max" : {
+      "value" : 1549795328
+    },
+    "pools.PS-Eden-Space.usage" : {
+      "value" : 0.0014348939887886924
+    },
+    "pools.PS-Eden-Space.used" : {
+      "value" : 2223792
+    },
+    "pools.PS-Eden-Space.used-after-gc" : {
+      "value" : 0
+    },
+    "pools.PS-Old-Gen.committed" : {
+      "value" : 183500800
+    },
+    "pools.PS-Old-Gen.init" : {
+      "value" : 198705152
+    },
+    "pools.PS-Old-Gen.max" : {
+      "value" : 3176660992
+    },
+    "pools.PS-Old-Gen.usage" : {
+      "value" : 0.009373285999036815
+    },
+    "pools.PS-Old-Gen.used" : {
+      "value" : 29775752
+    },
+    "pools.PS-Old-Gen.used-after-gc" : {
+      "value" : 29759368
+    },
+    "pools.PS-Survivor-Space.committed" : {
+      "value" : 17301504
+    },
+    "pools.PS-Survivor-Space.init" : {
+      "value" : 12058624
+    },
+    "pools.PS-Survivor-Space.max" : {
+      "value" : 17301504
+    },
+    "pools.PS-Survivor-Space.usage" : {
+      "value" : 0.9860155510179924
+    },
+    "pools.PS-Survivor-Space.used" : {
+      "value" : 17059552
+    },
+    "pools.PS-Survivor-Space.used-after-gc" : {
+      "value" : 17059552
+    },
+    "runnable.count" : {
+      "value" : 52
+    },
+    "terminated.count" : {
+      "value" : 0
+    },
+    "timed_waiting.count" : {
+      "value" : 10
+    },
+    "total.committed" : {
+      "value" : 561381376
+    },
+    "total.init" : {
+      "value" : 300351488
+    },
+    "total.max" : {
+      "value" : 4235722751
+    },
+    "total.used" : {
+      "value" : 119239904
+    },
+    "total_started.count" : {
+      "value" : 325
+    },
+    "unloaded" : {
+      "value" : 3
+    },
+    "uptime" : {
+      "value" : 4363344
+    },
+    "vendor" : {
+      "value" : "Amazon.com Inc. OpenJDK 64-Bit Server VM 25.402-b08 (1.8)"
+    },
+    "waiting.count" : {
+      "value" : 15
+    }
+  },
+  "counters" : {
+    "Worker.ActiveClients" : {
+      "count" : 0
+    },
+    "Worker.ActiveOperations" : {
+      "count" : 0
+    },
+    "Worker.BlockRemoverBlocksRemovedCount" : {
+      "count" : 0
+    },
+    "Worker.BlockRemoverTryRemoveCount" : {
+      "count" : 0
+    },
+    "Worker.BlocksAccessed" : {
+      "count" : 0
+    },
+    "Worker.BlocksCancelled" : {
+      "count" : 0
+    },
+    "Worker.BlocksDeleted" : {
+      "count" : 0
+    },
+    "Worker.BlocksEvicted" : {
+      "count" : 0
+    },
+    "Worker.BlocksLost" : {
+      "count" : 0
+    },
+    "Worker.BlocksPromoted" : {
+      "count" : 0
+    },
+    "Worker.CacheBlocksSize" : {
+      "count" : 0
+    },
+    "Worker.CacheFailedBlocks" : {
+      "count" : 0
+    },
+    "Worker.CacheRejectedBlocks" : {
+      "count" : 0
+    },
+    "Worker.CacheRemoteBlocks" : {
+      "count" : 0
+    },
+    "Worker.CacheRequests" : {
+      "count" : 0
+    },
+    "Worker.CacheRequestsAsync" : {
+      "count" : 0
+    },
+    "Worker.CacheRequestsSync" : {
+      "count" : 0
+    },
+    "Worker.CacheSucceededBlocks" : {
+      "count" : 0
+    },
+    "Worker.CacheUfsBlocks" : {
+      "count" : 0
+    },
+    "Worker.Client.BlockMasterClientCount" : {
+      "count" : 0
+    },
+    "Worker.Client.FileSystemMasterClientCount" : {
+      "count" : 0
+    }
+  },
+  "histograms" : { },
+  "meters" : {
+    "Worker.BlocksEvictionRate" : {
+      "count" : 0,
+      "m15_rate" : 0.0,
+      "m1_rate" : 0.0,
+      "m5_rate" : 0.0,
+      "mean_rate" : 0.0,
+      "units" : "events/second"
+    }
+  },
+  "timers" : {
+    "Worker.GetConfigHash" : {
+      "count" : 219,
+      "max" : 57.069010999999996,
+      "mean" : 3.1249447720985772,
+      "min" : 1.091861,
+      "p50" : 3.2956659999999998,
+      "p75" : 3.5124769999999996,
+      "p95" : 6.045440999999999,
+      "p98" : 6.045440999999999,
+      "p99" : 6.045440999999999,
+      "p999" : 6.045440999999999,
+      "stddev" : 1.6847512571752095,
+      "m15_rate" : 0.053852354473688226,
+      "m1_rate" : 0.041936227522997596,
+      "m5_rate" : 0.04849053861471206,
+      "mean_rate" : 0.050206402965226264,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Worker.GetId" : {
+      "count" : 1,
+      "max" : 30.434665,
+      "mean" : 30.434665,
+      "min" : 30.434665,
+      "p50" : 30.434665,
+      "p75" : 30.434665,
+      "p95" : 30.434665,
+      "p98" : 30.434665,
+      "p99" : 30.434665,
+      "p999" : 30.434665,
+      "stddev" : 0.0,
+      "m15_rate" : 0.0015831689099823946,
+      "m1_rate" : 6.00466593615503E-33,
+      "m5_rate" : 9.920230578743515E-8,
+      "mean_rate" : 2.2927348983934744E-4,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Worker.GetPinList" : {
+      "count" : 4322,
+      "max" : 34.442242,
+      "mean" : 2.2748371699974017,
+      "min" : 0.791064,
+      "p50" : 1.843372,
+      "p75" : 2.4201259999999998,
+      "p95" : 4.216399,
+      "p98" : 7.104697,
+      "p99" : 13.214521,
+      "p999" : 15.842547999999999,
+      "stddev" : 1.768998184686139,
+      "m15_rate" : 0.9966903138895428,
+      "m1_rate" : 0.9999999999931923,
+      "m5_rate" : 0.9997614878740974,
+      "mean_rate" : 0.9909401535241041,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Worker.Heartbeat" : {
+      "count" : 4322,
+      "max" : 40.092023999999995,
+      "mean" : 2.883333335672475,
+      "min" : 0.943359,
+      "p50" : 2.395905,
+      "p75" : 2.90388,
+      "p95" : 4.932047,
+      "p98" : 17.27209,
+      "p99" : 19.781183,
+      "p999" : 22.888901,
+      "stddev" : 2.561858076147738,
+      "m15_rate" : 0.9982644647489184,
+      "m1_rate" : 0.9999999999931923,
+      "m5_rate" : 0.9997615852942398,
+      "mean_rate" : 0.9909425694916811,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Worker.Register" : {
+      "count" : 1,
+      "max" : 36.326398,
+      "mean" : 36.326398,
+      "min" : 36.326398,
+      "p50" : 36.326398,
+      "p75" : 36.326398,
+      "p95" : 36.326398,
+      "p98" : 36.326398,
+      "p99" : 36.326398,
+      "p999" : 36.326398,
+      "stddev" : 0.0,
+      "m15_rate" : 0.0015831689099823946,
+      "m1_rate" : 6.00466593615503E-33,
+      "m5_rate" : 9.920230578743515E-8,
+      "mean_rate" : 2.2927576768325185E-4,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    }
+  }
+}

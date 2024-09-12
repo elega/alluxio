@@ -1,0 +1,1504 @@
+{
+  "version" : "4.0.0",
+  "gauges" : {
+    "Cluster.BytesReadDirectThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesReadDomainThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesReadLocalThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesReadRemoteThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesReadUfsThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesWrittenDomainThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesWrittenLocalThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesWrittenRemoteThroughput" : {
+      "value" : 0
+    },
+    "Cluster.BytesWrittenUfsThroughput" : {
+      "value" : 0
+    },
+    "Cluster.CacheHitRate" : {
+      "value" : 0
+    },
+    "Cluster.CapacityFree" : {
+      "value" : 10737418240
+    },
+    "Cluster.CapacityFreeTierHDD" : {
+      "value" : 0
+    },
+    "Cluster.CapacityFreeTierMEM" : {
+      "value" : 0
+    },
+    "Cluster.CapacityFreeTierSSD" : {
+      "value" : 10737418240
+    },
+    "Cluster.CapacityTotal" : {
+      "value" : 10737418240
+    },
+    "Cluster.CapacityTotalTierHDD" : {
+      "value" : 0
+    },
+    "Cluster.CapacityTotalTierMEM" : {
+      "value" : 0
+    },
+    "Cluster.CapacityTotalTierSSD" : {
+      "value" : 10737418240
+    },
+    "Cluster.CapacityUsed" : {
+      "value" : 0
+    },
+    "Cluster.CapacityUsedTierHDD" : {
+      "value" : 0
+    },
+    "Cluster.CapacityUsedTierMEM" : {
+      "value" : 0
+    },
+    "Cluster.CapacityUsedTierSSD" : {
+      "value" : 0
+    },
+    "Cluster.LeaderId" : {
+      "value" : "localhost_19200"
+    },
+    "Cluster.LeaderIndex" : {
+      "value" : 0
+    },
+    "Cluster.LostWorkers" : {
+      "value" : 0
+    },
+    "Cluster.RootUfsCapacityFree" : {
+      "value" : 283332780032
+    },
+    "Cluster.RootUfsCapacityTotal" : {
+      "value" : 404170240000
+    },
+    "Cluster.RootUfsCapacityUsed" : {
+      "value" : 120837459968
+    },
+    "Cluster.Workers" : {
+      "value" : 1
+    },
+    "Master.AbsentCacheHits" : {
+      "value" : 81
+    },
+    "Master.AbsentCacheMisses" : {
+      "value" : 46
+    },
+    "Master.AbsentCacheSize" : {
+      "value" : 21
+    },
+    "Master.AbsentPathCacheQueueSize" : {
+      "value" : 0
+    },
+    "Master.AuditLogEntriesSize" : {
+      "value" : 0
+    },
+    "Master.BlockReplicaCount" : {
+      "value" : 0
+    },
+    "Master.CachedBlockLocations" : {
+      "value" : 0
+    },
+    "Master.EdgeCacheSize" : {
+      "value" : 25
+    },
+    "Master.EdgeLockPoolSize" : {
+      "value" : 26
+    },
+    "Master.EmbeddedJournalLastSnapshotDownloadDiskSize" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotDownloadDurationMs" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotDownloadSize" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotDurationMs" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotEntriesCount" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotReplayDurationMs" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotReplayEntriesCount" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotUploadDiskSize" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotUploadDurationMs" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalLastSnapshotUploadSize" : {
+      "value" : -1
+    },
+    "Master.EmbeddedJournalSnapshotLastIndex" : {
+      "value" : -1
+    },
+    "Master.FileSize" : {
+      "value" : {
+        "1024" : -5,
+        "1048576" : 0,
+        "10485760" : 0,
+        "104857600" : 0,
+        "1073741824" : 0,
+        "9223372036854775807" : 0,
+        "10737418240" : 1
+      }
+    },
+    "Master.FilesPinned" : {
+      "value" : 16
+    },
+    "Master.FilesToBePersisted" : {
+      "value" : 0
+    },
+    "Master.InodeCacheHitRatio" : {
+      "value" : 1.0
+    },
+    "Master.InodeCacheSize" : {
+      "value" : 25
+    },
+    "Master.InodeLockPoolSize" : {
+      "value" : 25
+    },
+    "Master.JournalCheckpointWarn" : {
+      "value" : false
+    },
+    "Master.JournalEntriesSinceCheckPoint" : {
+      "value" : 131
+    },
+    "Master.JournalFreeBytesDevice%2Fdev%2Fsda2" : {
+      "value" : 262727868416
+    },
+    "Master.JournalFreePercentDevice%2Fdev%2Fsda2" : {
+      "value" : 68.49638588584513
+    },
+    "Master.JournalLastAppliedCommitIndex" : {
+      "value" : 129
+    },
+    "Master.JournalLastCheckPointTime" : {
+      "value" : -1
+    },
+    "Master.JournalSequenceNumber.BlockMaster" : {
+      "value" : 107
+    },
+    "Master.JournalSequenceNumber.FileSystemMaster" : {
+      "value" : 107
+    },
+    "Master.JournalSequenceNumber.JournalMaster" : {
+      "value" : 107
+    },
+    "Master.JournalSequenceNumber.MetaMaster" : {
+      "value" : 107
+    },
+    "Master.JournalSequenceNumber.MetricsMaster" : {
+      "value" : 107
+    },
+    "Master.JournalSequenceNumber.ThrottleMaster" : {
+      "value" : 107
+    },
+    "Master.LastBackupEntriesCount" : {
+      "value" : -1
+    },
+    "Master.LastBackupRestoreCount" : {
+      "value" : -1
+    },
+    "Master.LastBackupRestoreTimeMs" : {
+      "value" : -1
+    },
+    "Master.LastBackupTimeMs" : {
+      "value" : -1
+    },
+    "Master.LastGainPrimacyTime" : {
+      "value" : 1726143424310
+    },
+    "Master.LastLosePrimacyTime" : {
+      "value" : 0
+    },
+    "Master.ListingCacheSize" : {
+      "value" : 17
+    },
+    "Master.LostBlockCount" : {
+      "value" : 0
+    },
+    "Master.LostFileCount" : {
+      "value" : 0
+    },
+    "Master.MetadataSyncExecutorQueueSize" : {
+      "value" : 0
+    },
+    "Master.MetadataSyncPrefetchExecutorQueueSize" : {
+      "value" : 0
+    },
+    "Master.MetadataSyncV2QueuedLoads" : {
+      "value" : 0
+    },
+    "Master.MetadataSyncV2RunningLoads" : {
+      "value" : 0
+    },
+    "Master.MetadataSyncV2RunningTasks" : {
+      "value" : 0
+    },
+    "Master.PerUfsOpConnectFromMaster.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "value" : 0
+    },
+    "Master.PerUfsOpExists.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "value" : 21
+    },
+    "Master.PerUfsOpGetFileLocations.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "value" : 20
+    },
+    "Master.PerUfsOpGetSpace.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "value" : 30
+    },
+    "Master.PerUfsOpGetStatus.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "value" : 21
+    },
+    "Master.PerUfsOpIsFile.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "value" : 7
+    },
+    "Master.PerUfsOpListStatus.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "value" : 1
+    },
+    "Master.Process.netty.direct.mem.used" : {
+      "value" : 83886359
+    },
+    "Master.Process.pool.direct.mem.used" : {
+      "value" : 2236418
+    },
+    "Master.ReplicaMgmtActiveJobSize" : {
+      "value" : 0
+    },
+    "Master.ReplicationLimitedFiles" : {
+      "value" : 16
+    },
+    "Master.RocksBlockBackgroundErrors" : {
+      "value" : 0
+    },
+    "Master.RocksBlockBlockCacheCapacity" : {
+      "value" : 25165824
+    },
+    "Master.RocksBlockBlockCachePinnedUsage" : {
+      "value" : 264
+    },
+    "Master.RocksBlockBlockCacheUsage" : {
+      "value" : 264
+    },
+    "Master.RocksBlockCompactionPending" : {
+      "value" : 0
+    },
+    "Master.RocksBlockCurSizeActiveMemTable" : {
+      "value" : 806160
+    },
+    "Master.RocksBlockCurSizeAllMemTables" : {
+      "value" : 806160
+    },
+    "Master.RocksBlockEstimateNumKeys" : {
+      "value" : 20
+    },
+    "Master.RocksBlockEstimatePendingCompactionBytes" : {
+      "value" : 0
+    },
+    "Master.RocksBlockEstimateTableReadersMem" : {
+      "value" : 0
+    },
+    "Master.RocksBlockEstimatedMemUsage" : {
+      "value" : 806688.0
+    },
+    "Master.RocksBlockLiveSstFilesSize" : {
+      "value" : 0
+    },
+    "Master.RocksBlockMemTableFlushPending" : {
+      "value" : 0
+    },
+    "Master.RocksBlockNumDeletesActiveMemTable" : {
+      "value" : 0
+    },
+    "Master.RocksBlockNumDeletesImmMemTables" : {
+      "value" : 0
+    },
+    "Master.RocksBlockNumEntriesActiveMemTable" : {
+      "value" : 20
+    },
+    "Master.RocksBlockNumEntriesImmMemTables" : {
+      "value" : 0
+    },
+    "Master.RocksBlockNumImmutableMemTable" : {
+      "value" : 0
+    },
+    "Master.RocksBlockNumLiveVersions" : {
+      "value" : 3
+    },
+    "Master.RocksBlockNumRunningCompactions" : {
+      "value" : 0
+    },
+    "Master.RocksBlockNumRunningFlushes" : {
+      "value" : 0
+    },
+    "Master.RocksBlockSizeAllMemTables" : {
+      "value" : 806160
+    },
+    "Master.RocksBlockTotalSstFilesSize" : {
+      "value" : 0
+    },
+    "Master.RocksInodeBackgroundErrors" : {
+      "value" : 0
+    },
+    "Master.RocksInodeBlockCacheCapacity" : {
+      "value" : 25165824
+    },
+    "Master.RocksInodeBlockCachePinnedUsage" : {
+      "value" : 264
+    },
+    "Master.RocksInodeBlockCacheUsage" : {
+      "value" : 264
+    },
+    "Master.RocksInodeCompactionPending" : {
+      "value" : 0
+    },
+    "Master.RocksInodeCurSizeActiveMemTable" : {
+      "value" : 806160
+    },
+    "Master.RocksInodeCurSizeAllMemTables" : {
+      "value" : 806160
+    },
+    "Master.RocksInodeEstimateNumKeys" : {
+      "value" : 0
+    },
+    "Master.RocksInodeEstimatePendingCompactionBytes" : {
+      "value" : 0
+    },
+    "Master.RocksInodeEstimateTableReadersMem" : {
+      "value" : 0
+    },
+    "Master.RocksInodeEstimatedMemUsage" : {
+      "value" : 806688.0
+    },
+    "Master.RocksInodeLiveSstFilesSize" : {
+      "value" : 0
+    },
+    "Master.RocksInodeMemTableFlushPending" : {
+      "value" : 0
+    },
+    "Master.RocksInodeNumDeletesActiveMemTable" : {
+      "value" : 0
+    },
+    "Master.RocksInodeNumDeletesImmMemTables" : {
+      "value" : 0
+    },
+    "Master.RocksInodeNumEntriesActiveMemTable" : {
+      "value" : 0
+    },
+    "Master.RocksInodeNumEntriesImmMemTables" : {
+      "value" : 0
+    },
+    "Master.RocksInodeNumImmutableMemTable" : {
+      "value" : 0
+    },
+    "Master.RocksInodeNumLiveVersions" : {
+      "value" : 3
+    },
+    "Master.RocksInodeNumRunningCompactions" : {
+      "value" : 0
+    },
+    "Master.RocksInodeNumRunningFlushes" : {
+      "value" : 0
+    },
+    "Master.RocksInodeSizeAllMemTables" : {
+      "value" : 806160
+    },
+    "Master.RocksInodeTotalSstFilesSize" : {
+      "value" : 0
+    },
+    "Master.RocksTotalEstimatedMemUsage" : {
+      "value" : 1613376.0
+    },
+    "Master.RoleId" : {
+      "value" : 0
+    },
+    "Master.RpcQueueLength" : {
+      "value" : 0
+    },
+    "Master.RpcThreadActiveCount" : {
+      "value" : 0
+    },
+    "Master.RpcThreadCurrentCount" : {
+      "value" : 396
+    },
+    "Master.Server.JvmPauseMonitorInfoTimeExceeded" : {
+      "value" : 5
+    },
+    "Master.Server.JvmPauseMonitorTotalExtraTime" : {
+      "value" : 45402
+    },
+    "Master.Server.JvmPauseMonitorWarnTimeExceeded" : {
+      "value" : 1
+    },
+    "Master.StartTime" : {
+      "value" : 1726143422328
+    },
+    "Master.TTLBuckets" : {
+      "value" : 0
+    },
+    "Master.TTLInodes" : {
+      "value" : 0
+    },
+    "Master.ToRemoveBlockCount" : {
+      "value" : 0
+    },
+    "Master.TotalPaths" : {
+      "value" : 17
+    },
+    "Master.UniqueBlocks" : {
+      "value" : 20
+    },
+    "Master.system.status" : {
+      "value" : "IDLE"
+    },
+    "PS-MarkSweep.count" : {
+      "value" : 4
+    },
+    "PS-MarkSweep.time" : {
+      "value" : 194
+    },
+    "PS-Scavenge.count" : {
+      "value" : 17
+    },
+    "PS-Scavenge.time" : {
+      "value" : 784
+    },
+    "blocked.count" : {
+      "value" : 1
+    },
+    "count" : {
+      "value" : 531
+    },
+    "daemon.count" : {
+      "value" : 512
+    },
+    "deadlock.count" : {
+      "value" : 0
+    },
+    "deadlocks" : {
+      "value" : [ ]
+    },
+    "heap.committed" : {
+      "value" : 1347420160
+    },
+    "heap.init" : {
+      "value" : 297795584
+    },
+    "heap.max" : {
+      "value" : 4235722752
+    },
+    "heap.usage" : {
+      "value" : 0.14436211900584753
+    },
+    "heap.used" : {
+      "value" : 611519432
+    },
+    "loaded" : {
+      "value" : 12510
+    },
+    "name" : {
+      "value" : "685685@yimin-Virtual-Machine"
+    },
+    "new.count" : {
+      "value" : 0
+    },
+    "non-heap.committed" : {
+      "value" : 122486784
+    },
+    "non-heap.init" : {
+      "value" : 2555904
+    },
+    "non-heap.max" : {
+      "value" : -1
+    },
+    "non-heap.usage" : {
+      "value" : -1.16522304E8
+    },
+    "non-heap.used" : {
+      "value" : 116522368
+    },
+    "os.cpuLoad" : {
+      "value" : 0.14291809159232513
+    },
+    "os.freePhysicalMemory" : {
+      "value" : 2031570944
+    },
+    "os.maxFileCount" : {
+      "value" : 1048576
+    },
+    "os.openFileCount" : {
+      "value" : 714
+    },
+    "os.totalPhysicalMemory" : {
+      "value" : 19058585600
+    },
+    "peak.count" : {
+      "value" : 636
+    },
+    "pools.Code-Cache.committed" : {
+      "value" : 32571392
+    },
+    "pools.Code-Cache.init" : {
+      "value" : 2555904
+    },
+    "pools.Code-Cache.max" : {
+      "value" : 251658240
+    },
+    "pools.Code-Cache.usage" : {
+      "value" : 0.1284502665201823
+    },
+    "pools.Code-Cache.used" : {
+      "value" : 32325568
+    },
+    "pools.Compressed-Class-Space.committed" : {
+      "value" : 9830400
+    },
+    "pools.Compressed-Class-Space.init" : {
+      "value" : 0
+    },
+    "pools.Compressed-Class-Space.max" : {
+      "value" : 1073741824
+    },
+    "pools.Compressed-Class-Space.usage" : {
+      "value" : 0.008397109806537628
+    },
+    "pools.Compressed-Class-Space.used" : {
+      "value" : 9016328
+    },
+    "pools.Metaspace.committed" : {
+      "value" : 80084992
+    },
+    "pools.Metaspace.init" : {
+      "value" : 0
+    },
+    "pools.Metaspace.max" : {
+      "value" : -1
+    },
+    "pools.Metaspace.usage" : {
+      "value" : 0.9389317788781198
+    },
+    "pools.Metaspace.used" : {
+      "value" : 75194344
+    },
+    "pools.PS-Eden-Space.committed" : {
+      "value" : 472907776
+    },
+    "pools.PS-Eden-Space.init" : {
+      "value" : 74973184
+    },
+    "pools.PS-Eden-Space.max" : {
+      "value" : 951058432
+    },
+    "pools.PS-Eden-Space.usage" : {
+      "value" : 0.03794057524322544
+    },
+    "pools.PS-Eden-Space.used" : {
+      "value" : 36083704
+    },
+    "pools.PS-Eden-Space.used-after-gc" : {
+      "value" : 0
+    },
+    "pools.PS-Old-Gen.committed" : {
+      "value" : 570425344
+    },
+    "pools.PS-Old-Gen.init" : {
+      "value" : 198705152
+    },
+    "pools.PS-Old-Gen.max" : {
+      "value" : 3176660992
+    },
+    "pools.PS-Old-Gen.usage" : {
+      "value" : 0.10599576374311458
+    },
+    "pools.PS-Old-Gen.used" : {
+      "value" : 336712608
+    },
+    "pools.PS-Old-Gen.used-after-gc" : {
+      "value" : 237699984
+    },
+    "pools.PS-Survivor-Space.committed" : {
+      "value" : 304087040
+    },
+    "pools.PS-Survivor-Space.init" : {
+      "value" : 12058624
+    },
+    "pools.PS-Survivor-Space.max" : {
+      "value" : 304087040
+    },
+    "pools.PS-Survivor-Space.usage" : {
+      "value" : 0.7864224137931034
+    },
+    "pools.PS-Survivor-Space.used" : {
+      "value" : 239140864
+    },
+    "pools.PS-Survivor-Space.used-after-gc" : {
+      "value" : 239140864
+    },
+    "runnable.count" : {
+      "value" : 77
+    },
+    "terminated.count" : {
+      "value" : 0
+    },
+    "timed_waiting.count" : {
+      "value" : 428
+    },
+    "total.committed" : {
+      "value" : 1469906944
+    },
+    "total.init" : {
+      "value" : 300351488
+    },
+    "total.max" : {
+      "value" : 4235722751
+    },
+    "total.used" : {
+      "value" : 728556088
+    },
+    "total_started.count" : {
+      "value" : 29410
+    },
+    "unloaded" : {
+      "value" : 8
+    },
+    "uptime" : {
+      "value" : 4372276
+    },
+    "vendor" : {
+      "value" : "Amazon.com Inc. OpenJDK 64-Bit Server VM 25.402-b08 (1.8)"
+    },
+    "waiting.count" : {
+      "value" : 25
+    }
+  },
+  "counters" : {
+    "Cluster.ActiveRpcReadCount" : {
+      "count" : 0
+    },
+    "Cluster.ActiveRpcWriteCount" : {
+      "count" : 0
+    },
+    "Cluster.BytesReadCache" : {
+      "count" : 0
+    },
+    "Cluster.BytesReadDirect" : {
+      "count" : 0
+    },
+    "Cluster.BytesReadDomain" : {
+      "count" : 0
+    },
+    "Cluster.BytesReadLocal" : {
+      "count" : 0
+    },
+    "Cluster.BytesReadRemote" : {
+      "count" : 0
+    },
+    "Cluster.BytesReadUfsAll" : {
+      "count" : 0
+    },
+    "Cluster.BytesWrittenDomain" : {
+      "count" : 0
+    },
+    "Cluster.BytesWrittenLocal" : {
+      "count" : 0
+    },
+    "Cluster.BytesWrittenRemote" : {
+      "count" : 0
+    },
+    "Cluster.BytesWrittenUfsAll" : {
+      "count" : 0
+    },
+    "Master.Client.BlockMasterClientCount" : {
+      "count" : 0
+    },
+    "Master.Client.BlockWorkerClientCount" : {
+      "count" : 1
+    },
+    "Master.Client.BusyExceptionCount" : {
+      "count" : 0
+    },
+    "Master.Client.FileSystemMasterClientCount" : {
+      "count" : 0
+    },
+    "Master.CompleteFileOps" : {
+      "count" : 0
+    },
+    "Master.CompletedOperationRetryCount" : {
+      "count" : 0
+    },
+    "Master.CreateDirectoryOps" : {
+      "count" : 0
+    },
+    "Master.CreateFileInProgress" : {
+      "count" : 0
+    },
+    "Master.CreateFileOps" : {
+      "count" : 20
+    },
+    "Master.DeletePathOps" : {
+      "count" : 0
+    },
+    "Master.DirectoriesCreated" : {
+      "count" : 0
+    },
+    "Master.EdgeCacheEvictions" : {
+      "count" : 0
+    },
+    "Master.EdgeCacheHits" : {
+      "count" : 781
+    },
+    "Master.EdgeCacheLoadTimes" : {
+      "count" : 475441
+    },
+    "Master.EdgeCacheMisses" : {
+      "count" : 171
+    },
+    "Master.FileBlockInfosGot" : {
+      "count" : 0
+    },
+    "Master.FileInfosGot" : {
+      "count" : 158
+    },
+    "Master.FilesCompleted" : {
+      "count" : 0
+    },
+    "Master.FilesCreated" : {
+      "count" : 20
+    },
+    "Master.FilesFreed" : {
+      "count" : 0
+    },
+    "Master.FilesPersisted" : {
+      "count" : 0
+    },
+    "Master.FreeFileOps" : {
+      "count" : 0
+    },
+    "Master.GetFileBlockInfoOps" : {
+      "count" : 0
+    },
+    "Master.GetFileInfoOps" : {
+      "count" : 163
+    },
+    "Master.GetNewBlockOps" : {
+      "count" : 0
+    },
+    "Master.GetStatusFailures.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 21
+    },
+    "Master.GetStatusInProgress" : {
+      "count" : 0
+    },
+    "Master.InodeCacheEvictions" : {
+      "count" : 0
+    },
+    "Master.InodeCacheHits" : {
+      "count" : 4790
+    },
+    "Master.InodeCacheLoadTimes" : {
+      "count" : 0
+    },
+    "Master.InodeCacheMisses" : {
+      "count" : 0
+    },
+    "Master.ListStatusInProgress" : {
+      "count" : 0
+    },
+    "Master.ListingCacheEvictions" : {
+      "count" : 0
+    },
+    "Master.ListingCacheHits" : {
+      "count" : 8
+    },
+    "Master.ListingCacheLoadTimes" : {
+      "count" : 0
+    },
+    "Master.ListingCacheMisses" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncActivePaths" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncFail" : {
+      "count" : 51
+    },
+    "Master.MetadataSyncNoChange" : {
+      "count" : 6
+    },
+    "Master.MetadataSyncOpsCount" : {
+      "count" : 240
+    },
+    "Master.MetadataSyncPathsCancel" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncPathsFail" : {
+      "count" : 51
+    },
+    "Master.MetadataSyncPathsSuccess" : {
+      "count" : 14
+    },
+    "Master.MetadataSyncPendingPaths" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncPrefetchCancel" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncPrefetchFail" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncPrefetchOpsCount" : {
+      "count" : 3
+    },
+    "Master.MetadataSyncPrefetchPaths" : {
+      "count" : 6
+    },
+    "Master.MetadataSyncPrefetchRetries" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncPrefetchSuccess" : {
+      "count" : 3
+    },
+    "Master.MetadataSyncSkipped" : {
+      "count" : 179
+    },
+    "Master.MetadataSyncSuccess" : {
+      "count" : 10
+    },
+    "Master.MetadataSyncTimeMs" : {
+      "count" : 145
+    },
+    "Master.MetadataSyncUfsMount.1" : {
+      "count" : 3
+    },
+    "Master.MetadataSyncV2CancelledTasks" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncV2CompletedTasks" : {
+      "count" : 0
+    },
+    "Master.MetadataSyncV2FailedTasks" : {
+      "count" : 0
+    },
+    "Master.MountOps" : {
+      "count" : 0
+    },
+    "Master.NewBlocksGot" : {
+      "count" : 0
+    },
+    "Master.PathsDeleted" : {
+      "count" : 8
+    },
+    "Master.PathsMounted" : {
+      "count" : 0
+    },
+    "Master.PathsRenamed" : {
+      "count" : 0
+    },
+    "Master.PathsUnmounted" : {
+      "count" : 0
+    },
+    "Master.PerUfsSavedOpCREATE_FILE.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "count" : 6
+    },
+    "Master.PerUfsSavedOpDELETE_FILE.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "count" : 1
+    },
+    "Master.PerUfsSavedOpGET_FILE_INFO.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "count" : 151
+    },
+    "Master.PerUfsSavedOpLIST_STATUS.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "count" : 5
+    },
+    "Master.RenameFailures" : {
+      "count" : 18
+    },
+    "Master.RenameInProgress" : {
+      "count" : 0
+    },
+    "Master.RenamePathOps" : {
+      "count" : 18
+    },
+    "Master.RunFailures" : {
+      "count" : 35
+    },
+    "Master.RunRetries" : {
+      "count" : 35
+    },
+    "Master.SetAclOps" : {
+      "count" : 0
+    },
+    "Master.SetAttributeOps" : {
+      "count" : 0
+    },
+    "Master.UfsSessionCount-Ufs:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage" : {
+      "count" : 0
+    },
+    "Master.UfsStatusCacheChildrenSize" : {
+      "count" : 0
+    },
+    "Master.UfsStatusCacheSize" : {
+      "count" : -4
+    },
+    "Master.UnmountOps" : {
+      "count" : 0
+    },
+    "Master.blockHeartbeatInProgress" : {
+      "count" : 0
+    },
+    "Master.getConfigHashInProgress" : {
+      "count" : 0
+    },
+    "Master.getConfigurationInProgress" : {
+      "count" : 0
+    },
+    "Master.getPinnedFileIdsInProgress" : {
+      "count" : 0
+    },
+    "Master.getWorkerIdInProgress" : {
+      "count" : 0
+    },
+    "Master.metricsHeartbeatInProgress" : {
+      "count" : 0
+    },
+    "Master.registerWorkerCompleteInProgress" : {
+      "count" : 0
+    },
+    "Master.registerWorkerStartInProgress" : {
+      "count" : 0
+    }
+  },
+  "histograms" : { },
+  "meters" : { },
+  "timers" : {
+    "Master.ConnectFromMaster.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 0,
+      "max" : 0.0,
+      "mean" : 0.0,
+      "min" : 0.0,
+      "p50" : 0.0,
+      "p75" : 0.0,
+      "p95" : 0.0,
+      "p98" : 0.0,
+      "p99" : 0.0,
+      "p999" : 0.0,
+      "stddev" : 0.0,
+      "m15_rate" : 0.0,
+      "m1_rate" : 0.0,
+      "m5_rate" : 0.0,
+      "mean_rate" : 0.0,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.CreateFile" : {
+      "count" : 20,
+      "max" : 20384.932272,
+      "mean" : 6.115471164525051,
+      "min" : 3.7264909999999998,
+      "p50" : 5.818433,
+      "p75" : 5.818433,
+      "p95" : 11.931396999999999,
+      "p98" : 11.931396999999999,
+      "p99" : 11.931396999999999,
+      "p999" : 11.931396999999999,
+      "stddev" : 2.2138806740139474,
+      "m15_rate" : 0.006290257826279402,
+      "m1_rate" : 0.0013821972687459321,
+      "m5_rate" : 0.006980267322591113,
+      "mean_rate" : 0.005534463592915618,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.DeleteExistingFile.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 7,
+      "max" : 0.058341,
+      "mean" : 0.045178352480165995,
+      "min" : 0.043018999999999995,
+      "p50" : 0.045592,
+      "p75" : 0.045592,
+      "p95" : 0.045592,
+      "p98" : 0.045592,
+      "p99" : 0.045592,
+      "p999" : 0.045592,
+      "stddev" : 5.009962968650845E-4,
+      "m15_rate" : 0.004593473440012564,
+      "m1_rate" : 2.7228198107407595E-12,
+      "m5_rate" : 7.483422789762141E-5,
+      "mean_rate" : 0.0019488173644896217,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.Exists.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 21,
+      "max" : 0.066525,
+      "mean" : 0.03348042350513097,
+      "min" : 0.023586,
+      "p50" : 0.031037,
+      "p75" : 0.036081999999999996,
+      "p95" : 0.038116,
+      "p98" : 0.038116,
+      "p99" : 0.038116,
+      "p999" : 0.038116,
+      "stddev" : 0.0034738807936052557,
+      "m15_rate" : 0.005794471228198436,
+      "m1_rate" : 0.00138167706891719,
+      "m5_rate" : 0.006560989535282615,
+      "mean_rate" : 0.004807219371524568,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.GetConfigHash" : {
+      "count" : 72,
+      "max" : 54.582167,
+      "mean" : 3.4479090672712074,
+      "min" : 1.707115,
+      "p50" : 3.155354,
+      "p75" : 4.005329,
+      "p95" : 4.579604,
+      "p98" : 4.579604,
+      "p99" : 4.579604,
+      "p999" : 4.579604,
+      "stddev" : 0.7042379784104356,
+      "m15_rate" : 0.01787256069909747,
+      "m1_rate" : 0.011949728167021988,
+      "m5_rate" : 0.015696372450210695,
+      "mean_rate" : 0.01670226856163033,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.GetFileLocations.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 20,
+      "max" : 0.357209,
+      "mean" : 0.026625149999999993,
+      "min" : 0.004848,
+      "p50" : 0.0077659999999999995,
+      "p75" : 0.012787999999999999,
+      "p95" : 0.023507999999999998,
+      "p98" : 0.357209,
+      "p99" : 0.357209,
+      "p999" : 0.357209,
+      "stddev" : 0.07604869317961682,
+      "m15_rate" : 0.031839775394825215,
+      "m1_rate" : 1.3052991444058166E-31,
+      "m5_rate" : 2.0173906502715517E-6,
+      "mean_rate" : 0.004592219277531937,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.GetParsedFingerprint.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 2,
+      "max" : 17.16859,
+      "mean" : 8.7847165,
+      "min" : 0.400843,
+      "p50" : 17.16859,
+      "p75" : 17.16859,
+      "p95" : 17.16859,
+      "p98" : 17.16859,
+      "p99" : 17.16859,
+      "p999" : 17.16859,
+      "stddev" : 8.3838735,
+      "m15_rate" : 0.0031839775394825174,
+      "m1_rate" : 1.3052991444058163E-32,
+      "m5_rate" : 2.0173906502715537E-7,
+      "mean_rate" : 4.5921023837678797E-4,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.GetSpace.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 33,
+      "max" : 0.672877,
+      "mean" : 0.041494269876714944,
+      "min" : 0.006488,
+      "p50" : 0.022924999999999997,
+      "p75" : 0.07971299999999999,
+      "p95" : 0.07971299999999999,
+      "p98" : 0.093778,
+      "p99" : 0.093778,
+      "p999" : 0.093778,
+      "stddev" : 0.028493686982144027,
+      "m15_rate" : 0.009623683410530855,
+      "m1_rate" : 0.0022373108339066184,
+      "m5_rate" : 0.006131609083582282,
+      "mean_rate" : 0.007554231103828417,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.GetStatus" : {
+      "count" : 157,
+      "max" : 73.662205,
+      "mean" : 0.5827995262463196,
+      "min" : 0.210951,
+      "p50" : 0.396275,
+      "p75" : 0.443762,
+      "p95" : 1.981698,
+      "p98" : 2.00286,
+      "p99" : 2.00286,
+      "p999" : 2.00286,
+      "stddev" : 0.4782930662830872,
+      "m15_rate" : 0.042276389415389186,
+      "m1_rate" : 0.008350191768667988,
+      "m5_rate" : 0.042168200011614004,
+      "mean_rate" : 0.036047759095465634,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.GetStatus.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 21,
+      "max" : 1.107219,
+      "mean" : 0.15407306101322307,
+      "min" : 0.120461,
+      "p50" : 0.13899899999999998,
+      "p75" : 0.14360699999999998,
+      "p95" : 0.22405699999999998,
+      "p98" : 0.22405699999999998,
+      "p99" : 0.22405699999999998,
+      "p999" : 0.22405699999999998,
+      "stddev" : 0.03197218161771042,
+      "m15_rate" : 0.009418756743686366,
+      "m1_rate" : 0.0013816770689967705,
+      "m5_rate" : 0.006562678667679019,
+      "mean_rate" : 0.005810873062903559,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.IsFile.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 7,
+      "max" : 0.022841999999999998,
+      "mean" : 0.005198576597672311,
+      "min" : 0.0040669999999999994,
+      "p50" : 0.0040669999999999994,
+      "p75" : 0.0068449999999999995,
+      "p95" : 0.0068449999999999995,
+      "p98" : 0.0068449999999999995,
+      "p99" : 0.0068449999999999995,
+      "p999" : 0.0068449999999999995,
+      "stddev" : 0.0013649445969666973,
+      "m15_rate" : 0.004593473440012564,
+      "m1_rate" : 2.7228198107407595E-12,
+      "m5_rate" : 7.483422789762141E-5,
+      "mean_rate" : 0.0019488167069341726,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.JournalFlushTimer" : {
+      "count" : 47,
+      "max" : 9.725277,
+      "mean" : 3.517327436523675,
+      "min" : 1.9375339999999999,
+      "p50" : 2.5033209999999997,
+      "p75" : 3.3822289999999997,
+      "p95" : 9.725277,
+      "p98" : 9.725277,
+      "p99" : 9.725277,
+      "p999" : 9.725277,
+      "stddev" : 2.2927134405780136,
+      "m15_rate" : 0.024511991716077246,
+      "m1_rate" : 0.001382717473310788,
+      "m5_rate" : 0.0076294519588864405,
+      "mean_rate" : 0.013079715750185494,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.JournalGainPrimacyTimer" : {
+      "count" : 0,
+      "max" : 0.0,
+      "mean" : 0.0,
+      "min" : 0.0,
+      "p50" : 0.0,
+      "p75" : 0.0,
+      "p95" : 0.0,
+      "p98" : 0.0,
+      "p99" : 0.0,
+      "p999" : 0.0,
+      "stddev" : 0.0,
+      "m15_rate" : 0.0,
+      "m1_rate" : 0.0,
+      "m5_rate" : 0.0,
+      "mean_rate" : 0.0,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.ListStatus" : {
+      "count" : 6,
+      "max" : 33.47898,
+      "mean" : 1.0657139554369734,
+      "min" : 0.915383,
+      "p50" : 1.1719089999999999,
+      "p75" : 1.1719089999999999,
+      "p95" : 1.1719089999999999,
+      "p98" : 1.1719089999999999,
+      "p99" : 1.1719089999999999,
+      "p999" : 1.1719089999999999,
+      "stddev" : 0.11025296929597318,
+      "m15_rate" : 0.003433895433176663,
+      "m1_rate" : 8.530376196230307E-4,
+      "m5_rate" : 0.0032026511602481437,
+      "mean_rate" : 0.0013776558984506572,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.ListStatus.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 1,
+      "max" : 1.511558,
+      "mean" : 1.511558,
+      "min" : 1.511558,
+      "p50" : 1.511558,
+      "p75" : 1.511558,
+      "p95" : 1.511558,
+      "p98" : 1.511558,
+      "p99" : 1.511558,
+      "p999" : 1.511558,
+      "stddev" : 0.0,
+      "m15_rate" : 0.0015919887697412587,
+      "m1_rate" : 6.526495722029081E-33,
+      "m5_rate" : 1.0086953251357769E-7,
+      "mean_rate" : 2.2960986994274596E-4,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.Rename" : {
+      "count" : 18,
+      "max" : 14.979154999999999,
+      "mean" : 7.328788018786994,
+      "min" : 3.824629,
+      "p50" : 8.41643,
+      "p75" : 8.41643,
+      "p95" : 9.436624,
+      "p98" : 9.436624,
+      "p99" : 9.436624,
+      "p999" : 9.436624,
+      "stddev" : 1.605202236113374,
+      "m15_rate" : 0.030317819576179614,
+      "m1_rate" : 3.268712072094415E-12,
+      "m5_rate" : 1.8750453517817458E-4,
+      "mean_rate" : 0.00598955137222292,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.RenameRenamableFile.UFS:%2Fhome%2Fyimin%2Falluxio2%2FunderFSStorage.UFS_TYPE:local" : {
+      "count" : 18,
+      "max" : 0.400987,
+      "mean" : 0.20068424734656443,
+      "min" : 0.124662,
+      "p50" : 0.22649,
+      "p75" : 0.22871,
+      "p95" : 0.22871,
+      "p98" : 0.22871,
+      "p99" : 0.22871,
+      "p999" : 0.22871,
+      "stddev" : 0.030382696554931175,
+      "m15_rate" : 0.030316545293089723,
+      "m1_rate" : 3.195494372721503E-12,
+      "m5_rate" : 1.870157961732006E-4,
+      "mean_rate" : 0.005989559708257174,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.Run" : {
+      "count" : 35,
+      "max" : 120073.98110199999,
+      "mean" : 120057.40581943888,
+      "min" : 120005.08694699999,
+      "p50" : 120057.39368299999,
+      "p75" : 120057.39368299999,
+      "p95" : 120057.46491299999,
+      "p98" : 120057.46491299999,
+      "p99" : 120057.46491299999,
+      "p999" : 120060.400146,
+      "stddev" : 0.20298234094681328,
+      "m15_rate" : 0.007868393513972626,
+      "m1_rate" : 0.003493067103199318,
+      "m5_rate" : 0.007184671597216876,
+      "mean_rate" : 0.00812365205162918,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.TotalRpcs" : {
+      "count" : 9718,
+      "max" : 11.931396999999999,
+      "mean" : 0.08030771890172293,
+      "min" : 0.008196,
+      "p50" : 0.07024899999999999,
+      "p75" : 0.108139,
+      "p95" : 0.18378899999999998,
+      "p98" : 0.20195,
+      "p99" : 0.365704,
+      "p999" : 2.00286,
+      "stddev" : 0.19475119995190532,
+      "m15_rate" : 2.23510135214144,
+      "m1_rate" : 2.178016808296127,
+      "m5_rate" : 2.23650507373959,
+      "mean_rate" : 2.2250587036800815,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.blockHeartbeat" : {
+      "count" : 4325,
+      "max" : 0.486178,
+      "mean" : 0.11832713259124134,
+      "min" : 0.061946999999999995,
+      "p50" : 0.108736,
+      "p75" : 0.139707,
+      "p95" : 0.19483799999999998,
+      "p98" : 0.28523699999999996,
+      "p99" : 0.375052,
+      "p999" : 0.375052,
+      "stddev" : 0.04762723431613776,
+      "m15_rate" : 0.993488456113822,
+      "m1_rate" : 0.9999999999846646,
+      "m5_rate" : 0.9997435702784981,
+      "mean_rate" : 0.9902660965689891,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.getConfigHash" : {
+      "count" : 375,
+      "max" : 1.480654,
+      "mean" : 0.015033209920866417,
+      "min" : 0.008196,
+      "p50" : 0.015721,
+      "p75" : 0.016534,
+      "p95" : 0.020170999999999998,
+      "p98" : 0.020170999999999998,
+      "p99" : 0.020170999999999998,
+      "p999" : 0.020170999999999998,
+      "stddev" : 0.003585447308377136,
+      "m15_rate" : 0.0854898397388889,
+      "m1_rate" : 0.0710885804094212,
+      "m5_rate" : 0.08305821208903931,
+      "mean_rate" : 0.08586780523864873,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.getConfiguration" : {
+      "count" : 54,
+      "max" : 11.964027,
+      "mean" : 0.06671392362674998,
+      "min" : 0.047415,
+      "p50" : 0.066204,
+      "p75" : 0.0744,
+      "p95" : 0.0744,
+      "p98" : 0.0744,
+      "p99" : 0.0744,
+      "p999" : 0.0744,
+      "stddev" : 0.005016580014623628,
+      "m15_rate" : 0.012840087890119086,
+      "m1_rate" : 2.0880286042654213E-6,
+      "m5_rate" : 0.0018557618147646774,
+      "mean_rate" : 0.012364882839529115,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.getPinnedFileIds" : {
+      "count" : 4325,
+      "max" : 0.650559,
+      "mean" : 0.027927268630304078,
+      "min" : 0.012695,
+      "p50" : 0.023826,
+      "p75" : 0.029127,
+      "p95" : 0.067012,
+      "p98" : 0.079687,
+      "p99" : 0.085365,
+      "p999" : 0.10486,
+      "stddev" : 0.01476512805548102,
+      "m15_rate" : 0.9935167799991338,
+      "m1_rate" : 0.9999999999921435,
+      "m5_rate" : 0.9997563513140204,
+      "mean_rate" : 0.9902631356277338,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.getWorkerId" : {
+      "count" : 2,
+      "max" : 7.998601,
+      "mean" : 4.16130995394851,
+      "min" : 0.6542899999999999,
+      "p50" : 0.6542899999999999,
+      "p75" : 7.998601,
+      "p95" : 7.998601,
+      "p98" : 7.998601,
+      "p99" : 7.998601,
+      "p999" : 7.998601,
+      "stddev" : 3.6684405770859265,
+      "m15_rate" : 0.0015831689099823946,
+      "m1_rate" : 6.00466593615503E-33,
+      "m5_rate" : 9.920230578743515E-8,
+      "mean_rate" : 4.57928145824106E-4,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.metricsHeartbeat" : {
+      "count" : 436,
+      "max" : 1.043388,
+      "mean" : 0.09861808614563423,
+      "min" : 0.024891,
+      "p50" : 0.073708,
+      "p75" : 0.10428699999999999,
+      "p95" : 0.20195,
+      "p98" : 0.20195,
+      "p99" : 0.20195,
+      "p999" : 0.20195,
+      "stddev" : 0.04498110503492333,
+      "m15_rate" : 0.10199789023175418,
+      "m1_rate" : 0.09583574292545141,
+      "m5_rate" : 0.09916599854910431,
+      "mean_rate" : 0.09986207771309166,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.registerWorkerComplete" : {
+      "count" : 2,
+      "max" : 1.58802,
+      "mean" : 1.3111819380688894,
+      "min" : 1.058171,
+      "p50" : 1.058171,
+      "p75" : 1.58802,
+      "p95" : 1.58802,
+      "p98" : 1.58802,
+      "p99" : 1.58802,
+      "p999" : 1.58802,
+      "stddev" : 0.2646564900816974,
+      "m15_rate" : 0.0015831689099823946,
+      "m1_rate" : 6.00466593615503E-33,
+      "m5_rate" : 9.920230578743515E-8,
+      "mean_rate" : 4.579327219600753E-4,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    },
+    "Master.registerWorkerStart" : {
+      "count" : 2,
+      "max" : 7.031425,
+      "mean" : 4.075346932230689,
+      "min" : 1.3736949999999999,
+      "p50" : 1.3736949999999999,
+      "p75" : 7.031425,
+      "p95" : 7.031425,
+      "p98" : 7.031425,
+      "p99" : 7.031425,
+      "p999" : 7.031425,
+      "stddev" : 2.8260031888895174,
+      "m15_rate" : 0.0015831689099823946,
+      "m1_rate" : 6.00466593615503E-33,
+      "m5_rate" : 9.920230578743515E-8,
+      "mean_rate" : 4.5793186265639024E-4,
+      "duration_units" : "milliseconds",
+      "rate_units" : "calls/second"
+    }
+  }
+}
