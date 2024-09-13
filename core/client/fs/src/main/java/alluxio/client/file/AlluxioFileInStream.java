@@ -18,6 +18,7 @@ import alluxio.client.block.BlockStoreClient;
 import alluxio.client.block.stream.BlockInStream;
 import alluxio.client.block.stream.BlockWorkerClient;
 import alluxio.client.file.options.InStreamOptions;
+import alluxio.concurrent.ClientRWLock;
 import alluxio.conf.AlluxioConfiguration;
 import alluxio.conf.PropertyKey;
 import alluxio.exception.PreconditionMessage;
@@ -38,6 +39,11 @@ import alluxio.wire.WorkerNetAddress;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Supplier;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.Cache;
+import com.google.common.cache.RemovalListener;
+import com.google.common.cache.RemovalNotification;
 import com.google.common.io.Closer;
 import io.grpc.StatusRuntimeException;
 import io.netty.util.internal.OutOfDirectMemoryError;
@@ -51,6 +57,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+
 import javax.annotation.concurrent.NotThreadSafe;
 
 /**
@@ -98,6 +106,21 @@ public class AlluxioFileInStream extends FileInStream {
 
   /** Cached block stream for the positioned read API. */
   private BlockInStream mCachedPositionedReadStream;
+  private Cache<Long, BlockInStream> mCache = CacheBuilder.newBuilder().maximumSize(8).removalListener(
+      new RemovalListener<Long, BlockInStream>() {
+        @Override
+        public void onRemoval(RemovalNotification<Long, BlockInStream> notification) {
+          BlockInStream resource = notification.getValue();
+          if (resource != null) {
+            try {
+              closeBlockInStream(resource);
+            } catch (IOException e) {
+              throw new RuntimeException(e);
+            }
+          }
+        }
+      }
+  ).build();
 
   /** The last block id for which async cache was triggered. */
   private long mLastBlockIdCached;
@@ -270,6 +293,7 @@ public class AlluxioFileInStream extends FileInStream {
   public void close() throws IOException {
     closeBlockInStream(mBlockInStream);
     closeBlockInStream(mCachedPositionedReadStream);
+    mCache.invalidateAll();
     mCloser.close();
   }
 
@@ -307,16 +331,12 @@ public class AlluxioFileInStream extends FileInStream {
         // allows us to avoid the block store rpc to open a new stream for each call.
         BlockInfo blockInfo = isStatusOutdated() || lastException != null
             ? mBlockStore.getInfo(blockId) : mStatus.getBlockInfo(blockId);
-        if (mCachedPositionedReadStream == null) {
-          mCachedPositionedReadStream = mBlockStore.getInStream(
+        BlockInStream stream = mCache.get(blockId, ()->{
+          return mBlockStore.getInStream(
               blockInfo, mOptions, mFailedWorkers);
-        } else if (mCachedPositionedReadStream.getId() != blockId) {
-          closeBlockInStream(mCachedPositionedReadStream);
-          mCachedPositionedReadStream = mBlockStore.getInStream(
-              blockInfo, mOptions, mFailedWorkers);
-        }
+        });
         long offset = pos % mBlockSize;
-        int bytesRead = mCachedPositionedReadStream.positionedRead(offset, b, off,
+        int bytesRead = stream.positionedRead(offset, b, off,
             (int) Math.min(mBlockSize - offset, len));
         Preconditions.checkState(bytesRead > 0, "No data is read before EOF");
         pos += bytesRead;
@@ -324,7 +344,8 @@ public class AlluxioFileInStream extends FileInStream {
         len -= bytesRead;
         retry = mRetryPolicySupplier.get();
         lastException = null;
-        BlockInStream.BlockInStreamSource source = mCachedPositionedReadStream.getSource();
+        BlockInStream.BlockInStreamSource source = stream.getSource();
+        /*
         if (source != BlockInStream.BlockInStreamSource.NODE_LOCAL
             && source != BlockInStream.BlockInStreamSource.PROCESS_LOCAL) {
           triggerAsyncCaching(mCachedPositionedReadStream);
@@ -333,12 +354,18 @@ public class AlluxioFileInStream extends FileInStream {
           mCachedPositionedReadStream.close();
           mCachedPositionedReadStream = null;
         }
+         */
       } catch (IOException e) {
+        /*
         lastException = e;
         if (mCachedPositionedReadStream != null) {
           handleRetryableException(mCachedPositionedReadStream, e);
           mCachedPositionedReadStream = null;
         }
+         */
+        throw e;
+      } catch (ExecutionException e) {
+        throw new RuntimeException(e);
       }
     }
     if (lastException != null) {
